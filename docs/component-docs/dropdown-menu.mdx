@@ -2,31 +2,36 @@
 sidebar_position: 9
 ---
 
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
-
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+import PropTable from "./component/PropTable.js";
+import DataAttributeTable from "./component/DataAttributeTable.js";
+import CssVariableTable from "./component/CssVariableTable.js";
+import KeyboardInteractionTable from "./component/KeyboardInteractionTable.js";
+import dropdownMenuAPI from "./data/dropdown-menu.ts";
 
 # Dropdown Menu
+
 버튼에 의해 트리거된 동작 또는 기능 집합 등의 메뉴를 사용자에게 표시합니다.
 
 <Tabs>
 <TabItem value="js" label="index.js">
 
 ```jsx
-import React from 'react';
-import * as DropdownMenu from '@radix-ui/react-dropdown-menu';
+import React from "react";
+import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
 import {
   HamburgerMenuIcon,
   DotFilledIcon,
   CheckIcon,
   ChevronRightIcon,
-} from '@radix-ui/react-icons';
-import './styles.css';
+} from "@radix-ui/react-icons";
+import "./styles.css";
 
 const DropdownMenuDemo = () => {
   const [bookmarksChecked, setBookmarksChecked] = React.useState(true);
   const [urlsChecked, setUrlsChecked] = React.useState(false);
-  const [person, setPerson] = React.useState('pedro');
+  const [person, setPerson] = React.useState("pedro");
 
   return (
     <DropdownMenu.Root>
@@ -63,10 +68,16 @@ const DropdownMenuDemo = () => {
                 <DropdownMenu.Item className="DropdownMenuItem">
                   Save Page As… <div className="RightSlot">⌘+S</div>
                 </DropdownMenu.Item>
-                <DropdownMenu.Item className="DropdownMenuItem">Create Shortcut…</DropdownMenu.Item>
-                <DropdownMenu.Item className="DropdownMenuItem">Name Window…</DropdownMenu.Item>
+                <DropdownMenu.Item className="DropdownMenuItem">
+                  Create Shortcut…
+                </DropdownMenu.Item>
+                <DropdownMenu.Item className="DropdownMenuItem">
+                  Name Window…
+                </DropdownMenu.Item>
                 <DropdownMenu.Separator className="DropdownMenu.Separator" />
-                <DropdownMenu.Item className="DropdownMenuItem">Developer Tools</DropdownMenu.Item>
+                <DropdownMenu.Item className="DropdownMenuItem">
+                  Developer Tools
+                </DropdownMenu.Item>
               </DropdownMenu.SubContent>
             </DropdownMenu.Portal>
           </DropdownMenu.Sub>
@@ -96,15 +107,23 @@ const DropdownMenuDemo = () => {
 
           <DropdownMenu.Separator className="DropdownMenuSeparator" />
 
-          <DropdownMenu.Label className="DropdownMenuLabel">People</DropdownMenu.Label>
+          <DropdownMenu.Label className="DropdownMenuLabel">
+            People
+          </DropdownMenu.Label>
           <DropdownMenu.RadioGroup value={person} onValueChange={setPerson}>
-            <DropdownMenu.RadioItem className="DropdownMenuRadioItem" value="pedro">
+            <DropdownMenu.RadioItem
+              className="DropdownMenuRadioItem"
+              value="pedro"
+            >
               <DropdownMenu.ItemIndicator className="DropdownMenuItemIndicator">
                 <DotFilledIcon />
               </DropdownMenu.ItemIndicator>
               Pedro Duarte
             </DropdownMenu.RadioItem>
-            <DropdownMenu.RadioItem className="DropdownMenuRadioItem" value="colm">
+            <DropdownMenu.RadioItem
+              className="DropdownMenuRadioItem"
+              value="colm"
+            >
               <DropdownMenu.ItemIndicator className="DropdownMenuItemIndicator">
                 <DotFilledIcon />
               </DropdownMenu.ItemIndicator>
@@ -121,13 +140,14 @@ const DropdownMenuDemo = () => {
 
 export default DropdownMenuDemo;
 ```
+
 </TabItem>
 <TabItem value="css" label="styles.css">
 
 ```css
-@import '@radix-ui/colors/black-alpha.css';
-@import '@radix-ui/colors/mauve.css';
-@import '@radix-ui/colors/violet.css';
+@import "@radix-ui/colors/black-alpha.css";
+@import "@radix-ui/colors/mauve.css";
+@import "@radix-ui/colors/violet.css";
 
 /* reset */
 button {
@@ -140,25 +160,26 @@ button {
   background-color: white;
   border-radius: 6px;
   padding: 5px;
-  box-shadow: 0px 10px 38px -10px rgba(22, 23, 24, 0.35), 0px 10px 20px -15px rgba(22, 23, 24, 0.2);
+  box-shadow: 0px 10px 38px -10px rgba(22, 23, 24, 0.35), 0px 10px 20px -15px
+      rgba(22, 23, 24, 0.2);
   animation-duration: 400ms;
   animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
   will-change: transform, opacity;
 }
-.DropdownMenuContent[data-side='top'],
-.DropdownMenuSubContent[data-side='top'] {
+.DropdownMenuContent[data-side="top"],
+.DropdownMenuSubContent[data-side="top"] {
   animation-name: slideDownAndFade;
 }
-.DropdownMenuContent[data-side='right'],
-.DropdownMenuSubContent[data-side='right'] {
+.DropdownMenuContent[data-side="right"],
+.DropdownMenuSubContent[data-side="right"] {
   animation-name: slideLeftAndFade;
 }
-.DropdownMenuContent[data-side='bottom'],
-.DropdownMenuSubContent[data-side='bottom'] {
+.DropdownMenuContent[data-side="bottom"],
+.DropdownMenuSubContent[data-side="bottom"] {
   animation-name: slideUpAndFade;
 }
-.DropdownMenuContent[data-side='left'],
-.DropdownMenuSubContent[data-side='left'] {
+.DropdownMenuContent[data-side="left"],
+.DropdownMenuSubContent[data-side="left"] {
   animation-name: slideRightAndFade;
 }
 
@@ -179,7 +200,7 @@ button {
   user-select: none;
   outline: none;
 }
-.DropdownMenuSubTrigger[data-state='open'] {
+.DropdownMenuSubTrigger[data-state="open"] {
   background-color: var(--violet-4);
   color: var(--violet-11);
 }
@@ -299,14 +320,14 @@ button {
   }
 }
 ```
+
 </TabItem>
 </Tabs>
 
-
-### 특징
+## 특징
 
 ![checkbox icon](../../static/img/checkboxicon.png) 제어 또는 비제어 가능
- 
+
 ![checkbox icon](../../static/img/checkboxicon.png) 구성 가능한 판독 방향으로 하위 메뉴를 지원
 
 ![checkbox icon](../../static/img/checkboxicon.png) Item, Label, Item 그룹 지원
@@ -327,24 +348,24 @@ button {
 
 ![checkbox icon](../../static/img/checkboxicon.png) 무시 및 계층화 동작 사용자 지정 가능
 
-export const Highlight = ({children, color}) => (
-  <span
-    style={{color: color}}
-  >
-    {children}
-  </span>
+export const Highlight = ({ children, color }) => (
+  <span style={{ color: color }}>{children}</span>
 );
 
 ## <Highlight color='#1C5AEC'>설치</Highlight>
+
 커맨드라인에서 컴포넌트를 설치하세요.
+
 ```bash
 npm install @radix-ui/react-dropdown-menu
 ```
 
 ## <Highlight color='#1C5AEC'>구성</Highlight>
+
 모든 구성요소를 가져와서 조합하세요.
+
 ```jsx
-import * as DropdownMenu from '@radix-ui/react-dropdown-menu';
+import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
 
 export default () => (
   <DropdownMenu.Root>
@@ -384,31 +405,562 @@ export default () => (
 );
 ```
 
-
 ## <Highlight color='#1C5AEC'>API 참조</Highlight>
+
 ### <Highlight color='#1C5AEC'>Root</Highlight>
+
 Dropdown Menu의 모든 부분을 포함합니다.
-```jsx
-```
+
+<PropTable api={dropdownMenuAPI} category="root" />
 
 ### <Highlight color='#1C5AEC'>Trigger</Highlight>
+
 Dropdown menu를 전환하는 버튼입니다.기본적으로 `DropdownMenu.Content`는 트리거에 대해 자신을 배치합니다.
-```jsx
-```
+
+<PropTable api={dropdownMenuAPI} category="trigger" />
+<DataAttributeTable api={dropdownMenuAPI} category="trigger" />
 
 ### <Highlight color='#1C5AEC'>Portal</Highlight>
+
 콘텐츠를 `body`에 포탈합니다.
-```jsx
-```
+
+<PropTable api={dropdownMenuAPI} category="portal" />
 
 ### <Highlight color='#1C5AEC'>Content</Highlight>
+
 Dropdown menu가 열렸을 때 나타나는 구성요소입니다.
+
+<PropTable api={dropdownMenuAPI} category="content" />
+<DataAttributeTable api={dropdownMenuAPI} category="content" />
+<CssVariableTable api={dropdownMenuAPI} category="content" />
+
+### <Highlight color='#1C5AEC'>Arrow</Highlight>
+
+드롭다운 메뉴와 나란히 렌더링할 선택적 화살표 요소입니다.
+`DropdownMenu.Content`와 트리거를 시각적으로 연결하는 데 사용할 수 있습니다.
+`DropdownMenu.Content` 안에서 렌더링해야 합니다.
+
+<PropTable api={dropdownMenuAPI} category="arrow" />
+
+### <Highlight color='#1C5AEC'>Item</Highlight>
+
+Dropdown menu 항목을 포함하는 구성 요소입니다.
+
+<PropTable api={dropdownMenuAPI} category="item" />
+<DataAttributeTable api={dropdownMenuAPI} category="item" />
+
+### <Highlight color='#1C5AEC'>Group</Highlight>
+
+여러 `Dropdown menu`을 그룹화하는 데 사용됩니다.
+
+<PropTable api={dropdownMenuAPI} category="group" />
+
+### <Highlight color='#1C5AEC'>Label</Highlight>
+
+Label을 렌더링하는 데 사용됩니다. 화살표 키를 사용하여 초점을 맞출 수 없습니다.
+
+<PropTable api={dropdownMenuAPI} category="label" />
+
+### <Highlight color='#1C5AEC'>CheckboxItem</Highlight>
+
+체크박스처럼 제어하고 렌더링할 수 있는 아이템입니다.
+
+<PropTable api={dropdownMenuAPI} category="checkboxitem" />
+<DataAttributeTable api={dropdownMenuAPI} category="checkboxitem" />
+
+### <Highlight color='#1C5AEC'>RadioGroup</Highlight>
+
+여러 `DropdownMenu.RadioItem`을 그룹화하는 데 사용됩니다.
+
+<PropTable api={dropdownMenuAPI} category="radiogroup" />
+
+### <Highlight color='#1C5AEC'>RadioItem</Highlight>
+
+Radio처럼 제어하고 렌더링할 수 있는 아이템입니다.
+
+<PropTable api={dropdownMenuAPI} category="radioitem" />
+<DataAttributeTable api={dropdownMenuAPI} category="radioitem" />
+
+### <Highlight color='#1C5AEC'>ItemIndicator</Highlight>
+
+상위 `DropdownMenu.CheckboxItem` 또는 `DropdownMenu.RadioItem`이 선택되어 있을 때 렌더링합니다.
+이 요소를 직접 스타일링하거나 아이콘을 넣을 래퍼로 사용하거나 둘 다 사용할 수 있습니다.
+
+<PropTable api={dropdownMenuAPI} category="itemindicator" />
+<DataAttributeTable api={dropdownMenuAPI} category="itemindicator" />
+
+### <Highlight color='#1C5AEC'>Separator</Highlight>
+
+Dropdown menu에서 항목을 시각적으로 구분하는 데 사용됩니다.
+
+<PropTable api={dropdownMenuAPI} category="separator" />
+
+### <Highlight color='#1C5AEC'>Sub</Highlight>
+
+하위 메뉴의 모든 부분을 포함합니다.
+
+<PropTable api={dropdownMenuAPI} category="sub" />
+
+### <Highlight color='#1C5AEC'>SubTrigger</Highlight>
+
+Submenu를 여는 항목입니다. `DropoutMenu.Sub`에서 렌더링해야 합니다.
+
+<PropTable api={dropdownMenuAPI} category="subtrigger" />
+<DataAttributeTable api={dropdownMenuAPI} category="subtrigger" />
+<CssVariableTable api={dropdownMenuAPI} category="subtrigger" />
+
+### <Highlight color='#1C5AEC'>SubContent</Highlight>
+
+Submenu가 열렸을 때 나타나는 구성 요소입니다.
+`DropoutMenu.Sub`에서 렌더링해야 합니다.
+
+<PropTable api={dropdownMenuAPI} category="subcontent" />
+<DataAttributeTable api={dropdownMenuAPI} category="subcontent" />
+
+## <Highlight color='#1C5AEC'>예</Highlight>
+
+### With submenus
+
+You can create submenus by using `DropdownMenu.Sub` in combination with its parts.
+
 ```jsx
+<DropdownMenu.Root>
+  <DropdownMenu.Trigger>…</DropdownMenu.Trigger>
+  <DropdownMenu.Portal>
+    <DropdownMenu.Content>
+      <DropdownMenu.Item>…</DropdownMenu.Item>
+      <DropdownMenu.Item>…</DropdownMenu.Item>
+      <DropdownMenu.Separator />
+      <DropdownMenu.Sub>
+        <DropdownMenu.SubTrigger>Sub menu →</DropdownMenu.SubTrigger>
+        <DropdownMenu.Portal>
+          <DropdownMenu.SubContent>
+            <DropdownMenu.Item>Sub menu item</DropdownMenu.Item>
+            <DropdownMenu.Item>Sub menu item</DropdownMenu.Item>
+            <DropdownMenu.Arrow />
+          </DropdownMenu.SubContent>
+        </DropdownMenu.Portal>
+      </DropdownMenu.Sub>
+      <DropdownMenu.Separator />
+      <DropdownMenu.Item>…</DropdownMenu.Item>
+    </DropdownMenu.Content>
+  </DropdownMenu.Portal>
+</DropdownMenu.Root>
+```
+
+### With disabled items
+
+You can add special styles to disabled items via the `data-disabled` attribute.
+
+```jsx
+// index.jsx
+import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
+import "./styles.css";
+
+export default () => (
+  <DropdownMenu.Root>
+    <DropdownMenu.Trigger>…</DropdownMenu.Trigger>
+    <DropdownMenu.Portal>
+      <DropdownMenu.Content>
+        <DropdownMenu.Item className="DropdownMenuItem" disabled>
+          …
+        </DropdownMenu.Item>
+        <DropdownMenu.Item className="DropdownMenuItem">…</DropdownMenu.Item>
+      </DropdownMenu.Content>
+    </DropdownMenu.Portal>
+  </DropdownMenu.Root>
+);
+```
+
+```css
+/* styles.css */
+.DropdownMenuItem[data-disabled] {
+  color: gainsboro;
+}
+```
+
+### With separators
+
+Use the `Separator` part to add a separator between items.
+
+```jsx
+<DropdownMenu.Root>
+  <DropdownMenu.Trigger>…</DropdownMenu.Trigger>
+  <DropdownMenu.Portal>
+    <DropdownMenu.Content>
+      <DropdownMenu.Item>…</DropdownMenu.Item>
+      <DropdownMenu.Separator />
+      <DropdownMenu.Item>…</DropdownMenu.Item>
+      <DropdownMenu.Separator />
+      <DropdownMenu.Item>…</DropdownMenu.Item>
+    </DropdownMenu.Content>
+  </DropdownMenu.Portal>
+</DropdownMenu.Root>
+```
+
+### With labels
+
+Use the Label part to help label a section.
+
+```jsx
+<DropdownMenu.Root>
+  <DropdownMenu.Trigger>…</DropdownMenu.Trigger>
+  <DropdownMenu.Portal>
+    <DropdownMenu.Content>
+      <DropdownMenu.Label>Label</DropdownMenu.Label>
+      <DropdownMenu.Item>…</DropdownMenu.Item>
+      <DropdownMenu.Item>…</DropdownMenu.Item>
+      <DropdownMenu.Item>…</DropdownMenu.Item>
+    </DropdownMenu.Content>
+  </DropdownMenu.Portal>
+</DropdownMenu.Root>
+```
+
+### With checkbox items
+
+Use the `CheckboxItem` part to add an item that can be checked.
+
+```jsx
+import React from "react";
+import { CheckIcon } from "@radix-ui/react-icons";
+import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
+
+export default () => {
+  const [checked, setChecked] = React.useState(true);
+
+  return (
+    <DropdownMenu.Root>
+      <DropdownMenu.Trigger>…</DropdownMenu.Trigger>
+      <DropdownMenu.Portal>
+        <DropdownMenu.Content>
+          <DropdownMenu.Item>…</DropdownMenu.Item>
+          <DropdownMenu.Item>…</DropdownMenu.Item>
+          <DropdownMenu.Separator />
+          <DropdownMenu.CheckboxItem
+            checked={checked}
+            onCheckedChange={setChecked}
+          >
+            <DropdownMenu.ItemIndicator>
+              <CheckIcon />
+            </DropdownMenu.ItemIndicator>
+            Checkbox item
+          </DropdownMenu.CheckboxItem>
+        </DropdownMenu.Content>
+      </DropdownMenu.Portal>
+    </DropdownMenu.Root>
+  );
+};
+```
+
+### With radio items
+
+Use the `RadioGroup` and `RadioItem` parts to add an item that can be checked amongst others.
+
+```jsx
+import React from "react";
+import { CheckIcon } from "@radix-ui/react-icons";
+import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
+
+export default () => {
+  const [color, setColor] = React.useState("blue");
+
+  return (
+    <DropdownMenu.Root>
+      <DropdownMenu.Trigger>…</DropdownMenu.Trigger>
+      <DropdownMenu.Portal>
+        <DropdownMenu.Content>
+          <DropdownMenu.RadioGroup value={color} onValueChange={setColor}>
+            <DropdownMenu.RadioItem value="red">
+              <DropdownMenu.ItemIndicator>
+                <CheckIcon />
+              </DropdownMenu.ItemIndicator>
+              Red
+            </DropdownMenu.RadioItem>
+            <DropdownMenu.RadioItem value="blue">
+              <DropdownMenu.ItemIndicator>
+                <CheckIcon />
+              </DropdownMenu.ItemIndicator>
+              Blue
+            </DropdownMenu.RadioItem>
+            <DropdownMenu.RadioItem value="green">
+              <DropdownMenu.ItemIndicator>
+                <CheckIcon />
+              </DropdownMenu.ItemIndicator>
+              Green
+            </DropdownMenu.RadioItem>
+          </DropdownMenu.RadioGroup>
+        </DropdownMenu.Content>
+      </DropdownMenu.Portal>
+    </DropdownMenu.Root>
+  );
+};
+```
+
+### With complex items
+
+You can add extra decorative elements in the `Item` parts, such as images.
+
+```jsx
+import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
+
+export default () => (
+  <DropdownMenu.Root>
+    <DropdownMenu.Trigger>…</DropdownMenu.Trigger>
+    <DropdownMenu.Portal>
+      <DropdownMenu.Content>
+        <DropdownMenu.Item>
+          <img src="…" />
+          Adolfo Hess
+        </DropdownMenu.Item>
+        <DropdownMenu.Item>
+          <img src="…" />
+          Miyah Myles
+        </DropdownMenu.Item>
+      </DropdownMenu.Content>
+    </DropdownMenu.Portal>
+  </DropdownMenu.Root>
+);
+```
+
+### Constrain the content/sub-content size
+
+You may want to constrain the width of the content (or sub-content) so that it matches the trigger (or sub-trigger) width. You may also want to constrain its height to not exceed the viewport.
+We expose several CSS custom properties such as `--radix-dropdown-menu-trigger-width` and `--radix-dropdown-menu-content-available-height` to support this. Use them to constrain the content dimensions.
+
+```jsx
+// index.jsx
+import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
+import "./styles.css";
+
+export default () => (
+  <DropdownMenu.Root>
+    <DropdownMenu.Trigger>…</DropdownMenu.Trigger>
+    <DropdownMenu.Portal>
+      <DropdownMenu.Content className="DropdownMenuContent" sideOffset={5}>
+        …
+      </DropdownMenu.Content>
+    </DropdownMenu.Portal>
+  </DropdownMenu.Root>
+);
+```
+
+```css
+/* styles.css */
+.DropdownMenuContent {
+  width: var(--radix-dropdown-menu-trigger-width);
+  max-height: var(--radix-dropdown-menu-content-available-height);
+}
+```
+
+### Origin-aware animations
+
+We expose a CSS custom property `--radix-dropdown-menu-content-transform-origin`.
+Use it to animate the content from its computed origin based on `side`, `sideOffset`, `align`, `alignOffset` and any collisions.
+
+```jsx
+// index.jsx
+import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
+import "./styles.css";
+
+export default () => (
+  <DropdownMenu.Root>
+    <DropdownMenu.Trigger>…</DropdownMenu.Trigger>
+    <DropdownMenu.Portal>
+      <DropdownMenu.Content className="DropdownMenuContent">
+        …
+      </DropdownMenu.Content>
+    </DropdownMenu.Portal>
+  </DropdownMenu.Root>
+);
+```
+
+```css
+/* styles.css */
+.DropdownMenuContent {
+  transform-origin: var(--radix-dropdown-menu-content-transform-origin);
+  animation: scaleIn 0.5s ease-out;
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+```
+
+### Collision-aware animations
+
+We expose `data-side` and `data-align` attributes.
+Their values will change at runtime to reflect collisions.
+Use them to create collision and direction-aware animations.
+
+```jsx
+// index.jsx
+import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
+import "./styles.css";
+
+export default () => (
+  <DropdownMenu.Root>
+    <DropdownMenu.Trigger>…</DropdownMenu.Trigger>
+    <DropdownMenu.Portal>
+      <DropdownMenu.Content className="DropdownMenuContent">
+        …
+      </DropdownMenu.Content>
+    </DropdownMenu.Portal>
+  </DropdownMenu.Root>
+);
+```
+
+```css
+/* styles.css */
+.DropdownMenuContent {
+  animation-duration: 0.6s;
+  animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+}
+.DropdownMenuContent[data-side="top"] {
+  animation-name: slideUp;
+}
+.DropdownMenuContent[data-side="bottom"] {
+  animation-name: slideDown;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
 ```
 
 ## <Highlight color='#1C5AEC'>접근성</Highlight>
+
 [`Accordion WAI-ARIA design pattern`](https://www.w3.org/WAI/ARIA/apg/#accordion)을 준수합니다.
 
 ### <Highlight color='#1C5AEC'>키보드 상호작용</Highlight>
+
+<KeyboardInteractionTable
+  api={dropdownMenuAPI}
+  category="keyboardInteractions"
+/>
+
+### <Highlight color='#1C5AEC'>사용자 정의 API</Highlight>
+
+원시적인 부분을 사용자 고유의 컴포넌트로 추상화하여 사용자 정의 API를 만듭니다.
+
+#### 화살표 및 항목 표시기 추상화
+
+이 예제에서는 `DropdownMenu.Arrow` 및 `DropdownMenu.ItemIndicator`를 추상화하고 `CheckboxItem` 및 `RadioItem`에 대한 구현 세부 정보도 요약합니다.
+
+#### Usage
+
 ```jsx
+import {
+  DropdownMenu,
+  DropdownMenuTrigger,
+  DropdownMenuContent,
+  DropdownMenuLabel,
+  DropdownMenuItem,
+  DropdownMenuGroup,
+  DropdownMenuCheckboxItem,
+  DropdownMenuRadioGroup,
+  DropdownMenuRadioItem,
+  DropdownMenuSeparator,
+} from "./your-dropdown-menu";
+
+export default () => (
+  <DropdownMenu>
+    <DropdownMenuTrigger>DropdownMenu trigger</DropdownMenuTrigger>
+    <DropdownMenuContent>
+      <DropdownMenuItem>Item</DropdownMenuItem>
+      <DropdownMenuLabel>Label</DropdownMenuLabel>
+      <DropdownMenuGroup>Group</DropdownMenuGroup>
+      <DropdownMenuCheckboxItem>CheckboxItem</DropdownMenuCheckboxItem>
+      <DropdownMenuSeparator>Separator</DropdownMenuSeparator>
+      <DropdownMenuRadioGroup>
+        <DropdownMenuRadioItem>RadioItem</DropdownMenuRadioItem>
+        <DropdownMenuRadioItem>RadioItem</DropdownMenuRadioItem>
+      </DropdownMenuRadioGroup>
+    </DropdownMenuContent>
+  </DropdownMenu>
+);
+```
+
+#### Implementation
+
+```jsx
+// your-dropdown-menu.jsx
+import React from "react";
+import * as DropdownMenuPrimitive from "@radix-ui/react-dropdown-menu";
+import { CheckIcon, DividerHorizontalIcon } from "@radix-ui/react-icons";
+
+export const DropdownMenu = DropdownMenuPrimitive.Root;
+export const DropdownMenuTrigger = DropdownMenuPrimitive.Trigger;
+
+export const DropdownMenuContent = React.forwardRef(
+  ({ children, ...props }, forwardedRef) => {
+    return (
+      <DropdownMenuPrimitive.Portal>
+        <DropdownMenuPrimitive.Content {...props} ref={forwardedRef}>
+          {children}
+          <DropdownMenuPrimitive.Arrow />
+        </DropdownMenuPrimitive.Content>
+      </DropdownMenuPrimitive.Portal>
+    );
+  }
+);
+
+export const DropdownMenuLabel = DropdownMenuPrimitive.Label;
+export const DropdownMenuItem = DropdownMenuPrimitive.Item;
+export const DropdownMenuGroup = DropdownMenuPrimitive.Group;
+
+export const DropdownMenuCheckboxItem = React.forwardRef(
+  ({ children, ...props }, forwardedRef) => {
+    return (
+      <DropdownMenuPrimitive.CheckboxItem {...props} ref={forwardedRef}>
+        {children}
+        <DropdownMenuPrimitive.ItemIndicator>
+          {props.checked === "indeterminate" && <DividerHorizontalIcon />}
+          {props.checked === true && <CheckIcon />}
+        </DropdownMenuPrimitive.ItemIndicator>
+      </DropdownMenuPrimitive.CheckboxItem>
+    );
+  }
+);
+
+export const DropdownMenuRadioGroup = DropdownMenuPrimitive.RadioGroup;
+
+export const DropdownMenuRadioItem = React.forwardRef(
+  ({ children, ...props }, forwardedRef) => {
+    return (
+      <DropdownMenuPrimitive.RadioItem {...props} ref={forwardedRef}>
+        {children}
+        <DropdownMenuPrimitive.ItemIndicator>
+          <CheckIcon />
+        </DropdownMenuPrimitive.ItemIndicator>
+      </DropdownMenuPrimitive.RadioItem>
+    );
+  }
+);
+
+export const DropdownMenuSeparator = DropdownMenuPrimitive.Separator;
 ```

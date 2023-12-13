@@ -2,20 +2,25 @@
 sidebar_position: 11
 ---
 
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
-
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+import PropTable from "./component/PropTable.js";
+import DataAttributeTable from "./component/DataAttributeTable.js";
+import CssVariableTable from "./component/CssVariableTable.js";
+import KeyboardInteractionTable from "./component/KeyboardInteractionTable.js";
+import hoverCardAPI from "./data/hover-card.ts";
 
 # Hover Card
+
 시력이 있는 사용자는 링크 뒤에서 사용 가능한 콘텐츠를 미리 볼 수 있습니다.
 
 <Tabs>
 <TabItem value="js" label="index.js">
 
 ```jsx
-import React from 'react';
-import * as HoverCard from '@radix-ui/react-hover-card';
-import './styles.css';
+import React from "react";
+import * as HoverCard from "@radix-ui/react-hover-card";
+import "./styles.css";
 
 const HoverCardDemo = () => (
   <HoverCard.Root>
@@ -35,27 +40,29 @@ const HoverCardDemo = () => (
     </HoverCard.Trigger>
     <HoverCard.Portal>
       <HoverCard.Content className="HoverCardContent" sideOffset={5}>
-        <div style={{ display: 'flex', flexDirection: 'column', gap: 7 }}>
+        <div style={{ display: "flex", flexDirection: "column", gap: 7 }}>
           <img
             className="Image large"
             src="https://pbs.twimg.com/profile_images/1337055608613253126/r_eiMp2H_400x400.png"
             alt="Radix UI"
           />
-          <div style={{ display: 'flex', flexDirection: 'column', gap: 15 }}>
+          <div style={{ display: "flex", flexDirection: "column", gap: 15 }}>
             <div>
               <div className="Text bold">Radix</div>
               <div className="Text faded">@radix_ui</div>
             </div>
             <div className="Text">
-              Components, icons, colors, and templates for building high-quality, accessible UI.
-              Free and open-source.
+              Components, icons, colors, and templates for building
+              high-quality, accessible UI. Free and open-source.
             </div>
-            <div style={{ display: 'flex', gap: 15 }}>
-              <div style={{ display: 'flex', gap: 5 }}>
-                <div className="Text bold">0</div> <div className="Text faded">Following</div>
+            <div style={{ display: "flex", gap: 15 }}>
+              <div style={{ display: "flex", gap: 5 }}>
+                <div className="Text bold">0</div>{" "}
+                <div className="Text faded">Following</div>
               </div>
-              <div style={{ display: 'flex', gap: 5 }}>
-                <div className="Text bold">2,900</div> <div className="Text faded">Followers</div>
+              <div style={{ display: "flex", gap: 5 }}>
+                <div className="Text bold">2,900</div>{" "}
+                <div className="Text faded">Followers</div>
               </div>
             </div>
           </div>
@@ -69,11 +76,12 @@ const HoverCardDemo = () => (
 
 export default HoverCardDemo;
 ```
+
 </TabItem>
 <TabItem value="css" label="styles.css">
 
 ```css
-@import '@radix-ui/colors/mauve.css';
+@import "@radix-ui/colors/mauve.css";
 
 /* reset */
 a {
@@ -85,21 +93,22 @@ a {
   padding: 20px;
   width: 300px;
   background-color: white;
-  box-shadow: hsl(206 22% 7% / 35%) 0px 10px 38px -10px, hsl(206 22% 7% / 20%) 0px 10px 20px -15px;
+  box-shadow: hsl(206 22% 7% / 35%) 0px 10px 38px -10px, hsl(206 22% 7% / 20%) 0px
+      10px 20px -15px;
   animation-duration: 400ms;
   animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
   will-change: transform, opacity;
 }
-.HoverCardContent[data-side='top'] {
+.HoverCardContent[data-side="top"] {
   animation-name: slideDownAndFade;
 }
-.HoverCardContent[data-side='right'] {
+.HoverCardContent[data-side="right"] {
   animation-name: slideLeftAndFade;
 }
-.HoverCardContent[data-side='bottom'] {
+.HoverCardContent[data-side="bottom"] {
   animation-name: slideUpAndFade;
 }
-.HoverCardContent[data-side='left'] {
+.HoverCardContent[data-side="left"] {
   animation-name: slideRightAndFade;
 }
 
@@ -186,9 +195,9 @@ a {
   }
 }
 ```
+
 </TabItem>
 </Tabs>
-
 
 ### 특징
 
@@ -204,25 +213,24 @@ a {
 
 ![checkbox icon](../../static/img/checkboxicon.png) 화면 판독기에서 무시됨
 
-
-export const Highlight = ({children, color}) => (
-  <span
-    style={{color: color}}
-  >
-    {children}
-  </span>
+export const Highlight = ({ children, color }) => (
+  <span style={{ color: color }}>{children}</span>
 );
 
 ## <Highlight color='#1C5AEC'>설치</Highlight>
+
 커맨드라인에서 컴포넌트를 설치하세요.
+
 ```bash
 npm install @radix-ui/react-hover-card
 ```
 
 ## <Highlight color='#1C5AEC'>구성</Highlight>
+
 모든 구성요소를 가져와서 조합하세요.
+
 ```jsx
-import * as HoverCard from '@radix-ui/react-hover-card';
+import * as HoverCard from "@radix-ui/react-hover-card";
 
 export default () => (
   <HoverCard.Root>
@@ -236,44 +244,62 @@ export default () => (
 );
 ```
 
-
 ## <Highlight color='#1C5AEC'>API 참조</Highlight>
+
 ### <Highlight color='#1C5AEC'>Root</Highlight>
+
 Hover Card의 모든 부분을 포함합니다.
+
 ```jsx
+
 ```
 
 ### <Highlight color='#1C5AEC'>Trigger</Highlight>
+
 호버링할 때 호버 카드를 여는 링크입니다.
+
 ```jsx
+
 ```
 
 ### <Highlight color='#1C5AEC'>Portal</Highlight>
+
 콘텐츠 부분을 `body`에 포팅합니다.
+
 ```jsx
+
 ```
 
 ### <Highlight color='#1C5AEC'>Content</Highlight>
+
 호버 카드가 열려 있을 때 나타나는 구성 요소입니다.
+
 ```jsx
+
 ```
 
 ### <Highlight color='#1C5AEC'>Arrow</Highlight>
-Hover card와 나란히 렌더링할 선택적 화살표 요소입니다. 
-트리거를 `HoverCard.Content`와 시각적으로 연결하는 데 사용할 수 있습니다. 
-`HoverCard.Content` 안에서 렌더링해야 합니다.
-```jsx
-```
 
+Hover card와 나란히 렌더링할 선택적 화살표 요소입니다.
+트리거를 `HoverCard.Content`와 시각적으로 연결하는 데 사용할 수 있습니다.
+`HoverCard.Content` 안에서 렌더링해야 합니다.
+
+```jsx
+
+```
 
 ## <Highlight color='#1C5AEC'>예</Highlight>
-```jsx
-```
 
+```jsx
+
+```
 
 ## <Highlight color='#1C5AEC'>접근성</Highlight>
 
 ### <Highlight color='#1C5AEC'>키보드 상호작용</Highlight>
+
 호버 카드는 마우스 사용자 전용이므로 키보드 탐색에 응답하지 않습니다.
+
 ```jsx
+
 ```

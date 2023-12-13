@@ -2,25 +2,34 @@
 sidebar_position: 10
 ---
 
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
-
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+import PropTable from "./component/PropTable.js";
+import DataAttributeTable from "./component/DataAttributeTable.js";
+import formAPI from "./data/form.ts";
 
 # Form
+
 유효성 검사 규칙을 사용하여 사용자로부터 정보를 수집합니다.
 
 <Tabs>
 <TabItem value="js" label="index.js">
 
 ```jsx
-import React from 'react';
-import * as Form from '@radix-ui/react-form';
-import './styles.css';
+import React from "react";
+import * as Form from "@radix-ui/react-form";
+import "./styles.css";
 
 const FormDemo = () => (
   <Form.Root className="FormRoot">
     <Form.Field className="FormField" name="email">
-      <div style={{ display: 'flex', alignItems: 'baseline', justifyContent: 'space-between' }}>
+      <div
+        style={{
+          display: "flex",
+          alignItems: "baseline",
+          justifyContent: "space-between",
+        }}
+      >
         <Form.Label className="FormLabel">Email</Form.Label>
         <Form.Message className="FormMessage" match="valueMissing">
           Please enter your email
@@ -34,7 +43,13 @@ const FormDemo = () => (
       </Form.Control>
     </Form.Field>
     <Form.Field className="FormField" name="question">
-      <div style={{ display: 'flex', alignItems: 'baseline', justifyContent: 'space-between' }}>
+      <div
+        style={{
+          display: "flex",
+          alignItems: "baseline",
+          justifyContent: "space-between",
+        }}
+      >
         <Form.Label className="FormLabel">Question</Form.Label>
         <Form.Message className="FormMessage" match="valueMissing">
           Please enter a question
@@ -54,13 +69,14 @@ const FormDemo = () => (
 
 export default FormDemo;
 ```
+
 </TabItem>
 <TabItem value="css" label="styles.css">
 
 ```css
-@import '@radix-ui/colors/black-alpha.css';
-@import '@radix-ui/colors/violet.css';
-@import '@radix-ui/colors/mauve.css';
+@import "@radix-ui/colors/black-alpha.css";
+@import "@radix-ui/colors/violet.css";
+@import "@radix-ui/colors/mauve.css";
 
 /* reset */
 input,
@@ -153,16 +169,16 @@ button {
   box-shadow: 0 0 0 2px black;
 }
 ```
+
 </TabItem>
 </Tabs>
 
+## 특징
 
-### 특징
+![checkbox icon](../../static/img/checkboxicon.png) Native browser [`constraint validation API`](https://developer.mozilla.org/en-US/docs/Web/HTML/Constraint_validation) 위에 구축
 
-![checkbox icon](../../static/img/checkboxicon.png) Native browser [`constraint validation API`](https://developer.mozilla.org/en-US/docs/Web/HTML/Constraint_validation) 위에 구축 
- 
 ![checkbox icon](../../static/img/checkboxicon.png) 내장 유효성 검사를 지원
- 
+
 ![checkbox icon](../../static/img/checkboxicon.png) 사용자 지정 유효성 검사를 지원
 
 ![checkbox icon](../../static/img/checkboxicon.png) 유효성 검사 메시지의 전체 사용자 지정
@@ -173,25 +189,24 @@ button {
 
 ![checkbox icon](../../static/img/checkboxicon.png) 포커스의 완벽한 관리
 
-
-export const Highlight = ({children, color}) => (
-  <span
-    style={{color: color}}
-  >
-    {children}
-  </span>
+export const Highlight = ({ children, color }) => (
+  <span style={{ color: color }}>{children}</span>
 );
 
 ## <Highlight color='#1C5AEC'>설치</Highlight>
+
 커맨드라인에서 컴포넌트를 설치하세요.
+
 ```bash
 npm install @radix-ui/react-form
 ```
 
 ## <Highlight color='#1C5AEC'>구성</Highlight>
+
 모든 구성요소를 가져와서 조합하세요.
+
 ```jsx
-import * as Form from '@radix-ui/react-form';
+import * as Form from "@radix-ui/react-form";
 
 export default () => (
   <Form.Root>
@@ -210,62 +225,281 @@ export default () => (
 );
 ```
 
-
 ## <Highlight color='#1C5AEC'>API 참조</Highlight>
+
 ### <Highlight color='#1C5AEC'>Root</Highlight>
+
 Form의 모든 부분을 포함합니다.
-```jsx
-```
+
+<PropTable api={formAPI} category="root" />
 
 ### <Highlight color='#1C5AEC'>Field</Highlight>
+
 필드의 wrapper입니다. ID/이름 및 레이블 접근성을 자동으로 처리합니다.
-```jsx
-```
+
+<PropTable api={formAPI} category="field" />
+<DataAttributeTable api={formAPI} category="field" />
 
 ### <Highlight color='#1C5AEC'>Label</Highlight>
+
 `Field` 부분 안에 중첩될 때 자동으로 연결되는 레이블 요소입니다.
-```jsx
-```
+
+<PropTable api={formAPI} category="label" />
+<DataAttributeTable api={formAPI} category="label" />
 
 ### <Highlight color='#1C5AEC'>Control</Highlight>
+
 `Field` 부분 안에 중첩될 때 자동으로 결합되는 제어 요소(기본적으로 `input`)입니다.
-```jsx
-```
+
+<PropTable api={formAPI} category="control" />
+<DataAttributeTable api={formAPI} category="control" />
 
 ### <Highlight color='#1C5AEC'>Message</Highlight>
-`Field` 부분 내부에 중첩될 때 지정된 컨트롤에 자동으로 결합(기능성 및 접근성)되는 유효성 검사 메시지입니다. 
+
+`Field` 부분 내부에 중첩될 때 지정된 컨트롤에 자동으로 결합(기능성 및 접근성)되는 유효성 검사 메시지입니다.
 기본 제공 및 사용자 지정 클라이언트 측 유효성 검사뿐만 아니라 서버 측 유효성 검사에도 사용할 수 있습니다.
 `Field` 외부에서 사용할 경우 필드와 일치하는 `name prop`을 전달해야 합니다.
-`Form.Message`는 메시지가 표시되어야 하는 시기를 결정하는 데 사용되는 `match prop`을 받아들입니다. 
-이는 native HTML 유효성 상태(`ValidityState` on [`MDN`](https://developer.mozilla.org/en-US/docs/Web/API/ValidityState))와 일치하며, 
-이 상태는 `required`, `min`, `max`와 같은 속성에 대해 유효성을 갖습니다. 
-주어진 `match`가 컨트롤의 유효성 상태에서 `true`인지 메시지가 표시됩니다. 
+`Form.Message`는 메시지가 표시되어야 하는 시기를 결정하는 데 사용되는 `match prop`을 받아들입니다.
+이는 native HTML 유효성 상태(`ValidityState` on [`MDN`](https://developer.mozilla.org/en-US/docs/Web/API/ValidityState))와 일치하며,
+이 상태는 `required`, `min`, `max`와 같은 속성에 대해 유효성을 갖습니다.
+주어진 `match`가 컨트롤의 유효성 상태에서 `true`인지 메시지가 표시됩니다.
 일치시킬 함수를 `match`에 전달하여 사용자 지정 유효성 검사 규칙을 제공할 수도 있습니다.
-```jsx
-```
 
-### <Highlight color='#1C5AEC'></Highlight>
-이 render-prop 컴포넌트를 사용하여 렌더에서 지정된 필드의 유효성 상태에 액세스할 수 있습니다([`MDN`](https://developer.mozilla.org/en-US/docs/Web/API/ValidityState)의 유효성 상태 참조). 
+<PropTable api={formAPI} category="message" />
+
+### <Highlight color='#1C5AEC'>ValidityState</Highlight>
+
+이 render-prop 컴포넌트를 사용하여 렌더에서 지정된 필드의 유효성 상태에 액세스할 수 있습니다([`MDN`](https://developer.mozilla.org/en-US/docs/Web/API/ValidityState)의 유효성 상태 참조).
 `Field`의 유효성은 필드 부분 안에 중첩될 때 자동으로 사용할 수 있으며, 그렇지 않으면 `name prop`을 전달하여 연결해야 합니다.
-```jsx
-```
 
+<PropTable api={formAPI} category="validitystte" />
 
 ### <Highlight color='#1C5AEC'>Submit</Highlight>
+
 제출버튼입니다.
-```jsx
-```
+
+<PropTable api={formAPI} category="submit" />
 
 ## <Highlight color='#1C5AEC'>예</Highlight>
+
+### Composing with your own components
+
+Using `asChild` you can compose the `Form` primitive parts with your own components.
+
 ```jsx
+<Form.Field name="name">
+  <Form.Label>Full name</Form.Label>
+  <Form.Control asChild>
+    <TextField.Input variant="primary" />
+  </Form.Control>
+</Form.Field>
+```
+
+It can also be used to compose other types of controls, such as a `select`:
+
+```jsx
+<Form.Field name="country">
+  <Form.Label>Country</Form.Label>
+  <Form.Control asChild>
+    <select>
+      <option value="uk">United Kingdom</option>…
+    </select>
+  </Form.Control>
+</Form.Field>
+```
+
+Note: At the moment, it is not possible to compose `Form` with Radix's other form primitives such as `Checkbox`, `Select`, etc.
+We are working on a solution for this.
+
+### Providing your own validation messages
+
+When no `children` are provided, `Form.Message` will render a default error message for the given `match`.
+
+```jsx
+// will yield "This value is missing"
+<Form.Message match="missingValue" />
+```
+
+You can provide a more meaningful message by passing your own `children`. This is also useful for internationalization.
+
+```jsx
+// will yield "Please provide a name"
+<Form.Message match="missingValue">Please provide a name</Form.Message>
+```
+
+### Custom validation
+
+On top of all the built-in client-side validation matches described above
+you can also provide your own custom validation whilst still making use of the platform's validation abilities.
+It uses the `customError` type present in the `constraint validition API`.
+
+You can pass your own validation function into the `match` prop on `Form.Message`. Here's an example:
+
+```jsx
+<Form.Field name="name">
+  <Form.Label>Full name</Form.Label>
+  <Form.Control />
+  <Form.Message match={(value, formData) => value !== "John"}>
+    Only John is allowed.
+  </Form.Message>
+</Form.Field>
+```
+
+`match` will be called with the current value of the control as first argument and the entire `FormData` as second argument.
+`match` can also be an `async` function (or return a promise) to perform async validation.
+
+#### Styling based on validity
+
+We add `data-valid` and `data-invalid` attributes to the relevant parts.
+Use it to style your components accordingly.
+Here is an example styling the `Label` part.
+
+```jsx
+//index.jsx
+import * as React from "react";
+import Form from "@radix-ui/react-form";
+
+export default () => (
+  <Form.Root>
+    <Form.Field name="email">
+      <Form.Label className="FormLabel">Email</Form.Label>
+      <Form.Control type="email" />
+    </Form.Field>
+  </Form.Root>
+);
+```
+
+```css
+/* styles.css */
+.FormLabel[data-invalid] {
+  color: red;
+}
+.FormLabel[data-valid] {
+  color: green;
+}
+```
+
+### Accessing the validity state for more control
+
+You may need to access the raw validity state of a field in order to display your own icons, or interface with a component library via it's defined props.
+You can do this by using the `Form.ValidityState` part:
+
+```jsx
+<Form.Field name="name">
+  <Form.Label>Full name</Form.Label>
+  <Form.ValidityState>
+    {(validity) => (
+      <Form.Control asChild>
+        <TextField.Input
+          variant="primary"
+          state={getTextFieldInputState(validity)}
+        />
+      </Form.Control>
+    )}
+  </Form.ValidityState>
+</Form.Field>
+```
+
+### Server-side validation
+
+The component also supports server-side validation using the same `Form.Message` component.
+You can re-use the same messages you defined for client-side errors by passing a `forceMatch` prop
+which will force the message to show regardless of the client-side matching logic.
+
+If the message doesn't exist on the client-side, you can render a `Form.Message` without a `match` too.
+The field is marked as invalid by passing a `serverInvalid` boolean prop to the `Form.Field` part.
+
+Here's an example with server-side error handling:
+
+```jsx
+import * as React from "react";
+import * as Form from "@radix-ui/react-form";
+
+function Page() {
+  const [serverErrors, setServerErrors] = React.useState({
+    email: false,
+    password: false,
+  });
+
+  return (
+    <Form.Root
+      // `onSubmit` only triggered if it passes client-side validation
+      onSubmit={(event) => {
+        const data = Object.fromEntries(new FormData(event.currentTarget));
+
+        // Submit form data and catch errors in the response
+        submitForm(data)
+          .then(() => {})
+          /**
+           * Map errors from your server response into a structure you'd like to work with.
+           * In this case resulting in this object: `{ email: false, password: true }`
+           */
+          .catch((errors) => setServerErrors(mapServerErrors(errors)));
+
+        // prevent default form submission
+        event.preventDefault();
+      }}
+      onClearServerErrors={() =>
+        setServerErrors({ email: false, password: false })
+      }
+    >
+      <Form.Field name="email" serverInvalid={serverErrors.email}>
+        <Form.Label>Email address</Form.Label>
+        <Form.Control type="email" required />
+        <Form.Message match="valueMissing">
+          Please enter your email.
+        </Form.Message>
+        <Form.Message match="typeMismatch" forceMatch={serverErrors.email}>
+          Please provide a valid email.
+        </Form.Message>
+      </Form.Field>
+
+      <Form.Field name="password" serverInvalid={serverErrors.password}>
+        <Form.Label>Password</Form.Label>
+        <Form.Control type="password" required />
+        <Form.Message match="valueMissing">
+          Please enter a password.
+        </Form.Message>
+        {serverErrors.password && (
+          <Form.Message>
+            Please provide a valid password. It should contain at least 1 number
+            and 1 special character.
+          </Form.Message>
+        )}
+      </Form.Field>
+
+      <Form.Submit>Submit</Form.Submit>
+    </Form.Root>
+  );
+}
+```
+
+You should clear the server errors using the `onClearServerErrors` callback prop on the `Form.Root` part.
+It will clear the server errors before the form is re-submitted, and when the form is reset.
+
+In addition, this provides control over when to reset single server errors.
+For example you could reset the email server error as soon as the user edits it:
+
+```jsx
+<Form.Field name="email" serverInvalid={serverErrors.email}>
+  <Form.Label>Email address</Form.Label>
+  <Form.Control
+    type="email"
+    onChange={() => setServerErrors((prev) => ({ ...prev, email: false }))}
+  />
+  <Form.Message match="missingValue">Please enter your email.</Form.Message>
+  <Form.Message match="typeMismatch" forceMatch={serverErrors.email}>
+    Please provide a valid email.
+  </Form.Message>
+</Form.Field>
 ```
 
 ## <Highlight color='#1C5AEC'>접근성</Highlight>
+
 이 컴포넌트는 유효성 검사를 위해 "inline errors" 패턴을 따릅니다:
 
-   ㅇ `Form.Field`에 제공된 `name`을 사용하여 레이블과 컨트롤이 연결됩니다.
+ㅇ `Form.Field`에 제공된 `name`을 사용하여 레이블과 컨트롤이 연결됩니다.
 
-   ㅇ 하나 이상의 클라이언트 측 오류 메시지가 표시되면 일치하는 컨트롤과 자동으로 연결되어 그에 따라 공지됩니다.
+ㅇ 하나 이상의 클라이언트 측 오류 메시지가 표시되면 일치하는 컨트롤과 자동으로 연결되어 그에 따라 공지됩니다.
 
-   ㅇ 포커스가 첫 번째 유효하지 않은 컨트롤로 이동됩니다.
-
+ㅇ 포커스가 첫 번째 유효하지 않은 컨트롤로 이동됩니다.

@@ -2,34 +2,47 @@
 sidebar_position: 1
 ---
 
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
-
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+import accordionAPI from "./data/accordion.ts";
+import PropTable from "./component/PropTable.js";
+import DataAttributeTable from "./component/DataAttributeTable.js";
+import CssVariableTable from "./component/CssVariableTable.js";
+import KeyboardInteractionTable from "./component/KeyboardInteractionTable.js";
 
 # Accordion
+
 각각 관련된 콘텐츠 섹션을 공개하는 상호작용하는 제목들의 수직으로 쌓인 세트입니다.
 
 <Tabs>
 <TabItem value="js" label="index.js">
 
 ```jsx
-import React from 'react';
-import * as Accordion from '@radix-ui/react-accordion';
-import classNames from 'classnames';
-import { ChevronDownIcon } from '@radix-ui/react-icons';
-import './styles.css';
+import React from "react";
+import * as Accordion from "@radix-ui/react-accordion";
+import classNames from "classnames";
+import { ChevronDownIcon } from "@radix-ui/react-icons";
+import "./styles.css";
 
 const AccordionDemo = () => (
-  <Accordion.Root className="AccordionRoot" type="single" defaultValue="item-1" collapsible>
+  <Accordion.Root
+    className="AccordionRoot"
+    type="single"
+    defaultValue="item-1"
+    collapsible
+  >
     <Accordion.Item className="AccordionItem" value="item-1">
       <AccordionTrigger>Is it accessible?</AccordionTrigger>
-      <AccordionContent>Yes. It adheres to the WAI-ARIA design pattern.</AccordionContent>
+      <AccordionContent>
+        Yes. It adheres to the WAI-ARIA design pattern.
+      </AccordionContent>
     </Accordion.Item>
 
     <Accordion.Item className="AccordionItem" value="item-2">
       <AccordionTrigger>Is it unstyled?</AccordionTrigger>
       <AccordionContent>
-        Yes. It's unstyled by default, giving you freedom over the look and feel.
+        Yes. It's unstyled by default, giving you freedom over the look and
+        feel.
       </AccordionContent>
     </Accordion.Item>
 
@@ -44,38 +57,43 @@ const AccordionDemo = () => (
   </Accordion.Root>
 );
 
-const AccordionTrigger = React.forwardRef(({ children, className, ...props }, forwardedRef) => (
-  <Accordion.Header className="AccordionHeader">
-    <Accordion.Trigger
-      className={classNames('AccordionTrigger', className)}
+const AccordionTrigger = React.forwardRef(
+  ({ children, className, ...props }, forwardedRef) => (
+    <Accordion.Header className="AccordionHeader">
+      <Accordion.Trigger
+        className={classNames("AccordionTrigger", className)}
+        {...props}
+        ref={forwardedRef}
+      >
+        {children}
+        <ChevronDownIcon className="AccordionChevron" aria-hidden />
+      </Accordion.Trigger>
+    </Accordion.Header>
+  )
+);
+
+const AccordionContent = React.forwardRef(
+  ({ children, className, ...props }, forwardedRef) => (
+    <Accordion.Content
+      className={classNames("AccordionContent", className)}
       {...props}
       ref={forwardedRef}
     >
-      {children}
-      <ChevronDownIcon className="AccordionChevron" aria-hidden />
-    </Accordion.Trigger>
-  </Accordion.Header>
-));
-
-const AccordionContent = React.forwardRef(({ children, className, ...props }, forwardedRef) => (
-  <Accordion.Content
-    className={classNames('AccordionContent', className)}
-    {...props}
-    ref={forwardedRef}
-  >
-    <div className="AccordionContentText">{children}</div>
-  </Accordion.Content>
-));
+      <div className="AccordionContentText">{children}</div>
+    </Accordion.Content>
+  )
+);
 
 export default AccordionDemo;
 ```
+
 </TabItem>
 <TabItem value="css" label="styles.css">
 
 ```css
-@import '@radix-ui/colors/black-alpha.css';
-@import '@radix-ui/colors/mauve.css';
-@import '@radix-ui/colors/violet.css';
+@import "@radix-ui/colors/black-alpha.css";
+@import "@radix-ui/colors/mauve.css";
+@import "@radix-ui/colors/violet.css";
 
 /* reset */
 button,
@@ -142,10 +160,10 @@ h3 {
   color: var(--mauve-11);
   background-color: var(--mauve-2);
 }
-.AccordionContent[data-state='open'] {
+.AccordionContent[data-state="open"] {
   animation: slideDown 300ms cubic-bezier(0.87, 0, 0.13, 1);
 }
-.AccordionContent[data-state='closed'] {
+.AccordionContent[data-state="closed"] {
   animation: slideUp 300ms cubic-bezier(0.87, 0, 0.13, 1);
 }
 
@@ -157,7 +175,7 @@ h3 {
   color: var(--violet-10);
   transition: transform 300ms cubic-bezier(0.87, 0, 0.13, 1);
 }
-.AccordionTrigger[data-state='open'] > .AccordionChevron {
+.AccordionTrigger[data-state="open"] > .AccordionChevron {
   transform: rotate(180deg);
 }
 
@@ -179,12 +197,13 @@ h3 {
   }
 }
 ```
+
 </TabItem>
 </Tabs>
 
-### 특징
+## 특징
 
-![checkbox icon](../../static/img/checkboxicon.png) 완전한 키보드 탐색 
+![checkbox icon](../../static/img/checkboxicon.png) 완전한 키보드 탐색
 
 ![checkbox icon](../../static/img/checkboxicon.png) 수평/수직 방향 지원
 
@@ -194,575 +213,213 @@ h3 {
 
 ![checkbox icon](../../static/img/checkboxicon.png) 제어 또는 비제어 가능
 
-export const Highlight = ({children, color}) => (
-  <span
-    style={{color: color}}
-  >
-    {children}
-  </span>
+export const Highlight = ({ children, color }) => (
+  <span style={{ color: color }}>{children}</span>
 );
 
 ## <Highlight color='#1C5AEC'>설치</Highlight>
+
 커맨드라인에서 컴포넌트를 설치하세요.
+
 ```bash
 npm install @radix-ui/react-accordion
 ```
 
 ## <Highlight color='#1C5AEC'>구성</Highlight>
+
 모든 구성요소를 가져와서 조합하세요.
+
 ```jsx
-import * as Accordion from '@radix-ui/react-accordion';
+import * as Accordion from "@radix-ui/react-accordion";
 () => (
- <Accordion.Root>
-   <Accordion.Item>
-     <Accordion.Header>
-       <Accordion.Trigger />
-     </Accordion.Header>
-     <Accordion.Content />
-   </Accordion.Item>
- </Accordion.Root>
+  <Accordion.Root>
+    <Accordion.Item>
+      <Accordion.Header>
+        <Accordion.Trigger />
+      </Accordion.Header>
+      <Accordion.Content />
+    </Accordion.Item>
+  </Accordion.Root>
 );
 ```
 
-
 ## <Highlight color='#1C5AEC'>API 참조</Highlight>
+
 ### <Highlight color='#1C5AEC'>Root</Highlight>
+
 Accordion의 모든 부분을 포함합니다.
 
-<table>
-<thead>
-<tr>
-<th width="45%">Prop</th>
-<th width="40%">Type</th>
-<th width="auto">Default</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>asChild</td>
-<td>boolean</td>
-<td>false</td>
-</tr>
-<tr>
-<td>type</td>
-<td>enum</td>
-<td>-</td>
-</tr>
-<tr>
-<td>value</td>
-<td>string</td>
-<td>-</td>
-</tr>
-<tr>
-<td>defaultValue</td>
-<td>string</td>
-<td>-</td>
-</tr>
-<tr>
-<td>onValueChange</td>
-<td>function</td>
-<td>-</td>
-</tr>
-<tr>
-<td>value</td>
-<td>string[]</td>
-<td>[]</td>
-</tr>
-<tr>
-<td>defaultValue</td>
-<td>string[]</td>
-<td>[]</td>
-</tr>
-<tr>
-<td>onValueChange</td>
-<td>function</td>
-<td>-</td>
-</tr>
-<tr>
-<td>collapsible</td>
-<td>boolean</td>
-<td>false</td>
-</tr>
-<tr>
-<td>disabled</td>
-<td>boolean</td>
-<td>false</td>
-</tr>
-<tr>
-<td>dir</td>
-<td>enum</td>
-<td>"ltr"</td>
-</tr>
-<tr>
-<td>orientation</td>
-<td>enum</td>
-<td>"vertical"</td>
-</tr>
-</tbody>
-</table>
+<PropTable api={accordionAPI} category="root" />
 
-<table>
-<thead>
-<tr>
-<th>Data attribute</th>
-<th>Values</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>[data-orientation]</td>
-<td>"vertical" | "horizontal"</td>
-</tr>
-</tbody>
-</table>
+<DataAttributeTable api={accordionAPI} category="root" />
 
 ### <Highlight color='#1C5AEC'>Item</Highlight>
-접을 수 있는 섹션의 모든 부분을 포함합니다.
-<table>
-<thead>
-<tr>
-<th>Prop</th>
-<th>Type</th>
-<th>Default</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>asChild</td>
-<td>boolean</td>
-<td>false</td>
-</tr>
-<tr>
-<td>disabled</td>
-<td>boolean</td>
-<td>false</td>
-</tr>
-<tr>
-<td>value</td>
-<td>string</td>
-<td>-</td>
-</tr>
-</tbody>
-</table>
 
-<table>
-<thead>
-<tr>
-<th>Data attribute</th>
-<th>Values</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>[data-state]</td>
-<td>"open" | "closed"</td>
-</tr>
-<tr>
-<td>[data-disabled]</td>
-<td>사용 안 함으로 설정된 경우 표시</td>
-</tr>
-<tr>
-<td>[data-orientation]</td>
-<td>"vertical" | "horizontal"</td>
-</tr>
-</tbody>
-</table>
+접을 수 있는 섹션의 모든 부분을 포함합니다.
+
+<PropTable api={accordionAPI} category="item" />
+
+<DataAttributeTable api={accordionAPI} category="item" />
 
 ### <Highlight color='#1C5AEC'>Header</Highlight>
-`Accordion.Trigger`를 감싸는 부분입니다. 
+
+`Accordion.Trigger`를 감싸는 부분입니다.
 페이지에 적합한 제목 수준으로 업데이트하기 위해 `asChild` prop을 사용합니다.
 
-<table>
-<thead>
-<tr>
-<th>Prop</th>
-<th>Type</th>
-<th>Default</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>asChild</td>
-<td>boolean</td>
-<td>false</td>
-</tr>
-</tbody>
-</table>
+<PropTable api={accordionAPI} category="header" />
 
-<table>
-<thead>
-<tr>
-<th>Data attribute</th>
-<th>Values</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>[data-state]</td>
-<td>"open" | "closed"</td>
-</tr>
-<tr>
-<td>[data-disabled]</td>
-<td>사용 안 함으로 설정된 경우 표시</td>
-</tr>
-<tr>
-<td>[data-orientation]</td>
-<td>"vertical" | "horizontal"</td>
-</tr>
-</tbody>
-</table>
+<DataAttributeTable api={accordionAPI} category="header" />
 
 ### <Highlight color='#1C5AEC'>Trigger</Highlight>
-관련 항목의 축소 상태를 전환합니다. 
+
+관련 항목의 축소 상태를 전환합니다.
 `Accordion.Header` 내부에 중첩되어야 합니다.
 
-<table>
-<thead>
-<tr>
-<th>Prop</th>
-<th>Type</th>
-<th>Default</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>asChild</td>
-<td>boolean</td>
-<td>false</td>
-</tr>
-<tr>
-<td>disabled</td>
-<td>boolean</td>
-<td>false</td>
-</tr>
-<tr>
-<td>value</td>
-<td>string</td>
-<td>-</td>
-</tr>
-</tbody>
-</table>
+<PropTable api={accordionAPI} category="trigger" />
 
-<table>
-<thead>
-<tr>
-<th>Data attribute</th>
-<th>Values</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>[data-state]</td>
-<td>"open" | "closed"</td>
-</tr>
-<tr>
-<td>[data-disabled]</td>
-<td>사용 안 함으로 설정된 경우 표시</td>
-</tr>
-<tr>
-<td>[data-orientation]</td>
-<td>"vertical" | "horizontal"</td>
-</tr>
-</tbody>
-</table>
-
-<table>
-<thead>
-<tr>
-<th>Prop</th>
-<th>Type</th>
-<th>Default</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>asChild</td>
-<td>boolean</td>
-<td>false</td>
-</tr>
-</tbody>
-</table>
-
-<table>
-<thead>
-<tr>
-<th>Data attribute</th>
-<th>Values</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>[data-state]</td>
-<td>"open" | "closed"</td>
-</tr>
-<tr>
-<td>[data-disabled]</td>
-<td>사용 안 함으로 설정된 경우 표시</td>
-</tr>
-<tr>
-<td>[data-orientation]</td>
-<td>"vertical" | "horizontal"</td>
-</tr>
-</tbody>
-</table>
+<DataAttributeTable api={accordionAPI} category="trigger" />
 
 ### <Highlight color='#1C5AEC'>Content</Highlight>
+
 항목에 대한 접을 수 있는 내용을 포함합니다.
 
-<table>
-<thead>
-<tr>
-<th>Prop</th>
-<th>Type</th>
-<th>Default</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>asChild</td>
-<td>boolean</td>
-<td>false</td>
-</tr>
-<tr>
-<td>disabled</td>
-<td>boolean</td>
-<td>false</td>
-</tr>
-<tr>
-<td>value</td>
-<td>string</td>
-<td>-</td>
-</tr>
-</tbody>
-</table>
+<PropTable api={accordionAPI} category="content" />
 
-<table>
-<thead>
-<tr>
-<th>Data attribute</th>
-<th>Values</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>[data-state]</td>
-<td>"open" | "closed"</td>
-</tr>
-<tr>
-<td>[data-disabled]</td>
-<td>사용 안 함으로 설정된 경우 표시</td>
-</tr>
-<tr>
-<td>[data-orientation]</td>
-<td>"vertical" | "horizontal"</td>
-</tr>
-</tbody>
-</table>
+<DataAttributeTable api={accordionAPI} category="content" />
 
-<table>
-<thead>
-<tr>
-<th>Data attribute</th>
-<th>Values</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>[data-state]</td>
-<td>"open" | "closed"</td>
-</tr>
-<tr>
-<td>[data-disabled]</td>
-<td>사용 안 함으로 설정된 경우 표시</td>
-</tr>
-<tr>
-<td>[data-orientation]</td>
-<td>"vertical" | "horizontal"</td>
-</tr>
-</tbody>
-</table>
-
-<table>
-<thead>
-<tr>
-<th>CSS Variable</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>--radix-accordion-content-width</td>
-<td>내용이 열리거나 닫힐 떄의 너비</td>
-</tr>
-<tr>
-<td>--radix-accordion-content-height</td>
-<td>내용이 열리거나 닫힐 때의 높이</td>
-</tr>
-</tbody>
-</table>
+<CssVariableTable api={accordionAPI} category="content" />
 
 ## <Highlight color='#1C5AEC'>예</Highlight>
+
 ### <Highlight color='#1C5AEC'>기본적으로 확장됨</Highlight>
+
 `defaultValue` prop를 사용하여 기본적으로 열린 항목을 정의합니다.
+
 ```jsx
 <Accordion.Root type="single" defaultValue="item-2">
- <Accordion.Item value="item-1">…</Accordion.Item>
- <Accordion.Item value="item-2">…</Accordion.Item>
+  <Accordion.Item value="item-1">…</Accordion.Item>
+  <Accordion.Item value="item-2">…</Accordion.Item>
 </Accordion.Root>
 ```
 
 ### <Highlight color='#1C5AEC'>모든 항목 접기 허용</Highlight>
+
 `collapsible` prop을 사용하여 모든 항목을 닫을 수 있습니다.
+
 ```jsx
 <Accordion.Root type="single" collapsible>
- <Accordion.Item value="item-1">…</Accordion.Item>
- <Accordion.Item value="item-2">…</Accordion.Item>
+  <Accordion.Item value="item-1">…</Accordion.Item>
+  <Accordion.Item value="item-2">…</Accordion.Item>
 </Accordion.Root>
 ```
 
 ### <Highlight color='#1C5AEC'>여러 항목 동시에 열기</Highlight>
+
 여러 항목을 한 번에 열 수 있도록 `type` prop을 `multiple`로 설정합니다.
+
 ```jsx
 <Accordion.Root type="multiple">
- <Accordion.Item value="item-1">…</Accordion.Item>
- <Accordion.Item value="item-2">…</Accordion.Item>
+  <Accordion.Item value="item-1">…</Accordion.Item>
+  <Accordion.Item value="item-2">…</Accordion.Item>
 </Accordion.Root>
 ```
 
 ### <Highlight color='#1C5AEC'>열려 있을 때 회전된 아이콘</Highlight>
+
 chevrons과 같은 장식 요소를 추가하여 아이템이 열렸을 때 회전시킬 수 있습니다.
+
 ```jsx
 // index.jsx
-import * as Accordion from '@radix-ui/react-accordion';
-import { ChevronDownIcon } from '@radix-ui/react-icons';
-import './styles.css';
+import * as Accordion from "@radix-ui/react-accordion";
+import { ChevronDownIcon } from "@radix-ui/react-icons";
+import "./styles.css";
 export default () => (
- <Accordion.Root type="single">
-   <Accordion.Item value="item-1">
-     <Accordion.Header>
-       <Accordion.Trigger className="AccordionTrigger">
-         <span>Trigger text</span>
-         <ChevronDownIcon className="AccordionChevron" aria-hidden />
-       </Accordion.Trigger>
-     </Accordion.Header>
-     <Accordion.Content>…</Accordion.Content>
-   </Accordion.Item>
- </Accordion.Root>
+  <Accordion.Root type="single">
+    <Accordion.Item value="item-1">
+      <Accordion.Header>
+        <Accordion.Trigger className="AccordionTrigger">
+          <span>Trigger text</span>
+          <ChevronDownIcon className="AccordionChevron" aria-hidden />
+        </Accordion.Trigger>
+      </Accordion.Header>
+      <Accordion.Content>…</Accordion.Content>
+    </Accordion.Item>
+  </Accordion.Root>
 );
 ```
+
 ```css
 /* styles.css */
 .AccordionChevron {
- transition: transform 300ms;
+  transition: transform 300ms;
 }
-.AccordionTrigger[data-state='open'] > .AccordionChevron {
- transform: rotate(180deg);
+.AccordionTrigger[data-state="open"] > .AccordionChevron {
+  transform: rotate(180deg);
 }
 ```
 
 ### <Highlight color='#1C5AEC'>수평방향</Highlight>
+
 `orientation` prop을 사용하여 수평 아코디언을 만듭니다.
+
 ```jsx
 <Accordion.Root orientation="horizontal">
- <Accordion.Item value="item-1">…</Accordion.Item>
- <Accordion.Item value="item-2">…</Accordion.Item>
+  <Accordion.Item value="item-1">…</Accordion.Item>
+  <Accordion.Item value="item-2">…</Accordion.Item>
 </Accordion.Root>
 ```
 
 ### <Highlight color='#1C5AEC'>애니메이션 콘텐츠 크기</Highlight>
+
 `--radix-accordion-content-width` 및/또는 `--radix-accordion-content-height` CSS변수를 사용하여 내용이 열리거나 닫힐 때 크기를 애니메이션화합니다:
+
 ```jsx
 // index.jsx
-import * as Accordion from '@radix-ui/react-accordion';
-import './styles.css';
+import * as Accordion from "@radix-ui/react-accordion";
+import "./styles.css";
 export default () => (
- <Accordion.Root type="single">
-   <Accordion.Item value="item-1">
-     <Accordion.Header>…</Accordion.Header>
-     <Accordion.Content className="AccordionContent">…</Accordion.Content>
-   </Accordion.Item>
- </Accordion.Root>
+  <Accordion.Root type="single">
+    <Accordion.Item value="item-1">
+      <Accordion.Header>…</Accordion.Header>
+      <Accordion.Content className="AccordionContent">…</Accordion.Content>
+    </Accordion.Item>
+  </Accordion.Root>
 );
 ```
+
 ```css
 /* styles.css */
 .AccordionContent {
- overflow: hidden;
+  overflow: hidden;
 }
-.AccordionContent[data-state='open'] {
- animation: slideDown 300ms ease-out;
+.AccordionContent[data-state="open"] {
+  animation: slideDown 300ms ease-out;
 }
-.AccordionContent[data-state='closed'] {
- animation: slideUp 300ms ease-out;
+.AccordionContent[data-state="closed"] {
+  animation: slideUp 300ms ease-out;
 }
 @keyframes slideDown {
- from {
-   height: 0;
- }
- to {
-   height: var(--radix-accordion-content-height);
- }
+  from {
+    height: 0;
+  }
+  to {
+    height: var(--radix-accordion-content-height);
+  }
 }
 @keyframes slideUp {
- from {
-   height: var(--radix-accordion-content-height);
- }
- to {
-   height: 0;
- }
+  from {
+    height: var(--radix-accordion-content-height);
+  }
+  to {
+    height: 0;
+  }
 }
 ```
+
 ## <Highlight color='#1C5AEC'>접근성</Highlight>
+
 [`Accordion WAI-ARIA design pattern`](https://www.w3.org/WAI/ARIA/apg/#accordion)을 준수합니다.
 
 ### <Highlight color='#1C5AEC'>키보드 상호작용</Highlight>
-<table>
-<thead>
-<tr>
-<th>Key</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Space</td>
-<td>축소된 섹션의 <Highlight color='#1C5AEC'>Accordion.Trigger</Highlight>에 포커스가 있을 때 섹션을 확장합니다</td>
-</tr>
-<tr>
-<td>Enter</td>
-<td>축소된 섹션의 <Highlight color='#1C5AEC'>Accordion.Trigger</Highlight>에 포커스가 있을 때 섹션을 확장합니다</td>
-</tr>
-<tr>
-<td>Tab</td>
-<td>포커스를 다음 포커스 가능한 요소로 이동합니다.</td>
-</tr>
-<tr>
-<td>Shift+Tab</td>
-<td>포커스를 이전 포커스 가능한 요소로 이동합니다.</td>
-</tr>
-<tr>
-<td>↓ (아래쪽 화살표)</td>
-<td>orientation이 수직일 때 포커스를 다음 <Highlight color='#1C5AEC'>Accordion.Trigger</Highlight>으로 이동합니다.</td>
-</tr>
-<tr>
-<td>↑ (위쪽 화살표)</td>
-<td>orientation이 수직일 때 포커스를 이전 <Highlight color='#1C5AEC'>Accordion.Trigger</Highlight>으로 이동합니다.</td>
-</tr>
-<tr>
-<td>→ (오른쪽 화살표)</td>
-<td>orientation이 수평일 때 포커스를 다음 <Highlight color='#1C5AEC'>Accordion.Trigger</Highlight>으로 이동합니다.</td>
-</tr>
-<tr>
-<td>← (왼쪽 화살표)</td>
-<td>orientation이 수평일 때 포커스를 이전 <Highlight color='#1C5AEC'>Accordion.Trigger</Highlight>으로 이동합니다.</td>
-</tr>
-<tr>
-<td>Home</td>
-<td>포커스가 <Highlight color='#1C5AEC'>Accordion.Trigger</Highlight>에 있으면, 포커스를 첫 번째 <Highlight color='#1C5AEC'>Accordion.Trigger</Highlight>로 이동합니다.</td>
-</tr>
-<tr>
-<td>End</td>
-<td>포커스가 <Highlight color='#1C5AEC'>Accordion.Trigger</Highlight>에 있으면, 포커스를 마지막 <Highlight color='#1C5AEC'>Accordion.Trigger</Highlight>로 이동합니다.</td>
-</tr>
-</tbody>
-</table>
+
+<KeyboardInteractionTable api={accordionAPI} category="keyboardInteractions" />
