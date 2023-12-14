@@ -7,7 +7,6 @@ import TabItem from "@theme/TabItem";
 import PropTable from "./component/PropTable.js";
 import DataAttributeTable from "./component/DataAttributeTable.js";
 import CssVariableTable from "./component/CssVariableTable.js";
-import KeyboardInteractionTable from "./component/KeyboardInteractionTable.js";
 import hoverCardAPI from "./data/hover-card.ts";
 
 # Hover Card
@@ -199,7 +198,7 @@ a {
 </TabItem>
 </Tabs>
 
-### 특징
+## 특징
 
 ![checkbox icon](../../static/img/checkboxicon.png) 제어 또는 비제어 가능
 
@@ -250,33 +249,28 @@ export default () => (
 
 Hover Card의 모든 부분을 포함합니다.
 
-```jsx
-
-```
+<PropTable api={hoverCardAPI} category="root" />
 
 ### <Highlight color='#1C5AEC'>Trigger</Highlight>
 
 호버링할 때 호버 카드를 여는 링크입니다.
 
-```jsx
-
-```
+<PropTable api={hoverCardAPI} category="trigger" />
+<DataAttributeTable api={hoverCardAPI} category="trigger" />
 
 ### <Highlight color='#1C5AEC'>Portal</Highlight>
 
 콘텐츠 부분을 `body`에 포팅합니다.
 
-```jsx
-
-```
+<PropTable api={hoverCardAPI} category="portal" />
 
 ### <Highlight color='#1C5AEC'>Content</Highlight>
 
 호버 카드가 열려 있을 때 나타나는 구성 요소입니다.
 
-```jsx
-
-```
+<PropTable api={hoverCardAPI} category="content" />
+<DataAttributeTable api={hoverCardAPI} category="content" />
+<CssVariableTable api={hoverCardAPI} category="content" />
 
 ### <Highlight color='#1C5AEC'>Arrow</Highlight>
 
@@ -284,14 +278,146 @@ Hover card와 나란히 렌더링할 선택적 화살표 요소입니다.
 트리거를 `HoverCard.Content`와 시각적으로 연결하는 데 사용할 수 있습니다.
 `HoverCard.Content` 안에서 렌더링해야 합니다.
 
-```jsx
-
-```
+<PropTable api={hoverCardAPI} category="arrow" />
 
 ## <Highlight color='#1C5AEC'>예</Highlight>
 
-```jsx
+### Show instantly
 
+Use the `openDelay` prop to control the time it takes for the hover card to open.
+
+```jsx
+import * as HoverCard from "@radix-ui/react-hover-card";
+
+export default () => (
+  <HoverCard.Root openDelay={0}>
+    <HoverCard.Trigger>…</HoverCard.Trigger>
+    <HoverCard.Content>…</HoverCard.Content>
+  </HoverCard.Root>
+);
+```
+
+### Constrain the content size
+
+You may want to constrain the width of the content so that it matches the trigger width.
+You may also want to constrain its height to not exceed the viewport.
+
+We expose several CSS custom properties such as `--radix-hover-card-trigger-width` and `--radix-hover-card-content-available-height` to support this. Use them to constrain the content dimensions.
+
+```jsx
+// index.jsx
+import * as HoverCard from "@radix-ui/react-hover-card";
+import "./styles.css";
+
+export default () => (
+  <HoverCard.Root>
+    <HoverCard.Trigger>…</HoverCard.Trigger>
+    <HoverCard.Portal>
+      <HoverCard.Content className="HoverCardContent" sideOffset={5}>
+        …
+      </HoverCard.Content>
+    </HoverCard.Portal>
+  </HoverCard.Root>
+);
+```
+
+```css
+/* styles.css */
+.HoverCardContent {
+  width: var(--radix-hover-card-trigger-width);
+  max-height: var(--radix-hover-card-content-available-height);
+}
+```
+
+### Origin-aware animations
+
+We expose a CSS custom property `--radix-hover-card-content-transform-origin`.
+Use it to animate the content from its computed origin based on `side`, `sideOffset`, `align`, `alignOffset` and any collisions.
+
+```jsx
+// index.jsx
+import * as HoverCard from "@radix-ui/react-hover-card";
+import "./styles.css";
+
+export default () => (
+  <HoverCard.Root>
+    <HoverCard.Trigger>…</HoverCard.Trigger>
+    <HoverCard.Content className="HoverCardContent">…</HoverCard.Content>
+  </HoverCard.Root>
+);
+```
+
+```css
+/* styles.css */
+.HoverCardContent {
+  transform-origin: var(--radix-hover-card-content-transform-origin);
+  animation: scaleIn 0.5s ease-out;
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+```
+
+### Collision-aware animations
+
+We expose `data-side` and `data-align` attributes.
+Their values will change at runtime to reflect collisions. Use them to create collision and direction-aware animations.
+
+```jsx
+// index.jsx
+import * as HoverCard from "@radix-ui/react-hover-card";
+import "./styles.css";
+
+export default () => (
+  <HoverCard.Root>
+    <HoverCard.Trigger>…</HoverCard.Trigger>
+    <HoverCard.Content className="HoverCardContent">…</HoverCard.Content>
+  </HoverCard.Root>
+);
+```
+
+```css
+/* styles.css */
+.HoverCardContent {
+  animation-duration: 0.6s;
+  animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+}
+.HoverCardContent[data-side="top"] {
+  animation-name: slideUp;
+}
+.HoverCardContent[data-side="bottom"] {
+  animation-name: slideDown;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
 ```
 
 ## <Highlight color='#1C5AEC'>접근성</Highlight>
@@ -299,7 +425,3 @@ Hover card와 나란히 렌더링할 선택적 화살표 요소입니다.
 ### <Highlight color='#1C5AEC'>키보드 상호작용</Highlight>
 
 호버 카드는 마우스 사용자 전용이므로 키보드 탐색에 응답하지 않습니다.
-
-```jsx
-
-```

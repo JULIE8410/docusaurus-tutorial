@@ -2,20 +2,25 @@
 sidebar_position: 16
 ---
 
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
-
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+import PropTable from "./component/PropTable.js";
+import DataAttributeTable from "./component/DataAttributeTable.js";
+import CssVariableTable from "./component/CssVariableTable.js";
+import KeyboardInteractionTable from "./component/KeyboardInteractionTable.js";
+import progressAPI from "./data/progress.ts";
 
 # Progress
+
 일반적으로 진행률 표시줄로 표시되는 작업의 완료 진행률을 나타내는 지시자를 표시합니다.
 
 <Tabs>
 <TabItem value="js" label="index.js">
 
 ```jsx
-import React from 'react';
-import * as Progress from '@radix-ui/react-progress';
-import './styles.css';
+import React from "react";
+import * as Progress from "@radix-ui/react-progress";
+import "./styles.css";
 
 const ProgressDemo = () => {
   const [progress, setProgress] = React.useState(13);
@@ -37,11 +42,12 @@ const ProgressDemo = () => {
 
 export default ProgressDemo;
 ```
+
 </TabItem>
 <TabItem value="css" label="styles.css">
 
 ```css
-@import '@radix-ui/colors/black-alpha.css';
+@import "@radix-ui/colors/black-alpha.css";
 
 .ProgressRoot {
   position: relative;
@@ -63,32 +69,32 @@ export default ProgressDemo;
   transition: transform 660ms cubic-bezier(0.65, 0, 0.35, 1);
 }
 ```
+
 </TabItem>
 </Tabs>
 
-
-### 특징
+## 특징
 
 ![checkbox icon](../../static/img/checkboxicon.png) 보조 기술이 작업의 진행 상황을 읽을 수 있는 컨텍스트를 제공
 
-export const Highlight = ({children, color}) => (
-  <span
-    style={{color: color}}
-  >
-    {children}
-  </span>
+export const Highlight = ({ children, color }) => (
+  <span style={{ color: color }}>{children}</span>
 );
 
 ## <Highlight color='#1C5AEC'>설치</Highlight>
+
 커맨드라인에서 컴포넌트를 설치하세요.
+
 ```bash
 npm install @radix-ui/react-progress
 ```
 
 ## <Highlight color='#1C5AEC'>구성</Highlight>
+
 모든 구성요소를 가져와서 조합하세요.
+
 ```jsx
-import * as Progress from '@radix-ui/react-progress';
+import * as Progress from "@radix-ui/react-progress";
 
 export default () => (
   <Progress.Root>
@@ -98,15 +104,21 @@ export default () => (
 ```
 
 ## <Highlight color='#1C5AEC'>접근성</Highlight>
+
 [`Progressbar role requirements`](https://www.w3.org/WAI/ARIA/apg/patterns/meter/)를 준수합니다.
 
 ## <Highlight color='#1C5AEC'>API 참조</Highlight>
+
 ### <Highlight color='#1C5AEC'>Root</Highlight>
+
 Progress의 모든 부분을 포함합니다.
-```jsx
-```
+
+<PropTable api={progressAPI} category="root" />
+<DataAttributeTable api={progressAPI} category="root" />
 
 ### <Highlight color='#1C5AEC'>Indicator</Highlight>
+
 진행 상황을 시각적으로 보여주는 데 사용됩니다. 또한 보조 기술을 사용하여 진행 상황을 파악할 수 있습니다.
-```jsx
-```
+
+<PropTable api={progressAPI} category="indicator" />
+<DataAttributeTable api={progressAPI} category="indicator" />

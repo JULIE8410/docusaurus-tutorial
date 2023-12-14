@@ -2,27 +2,34 @@
 sidebar_position: 18
 ---
 
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
-
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+import PropTable from "./component/PropTable.js";
+import DataAttributeTable from "./component/DataAttributeTable.js";
+import CssVariableTable from "./component/CssVariableTable.js";
+import KeyboardInteractionTable from "./component/KeyboardInteractionTable.js";
+import scrollAreaAPI from "./data/scroll-area.ts";
 
 # Scroll Area
+
 사용자 정의 크로스 브라우저 스타일링을 위해 기본 스크롤 기능을 강화합니다.
 
 <Tabs>
 <TabItem value="js" label="index.js">
 
 ```jsx
-import React from 'react';
-import * as ScrollArea from '@radix-ui/react-scroll-area';
-import './styles.css';
+import React from "react";
+import * as ScrollArea from "@radix-ui/react-scroll-area";
+import "./styles.css";
 
-const TAGS = Array.from({ length: 50 }).map((_, i, a) => `v1.2.0-beta.${a.length - i}`);
+const TAGS = Array.from({ length: 50 }).map(
+  (_, i, a) => `v1.2.0-beta.${a.length - i}`
+);
 
 const ScrollAreaDemo = () => (
   <ScrollArea.Root className="ScrollAreaRoot">
     <ScrollArea.Viewport className="ScrollAreaViewport">
-      <div style={{ padding: '15px 20px' }}>
+      <div style={{ padding: "15px 20px" }}>
         <div className="Text">Tags</div>
         {TAGS.map((tag) => (
           <div className="Tag" key={tag}>
@@ -31,10 +38,16 @@ const ScrollAreaDemo = () => (
         ))}
       </div>
     </ScrollArea.Viewport>
-    <ScrollArea.Scrollbar className="ScrollAreaScrollbar" orientation="vertical">
+    <ScrollArea.Scrollbar
+      className="ScrollAreaScrollbar"
+      orientation="vertical"
+    >
       <ScrollArea.Thumb className="ScrollAreaThumb" />
     </ScrollArea.Scrollbar>
-    <ScrollArea.Scrollbar className="ScrollAreaScrollbar" orientation="horizontal">
+    <ScrollArea.Scrollbar
+      className="ScrollAreaScrollbar"
+      orientation="horizontal"
+    >
       <ScrollArea.Thumb className="ScrollAreaThumb" />
     </ScrollArea.Scrollbar>
     <ScrollArea.Corner className="ScrollAreaCorner" />
@@ -43,13 +56,14 @@ const ScrollAreaDemo = () => (
 
 export default ScrollAreaDemo;
 ```
+
 </TabItem>
 <TabItem value="css" label="styles.css">
 
 ```css
-@import '@radix-ui/colors/black-alpha.css';
-@import '@radix-ui/colors/mauve.css';
-@import '@radix-ui/colors/violet.css';
+@import "@radix-ui/colors/black-alpha.css";
+@import "@radix-ui/colors/mauve.css";
+@import "@radix-ui/colors/violet.css";
 
 .ScrollAreaRoot {
   width: 200px;
@@ -80,10 +94,10 @@ export default ScrollAreaDemo;
 .ScrollAreaScrollbar:hover {
   background: var(--black-a8);
 }
-.ScrollAreaScrollbar[data-orientation='vertical'] {
+.ScrollAreaScrollbar[data-orientation="vertical"] {
   width: var(--scrollbar-size);
 }
-.ScrollAreaScrollbar[data-orientation='horizontal'] {
+.ScrollAreaScrollbar[data-orientation="horizontal"] {
   flex-direction: column;
   height: var(--scrollbar-size);
 }
@@ -96,7 +110,7 @@ export default ScrollAreaDemo;
 }
 /* increase target size for touch devices https://www.w3.org/WAI/WCAG21/Understanding/target-size.html */
 .ScrollAreaThumb::before {
-  content: '';
+  content: "";
   position: absolute;
   top: 50%;
   left: 50%;
@@ -127,11 +141,11 @@ export default ScrollAreaDemo;
   padding-top: 10px;
 }
 ```
+
 </TabItem>
 </Tabs>
 
-
-### 특징
+## 특징
 
 ![checkbox icon](../../static/img/checkboxicon.png) 스크롤 막대는 스크롤 가능한 콘텐츠의 맨 위에 위치하여 공간을 차지하지 않음
 
@@ -141,25 +155,24 @@ export default ScrollAreaDemo;
 
 ![checkbox icon](../../static/img/checkboxicon.png) 오른쪽에서 왼쪽 방향을 지원
 
-
-export const Highlight = ({children, color}) => (
-  <span
-    style={{color: color}}
-  >
-    {children}
-  </span>
+export const Highlight = ({ children, color }) => (
+  <span style={{ color: color }}>{children}</span>
 );
 
 ## <Highlight color='#1C5AEC'>설치</Highlight>
+
 커맨드라인에서 컴포넌트를 설치하세요.
+
 ```bash
 npm install @radix-ui/react-scroll-area
 ```
 
 ## <Highlight color='#1C5AEC'>구성</Highlight>
+
 모든 구성요소를 가져와서 조합하세요.
+
 ```jsx
-import * as ScrollArea from '@radix-ui/react-scroll-area';
+import * as ScrollArea from "@radix-ui/react-scroll-area";
 
 export default () => (
   <ScrollArea.Root>
@@ -175,38 +188,47 @@ export default () => (
 );
 ```
 
-
 ## <Highlight color='#1C5AEC'>API 참조</Highlight>
+
 ### <Highlight color='#1C5AEC'>Root</Highlight>
+
 Scroll area의 모든 부분을 포함합니다.
-```jsx
-```
+
+<PropTable api={scrollAreaAPI} category="root" />
 
 ### <Highlight color='#1C5AEC'>Viewport</Highlight>
+
 스크롤 영역의 viewport 영역입니다.
-```jsx
-```
+
+<PropTable api={scrollAreaAPI} category="viewport" />
 
 ### <Highlight color='#1C5AEC'>Scrollbar</Highlight>
+
 세로 scrollbar입니다. 가로 스크롤이 가능하도록 `orientation` prop이 있는 두 번째 `Scrollbar`를 추가합니다.
-```jsx
-```
+
+<PropTable api={scrollAreaAPI} category="scrollbar" />
+<DataAttributeTable api={scrollAreaAPI} category="scrollbar" />
 
 ### <Highlight color='#1C5AEC'>Thumb</Highlight>
+
 `ScrollArea.Scrollbar`에서 사용할 엄지손가락입니다.
-```jsx
-```
+
+<PropTable api={scrollAreaAPI} category="thumb" />
+<DataAttributeTable api={scrollAreaAPI} category="thumb" />
 
 ### <Highlight color='#1C5AEC'>Corner</Highlight>
+
 세로 scrollbar와 가로 scrollbar가 모두 만나는 모서리입니다.
-```jsx
-```
+
+<PropTable api={scrollAreaAPI} category="corner" />
 
 ## <Highlight color='#1C5AEC'>접근성</Highlight>
-대부분의 경우 기본 스크롤에 의존하고 CSS에서 사용할 수 있는 사용자 지정 옵션을 사용하는 것이 가장 좋습니다. 
-그것만으로 충분하지 않을 때 ScrollArea는 브라우저의 기본 스크롤 동작(키보드 스크롤과 같은 접근성 기능)을 유지하면서 
+
+대부분의 경우 기본 스크롤에 의존하고 CSS에서 사용할 수 있는 사용자 지정 옵션을 사용하는 것이 가장 좋습니다.
+그것만으로 충분하지 않을 때 ScrollArea는 브라우저의 기본 스크롤 동작(키보드 스크롤과 같은 접근성 기능)을 유지하면서
 추가 사용자 지정 기능을 제공합니다.
 
 ### <Highlight color='#1C5AEC'>키보드 상호작용</Highlight>
-기본적으로 키보드를 통한 스크롤은 기본적으로 지원됩니다. 특정 키보드 상호 작용은 플랫폼마다 다를 수 있으므로 
+
+기본적으로 키보드를 통한 스크롤은 기본적으로 지원됩니다. 특정 키보드 상호 작용은 플랫폼마다 다를 수 있으므로
 여기에 지정하거나 키 이벤트를 통한 스크롤을 처리하기 위해 특정 이벤트 수신기를 추가하지 않습니다.

@@ -2,20 +2,24 @@
 sidebar_position: 21
 ---
 
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
-
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+import PropTable from "./component/PropTable.js";
+import DataAttributeTable from "./component/DataAttributeTable.js";
+import KeyboardInteractionTable from "./component/KeyboardInteractionTable.js";
+import sliderAPI from "./data/slider.ts";
 
 # Slider
+
 사용자가 주어진 범위 내에서 값을 선택하는 입력입니다.
 
 <Tabs>
 <TabItem value="js" label="index.js">
 
 ```jsx
-import React from 'react';
-import * as Slider from '@radix-ui/react-slider';
-import './styles.css';
+import React from "react";
+import * as Slider from "@radix-ui/react-slider";
+import "./styles.css";
 
 const SliderDemo = () => (
   <form>
@@ -30,12 +34,13 @@ const SliderDemo = () => (
 
 export default SliderDemo;
 ```
+
 </TabItem>
 <TabItem value="css" label="styles.css">
 
 ```css
-@import '@radix-ui/colors/black-alpha.css';
-@import '@radix-ui/colors/violet.css';
+@import "@radix-ui/colors/black-alpha.css";
+@import "@radix-ui/colors/violet.css";
 
 .SliderRoot {
   position: relative;
@@ -78,11 +83,11 @@ export default SliderDemo;
   box-shadow: 0 0 0 5px var(--black-a8);
 }
 ```
+
 </TabItem>
 </Tabs>
 
-
-### 특징
+## 특징
 
 ![checkbox icon](../../static/img/checkboxicon.png) 제어 또는 비제어 가능
 
@@ -96,25 +101,24 @@ export default SliderDemo;
 
 ![checkbox icon](../../static/img/checkboxicon.png) 완전한 키보드 탐색
 
-
-export const Highlight = ({children, color}) => (
-  <span
-    style={{color: color}}
-  >
-    {children}
-  </span>
+export const Highlight = ({ children, color }) => (
+  <span style={{ color: color }}>{children}</span>
 );
 
 ## <Highlight color='#1C5AEC'>설치</Highlight>
+
 커맨드라인에서 컴포넌트를 설치하세요.
+
 ```bash
 npm install @radix-ui/react-slider
 ```
 
 ## <Highlight color='#1C5AEC'>구성</Highlight>
+
 모든 구성요소를 가져와서 조합하세요.
+
 ```jsx
-import * as Slider from '@radix-ui/react-slider';
+import * as Slider from "@radix-ui/react-slider";
 
 export default () => (
   <Slider.Root>
@@ -126,53 +130,210 @@ export default () => (
 );
 ```
 
-
 ## <Highlight color='#1C5AEC'>API 참조</Highlight>
+
 ### <Highlight color='#1C5AEC'>Root</Highlight>
+
 Slider의 모든 부분을 포함합니다. 이벤트가 올바르게 전파되도록 `form` 내에서 사용될 때 각 thumb에 대한 `input`을 렌더링합니다.
-```jsx
-```
+
+<PropTable api={sliderAPI} category="root" />
+<DataAttributeTable api={sliderAPI} category="root" />
 
 ### <Highlight color='#1C5AEC'>Track</Highlight>
+
 `Slider.Range`가 포함된 트랙입니다.
-```jsx
-```
+
+<PropTable api={sliderAPI} category="track" />
+<DataAttributeTable api={sliderAPI} category="track" />
 
 ### <Highlight color='#1C5AEC'>Range</Highlight>
+
 범위 부분입니다. `Slider.Track` 안에 있어야 합니다.
-```jsx
-```
+
+<PropTable api={sliderAPI} category="range" />
+<DataAttributeTable api={sliderAPI} category="range" />
 
 ### <Highlight color='#1C5AEC'>Thumb</Highlight>
+
 드래그 가능한 thumb입니다. 여러 개의 thumb를 렌더링 할 수 있습니다.
-```jsx
-```
+
+<PropTable api={sliderAPI} category="thumb" />
+<DataAttributeTable api={sliderAPI} category="thumb" />
 
 ## <Highlight color='#1C5AEC'>예</Highlight>
+
+### Vertical orientation
+
+Use the orientation prop to create a vertical slider.
+
 ```jsx
+// index.jsx
+import * as Slider from "@radix-ui/react-slider";
+import "./styles.css";
+
+export default () => (
+  <Slider.Root
+    className="SliderRoot"
+    defaultValue={[50]}
+    orientation="vertical"
+  >
+    <Slider.Track className="SliderTrack">
+      <Slider.Range className="SliderRange" />
+    </Slider.Track>
+    <Slider.Thumb className="SliderThumb" />
+  </Slider.Root>
+);
+```
+
+```css
+/* styles.css */
+.SliderRoot {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+.SliderRoot[data-orientation="vertical"] {
+  flex-direction: column;
+  width: 20px;
+  height: 100px;
+}
+
+.SliderTrack {
+  position: relative;
+  flex-grow: 1;
+  background-color: grey;
+}
+.SliderTrack[data-orientation="vertical"] {
+  width: 3px;
+}
+
+.SliderRange {
+  position: absolute;
+  background-color: black;
+}
+.SliderRange[data-orientation="vertical"] {
+  width: 100%;
+}
+
+.SliderThumb {
+  display: block;
+  width: 20px;
+  height: 20px;
+  background-color: black;
+}
+```
+
+### Create a range
+
+Add multiple thumbs and values to create a range slider.
+
+```jsx
+import * as Slider from "@radix-ui/react-slider";
+
+export default () => (
+  <Slider.Root defaultValue={[25, 75]}>
+    <Slider.Track>
+      <Slider.Range />
+    </Slider.Track>
+    <Slider.Thumb />
+    <Slider.Thumb />
+  </Slider.Root>
+);
+```
+
+### Define step size
+
+Use the step prop to increase the stepping interval.
+
+```jsx
+import * as Slider from "@radix-ui/react-slider";
+
+export default () => (
+  <Slider.Root defaultValue={[50]} step={10}>
+    <Slider.Track>
+      <Slider.Range />
+    </Slider.Track>
+    <Slider.Thumb />
+  </Slider.Root>
+);
+```
+
+### Prevent thumb overlap
+
+Use `minStepsBetweenThumbs` to avoid thumbs with equal values.
+
+```jsx
+import * as Slider from "@radix-ui/react-slider";
+
+export default () => (
+  <Slider.Root defaultValue={[25, 75]} step={10} minStepsBetweenThumbs={1}>
+    <Slider.Track>
+      <Slider.Range />
+    </Slider.Track>
+    <Slider.Thumb />
+    <Slider.Thumb />
+  </Slider.Root>
+);
 ```
 
 ## <Highlight color='#1C5AEC'>접근성</Highlight>
+
 [`Slider WAI-ARIA design pattern`](https://www.w3.org/WAI/ARIA/apg/patterns/slider-multithumb/)을 준수합니다.
 
 ### <Highlight color='#1C5AEC'>키보드 상호작용</Highlight>
-```jsx
-```
+
+<KeyboardInteractionTable api={sliderAPI} category="keyboardInteractions" />
 
 ## <Highlight color='#1C5AEC'>사용자 정의 API</Highlight>
+
+#### Abstract all parts
+
+This example abstracts all of the `Slider` parts so it can be used as a self closing element.
+
+#### Usage
+
 ```jsx
+import { Slider } from "./your-slider";
+
+export default () => <Slider defaultValue={[25]} />;
+```
+
+#### Implementation
+
+```jsx
+// your-slider.jsx
+import * as SliderPrimitive from "@radix-ui/react-slider";
+
+export const Slider = React.forwardRef((props, forwardedRef) => {
+  const value = props.value || props.defaultValue;
+
+  return (
+    <SliderPrimitive.Slider {...props} ref={forwardedRef}>
+      <SliderPrimitive.Track>
+        <SliderPrimitive.Range />
+      </SliderPrimitive.Track>
+      {value.map((_, i) => (
+        <SliderThumb key={i} />
+      ))}
+    </SliderPrimitive.Slider>
+  );
+});
 ```
 
 ## <Highlight color='#1C5AEC'>주의사항</Highlight>
+
 ### <Highlight color='#1C5AEC'>마우스 이벤트가 실행되지 않음</Highlight>
+
 구현 중에 직면한 제한 때문에 다음 예제가 예상대로 작동하지 않고 `onMouseDown` 및 `onMouseUp` 이벤트 핸들러가 실행되지 않습니다:
+
 ```jsx
 <Slider.Root
-  onMouseDown={() => console.log('onMouseDown')}
-  onMouseUp={() => console.log('onMouseUp')}
+  onMouseDown={() => console.log("onMouseDown")}
+  onMouseUp={() => console.log("onMouseUp")}
 >
   …
 </Slider.Root>
 ```
-대신 포인터 이벤트를 사용하는 것을 권장합니다.(예:`onPointerDown`, `onPointerUp`). 
+
+대신 포인터 이벤트를 사용하는 것을 권장합니다.(예:`onPointerDown`, `onPointerUp`).
 위의 제한과 상관없이 이러한 이벤트는 모든 포인터 입력 유형(마우스, 터치, 펜 등)에 대해 실행되므로 크로스 플랫폼/장치 처리에 더 적합합니다.

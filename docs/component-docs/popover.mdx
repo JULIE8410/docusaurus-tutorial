@@ -2,21 +2,26 @@
 sidebar_position: 15
 ---
 
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
-
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+import PropTable from "./component/PropTable.js";
+import DataAttributeTable from "./component/DataAttributeTable.js";
+import CssVariableTable from "./component/CssVariableTable.js";
+import KeyboardInteractionTable from "./component/KeyboardInteractionTable.js";
+import popoverAPI from "./data/popover.ts";
 
 # Popover
+
 버튼에 의해 트리거된 포털의 풍부한 콘텐츠를 표시합니다.
 
 <Tabs>
 <TabItem value="js" label="index.js">
 
 ```jsx
-import React from 'react';
-import * as Popover from '@radix-ui/react-popover';
-import { MixerHorizontalIcon, Cross2Icon } from '@radix-ui/react-icons';
-import './styles.css';
+import React from "react";
+import * as Popover from "@radix-ui/react-popover";
+import { MixerHorizontalIcon, Cross2Icon } from "@radix-ui/react-icons";
+import "./styles.css";
 
 const PopoverDemo = () => (
   <Popover.Root>
@@ -27,7 +32,7 @@ const PopoverDemo = () => (
     </Popover.Trigger>
     <Popover.Portal>
       <Popover.Content className="PopoverContent" sideOffset={5}>
-        <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
+        <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
           <p className="Text" style={{ marginBottom: 10 }}>
             Dimensions
           </p>
@@ -67,13 +72,14 @@ const PopoverDemo = () => (
 
 export default PopoverDemo;
 ```
+
 </TabItem>
 <TabItem value="css" label="styles.css">
 
 ```css
-@import '@radix-ui/colors/black-alpha.css';
-@import '@radix-ui/colors/mauve.css';
-@import '@radix-ui/colors/violet.css';
+@import "@radix-ui/colors/black-alpha.css";
+@import "@radix-ui/colors/mauve.css";
+@import "@radix-ui/colors/violet.css";
 
 /* reset */
 button,
@@ -87,25 +93,26 @@ input {
   padding: 20px;
   width: 260px;
   background-color: white;
-  box-shadow: hsl(206 22% 7% / 35%) 0px 10px 38px -10px, hsl(206 22% 7% / 20%) 0px 10px 20px -15px;
+  box-shadow: hsl(206 22% 7% / 35%) 0px 10px 38px -10px, hsl(206 22% 7% / 20%) 0px
+      10px 20px -15px;
   animation-duration: 400ms;
   animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
   will-change: transform, opacity;
 }
 .PopoverContent:focus {
-  box-shadow: hsl(206 22% 7% / 35%) 0px 10px 38px -10px, hsl(206 22% 7% / 20%) 0px 10px 20px -15px,
-    0 0 0 2px var(--violet-7);
+  box-shadow: hsl(206 22% 7% / 35%) 0px 10px 38px -10px, hsl(206 22% 7% / 20%) 0px
+      10px 20px -15px, 0 0 0 2px var(--violet-7);
 }
-.PopoverContent[data-state='open'][data-side='top'] {
+.PopoverContent[data-state="open"][data-side="top"] {
   animation-name: slideDownAndFade;
 }
-.PopoverContent[data-state='open'][data-side='right'] {
+.PopoverContent[data-state="open"][data-side="right"] {
   animation-name: slideLeftAndFade;
 }
-.PopoverContent[data-state='open'][data-side='bottom'] {
+.PopoverContent[data-state="open"][data-side="bottom"] {
   animation-name: slideUpAndFade;
 }
-.PopoverContent[data-state='open'][data-side='left'] {
+.PopoverContent[data-state="open"][data-side="left"] {
   animation-name: slideRightAndFade;
 }
 
@@ -234,11 +241,11 @@ input {
   }
 }
 ```
+
 </TabItem>
 </Tabs>
 
-
-### 특징
+## 특징
 
 ![checkbox icon](../../static/img/checkboxicon.png) 제어 또는 비제어 가능
 
@@ -252,25 +259,24 @@ input {
 
 ![checkbox icon](../../static/img/checkboxicon.png) 무시 및 계층화 동작 사용자 지정 가능
 
-
-export const Highlight = ({children, color}) => (
-  <span
-    style={{color: color}}
-  >
-    {children}
-  </span>
+export const Highlight = ({ children, color }) => (
+  <span style={{ color: color }}>{children}</span>
 );
 
 ## <Highlight color='#1C5AEC'>설치</Highlight>
+
 커맨드라인에서 컴포넌트를 설치하세요.
+
 ```bash
-npm install @radix-ui/react-popover 
+npm install @radix-ui/react-popover
 ```
 
 ## <Highlight color='#1C5AEC'>구성</Highlight>
+
 모든 구성요소를 가져와서 조합하세요.
+
 ```jsx
-import * as Popover from '@radix-ui/react-popover';
+import * as Popover from "@radix-ui/react-popover";
 
 export default () => (
   <Popover.Root>
@@ -286,56 +292,263 @@ export default () => (
 );
 ```
 
-
 ## <Highlight color='#1C5AEC'>API 참조</Highlight>
+
 ### <Highlight color='#1C5AEC'>Root</Highlight>
+
 Popover의 모든 부분을 포함합니다.
-```jsx
-```
+
+<PropTable api={popoverAPI} category="root" />
 
 ### <Highlight color='#1C5AEC'>Trigger</Highlight>
+
 Popover를 토클하는 버튼입니다. 기본적으로 `Popover.Content`는 트리거에 대해 자신을 배치합니다
-```jsx
-```
+
+<PropTable api={popoverAPI} category="trigger" />
+<DataAttributeTable api={popoverAPI} category="trigger" />
 
 ### <Highlight color='#1C5AEC'>Anchor</Highlight>
+
 `Popover.Content`를 배치하기 위한 선택적 요소입니다. 이 부분을 사용하지 않으면 `Popover.Trigger`와 나란히 배치됩니다.
-```jsx
-```
+
+<PropTable api={popoverAPI} category="anchor" />
 
 ### <Highlight color='#1C5AEC'>Portal</Highlight>
+
 콘텐츠 부분을 `body`에 포팅합니다.
-```jsx
-```
+
+<PropTable api={popoverAPI} category="portal" />
 
 ### <Highlight color='#1C5AEC'>Content</Highlight>
+
 팝업이 열려 있을 때 나타나는 구성 요소입니다.
-```jsx
-```
+
+<PropTable api={popoverAPI} category="content" />
+<DataAttributeTable api={popoverAPI} category="content" />
+<CssVariableTable api={popoverAPI} category="content" />
 
 ### <Highlight color='#1C5AEC'>Arrow</Highlight>
+
 Popover와 함께 렌더링할 선택적 화살표 요소입니다.
-이를 사용하여 앵커와 `Popover.Content`를 시각적으로 연결할 수 있습니다. 
+이를 사용하여 앵커와 `Popover.Content`를 시각적으로 연결할 수 있습니다.
 `Popover.Content` 안에서 렌더링해야 합니다.
-```jsx
-```
+
+<PropTable api={popoverAPI} category="arrow" />
 
 ### <Highlight color='#1C5AEC'>Close</Highlight>
+
 열려 있는 팝업을 닫는 버튼입니다.
-```jsx
-```
+
+<PropTable api={popoverAPI} category="close" />
 
 ## <Highlight color='#1C5AEC'>예</Highlight>
+
+### Constrain the content size
+
+You may want to constrain the width of the content so that it matches the trigger width.
+You may also want to constrain its height to not exceed the viewport.
+
+We expose several CSS custom properties such as `--radix-popover-trigger-width` and `--radix-popover-content-available-height` to support this.
+Use them to constrain the content dimensions.
+
 ```jsx
+// index.jsx
+import * as Popover from "@radix-ui/react-popover";
+import "./styles.css";
+
+export default () => (
+  <Popover.Root>
+    <Popover.Trigger>…</Popover.Trigger>
+    <Popover.Portal>
+      <Popover.Content className="PopoverContent" sideOffset={5}>
+        …
+      </Popover.Content>
+    </Popover.Portal>
+  </Popover.Root>
+);
+```
+
+```css
+/* styles.css */
+.PopoverContent {
+  width: var(--radix-popover-trigger-width);
+  max-height: var(--radix-popover-content-available-height);
+}
+```
+
+### Origin-aware animations
+
+We expose a CSS custom property `--radix-popover-content-transform-origin`.
+Use it to animate the content from its computed origin based on `side`, `sideOffset`, `align`, `alignOffset` and any collisions.
+
+```jsx
+// index.jsx
+import * as Popover from "@radix-ui/react-popover";
+import "./styles.css";
+
+export default () => (
+  <Popover.Root>
+    <Popover.Trigger>…</Popover.Trigger>
+    <Popover.Portal>
+      <Popover.Content className="PopoverContent">…</Popover.Content>
+    </Popover.Portal>
+  </Popover.Root>
+);
+```
+
+```css
+/* styles.css */
+.PopoverContent {
+  transform-origin: var(--radix-popover-content-transform-origin);
+  animation: scaleIn 0.5s ease-out;
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+```
+
+### Collision-aware animations
+
+We expose `data-side` and `data-align` attributes.
+Their values will change at runtime to reflect collisions.
+Use them to create collision and direction-aware animations.
+
+```jsx
+// index.jsx
+import * as Popover from "@radix-ui/react-popover";
+import "./styles.css";
+
+export default () => (
+  <Popover.Root>
+    <Popover.Trigger>…</Popover.Trigger>
+    <Popover.Portal>
+      <Popover.Content className="PopoverContent">…</Popover.Content>
+    </Popover.Portal>
+  </Popover.Root>
+);
+```
+
+```css
+/* styles.css */
+.PopoverContent {
+  animation-duration: 0.6s;
+  animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+}
+.PopoverContent[data-side="top"] {
+  animation-name: slideUp;
+}
+.PopoverContent[data-side="bottom"] {
+  animation-name: slideDown;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+```
+
+### With custom anchor
+
+You can anchor the content to another element if you do not want to use the trigger as the anchor.
+
+```jsx
+// index.jsx
+import * as Popover from "@radix-ui/react-popover";
+import "./styles.css";
+
+export default () => (
+  <Popover.Root>
+    <Popover.Anchor asChild>
+      <div className="Row">
+        Row as anchor <Popover.Trigger>Trigger</Popover.Trigger>
+      </div>
+    </Popover.Anchor>
+
+    <Popover.Portal>
+      <Popover.Content>…</Popover.Content>
+    </Popover.Portal>
+  </Popover.Root>
+);
+```
+
+```css
+/* styles.css */
+.Row {
+  background-color: gainsboro;
+  padding: 20px;
+}
 ```
 
 ## <Highlight color='#1C5AEC'>접근성</Highlight>
+
 [`Dialog WAI-ARIA design pattern`](https://www.w3.org/WAI/ARIA/apg/patterns/dialog-modal/)을 준수합니다.
 
 ### <Highlight color='#1C5AEC'>키보드 상호작용</Highlight>
-```jsx
-```
+
+<KeyboardInteractionTable api={popoverAPI} category="keyboardInteractions" />
 
 ## <Highlight color='#1C5AEC'>사용자 정의 API</Highlight>
+
+#### Abstract the arrow and set default configuration
+
+This example abstracts the `Popover.Arrow` part and sets a default `sideOffset` configuration.
+
+#### Usage
+
 ```jsx
+import { Popover, PopoverTrigger, PopoverContent } from "./your-popover";
+
+export default () => (
+  <Popover>
+    <PopoverTrigger>Popover trigger</PopoverTrigger>
+    <PopoverContent>Popover content</PopoverContent>
+  </Popover>
+);
+```
+
+#### Inplementation
+
+```jsx
+// your-popover.jsx
+import React from "react";
+import * as PopoverPrimitive from "@radix-ui/react-popover";
+
+export const Popover = PopoverPrimitive.Root;
+export const PopoverTrigger = PopoverPrimitive.Trigger;
+
+export const PopoverContent = React.forwardRef(
+  ({ children, ...props }, forwardedRef) => (
+    <PopoverPrimitive.Portal>
+      <PopoverPrimitive.Content sideOffset={5} {...props} ref={forwardedRef}>
+        {children}
+        <PopoverPrimitive.Arrow />
+      </PopoverPrimitive.Content>
+    </PopoverPrimitive.Portal>
+  )
+);
 ```

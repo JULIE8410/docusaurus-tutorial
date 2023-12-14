@@ -2,25 +2,34 @@
 sidebar_position: 17
 ---
 
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
-
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+import PropTable from "./component/PropTable.js";
+import DataAttributeTable from "./component/DataAttributeTable.js";
+import CssVariableTable from "./component/CssVariableTable.js";
+import KeyboardInteractionTable from "./component/KeyboardInteractionTable.js";
+import radioGroupAPI from "./data/radio-group.ts";
 
 # Radio Group
+
 한 번에 두 개 이상의 버튼을 선택할 수 없는(라디오 버튼이라고 하는) 선택 가능한 버튼 집합입니다.
 
 <Tabs>
 <TabItem value="js" label="index.js">
 
 ```jsx
-import React from 'react';
-import * as RadioGroup from '@radix-ui/react-radio-group';
-import './styles.css';
+import React from "react";
+import * as RadioGroup from "@radix-ui/react-radio-group";
+import "./styles.css";
 
 const RadioGroupDemo = () => (
   <form>
-    <RadioGroup.Root className="RadioGroupRoot" defaultValue="default" aria-label="View density">
-      <div style={{ display: 'flex', alignItems: 'center' }}>
+    <RadioGroup.Root
+      className="RadioGroupRoot"
+      defaultValue="default"
+      aria-label="View density"
+    >
+      <div style={{ display: "flex", alignItems: "center" }}>
         <RadioGroup.Item className="RadioGroupItem" value="default" id="r1">
           <RadioGroup.Indicator className="RadioGroupIndicator" />
         </RadioGroup.Item>
@@ -28,7 +37,7 @@ const RadioGroupDemo = () => (
           Default
         </label>
       </div>
-      <div style={{ display: 'flex', alignItems: 'center' }}>
+      <div style={{ display: "flex", alignItems: "center" }}>
         <RadioGroup.Item className="RadioGroupItem" value="comfortable" id="r2">
           <RadioGroup.Indicator className="RadioGroupIndicator" />
         </RadioGroup.Item>
@@ -36,7 +45,7 @@ const RadioGroupDemo = () => (
           Comfortable
         </label>
       </div>
-      <div style={{ display: 'flex', alignItems: 'center' }}>
+      <div style={{ display: "flex", alignItems: "center" }}>
         <RadioGroup.Item className="RadioGroupItem" value="compact" id="r3">
           <RadioGroup.Indicator className="RadioGroupIndicator" />
         </RadioGroup.Item>
@@ -50,12 +59,13 @@ const RadioGroupDemo = () => (
 
 export default RadioGroupDemo;
 ```
+
 </TabItem>
 <TabItem value="css" label="styles.css">
 
 ```css
-@import '@radix-ui/colors/black-alpha.css';
-@import '@radix-ui/colors/violet.css';
+@import "@radix-ui/colors/black-alpha.css";
+@import "@radix-ui/colors/violet.css";
 
 /* reset */
 button {
@@ -91,7 +101,7 @@ button {
   position: relative;
 }
 .RadioGroupIndicator::after {
-  content: '';
+  content: "";
   display: block;
   width: 11px;
   height: 11px;
@@ -106,37 +116,36 @@ button {
   padding-left: 15px;
 }
 ```
+
 </TabItem>
 </Tabs>
 
+## 특징
 
-### 특징
- 
 ![checkbox icon](../../static/img/checkboxicon.png) 완전한 키보드 탐색
 
 ![checkbox icon](../../static/img/checkboxicon.png) 수평/수직 방향을 지원
 
 ![checkbox icon](../../static/img/checkboxicon.png) 제어 또는 비제어 가능
 
-
-export const Highlight = ({children, color}) => (
-  <span
-    style={{color: color}}
-  >
-    {children}
-  </span>
+export const Highlight = ({ children, color }) => (
+  <span style={{ color: color }}>{children}</span>
 );
 
 ## <Highlight color='#1C5AEC'>설치</Highlight>
+
 커맨드라인에서 컴포넌트를 설치하세요.
+
 ```bash
 npm install @radix-ui/react-radio-group
 ```
 
 ## <Highlight color='#1C5AEC'>구성</Highlight>
+
 모든 구성요소를 가져와서 조합하세요.
+
 ```jsx
-import * as RadioGroup from '@radix-ui/react-radio-group';
+import * as RadioGroup from "@radix-ui/react-radio-group";
 
 export default () => (
   <RadioGroup.Root>
@@ -148,26 +157,33 @@ export default () => (
 ```
 
 ## <Highlight color='#1C5AEC'>API 참조</Highlight>
+
 ### <Highlight color='#1C5AEC'>Root</Highlight>
+
 Radio group의 모든 부분을 포함합니다.
-```jsx
-```
+
+<PropTable api={radioGroupAPI} category="root" />
+<DataAttributeTable api={radioGroupAPI} category="root" />
 
 ### <Highlight color='#1C5AEC'>Item</Highlight>
+
 체크할 수 있는 그룹의 항목입니다. 이벤트가 올바르게 전파되는지 확인하기 위해 `form` 내에서 사용될 때 `input`도 렌더링됩니다.
-```jsx
-```
+
+<PropTable api={radioGroupAPI} category="item" />
+<DataAttributeTable api={radioGroupAPI} category="item" />
 
 ### <Highlight color='#1C5AEC'>Indicator</Highlight>
+
 라디오 항목이 체크 상태일 때 렌더링합니다. 이 요소를 직접 스타일링하거나, 아이콘을 넣을 래퍼로 사용하거나 둘 다 입력할 수 있습니다.
-```jsx
-```
+
+<PropTable api={radioGroupAPI} category="indicator" />
+<DataAttributeTable api={radioGroupAPI} category="indicator" />
 
 ## <Highlight color='#1C5AEC'>접근성</Highlight>
-[`Radio Group WAI-ARIA design pattern`](https://www.w3.org/WAI/ARIA/apg/patterns/radio/)을 준수하며, 
+
+[`Radio Group WAI-ARIA design pattern`](https://www.w3.org/WAI/ARIA/apg/patterns/radio/)을 준수하며,
 [`roving tabindex`](https://www.w3.org/WAI/ARIA/apg/patterns/radio/examples/radio/)를 사용하여 radio item 간 포커스 이동을 관리합니다.
 
-
 ### <Highlight color='#1C5AEC'>키보드 상호작용</Highlight>
-```jsx
-```
+
+<KeyboardInteractionTable api={radioGroupAPI} category="keyboardInteractions" />

@@ -1,6 +1,6 @@
 // 1.0.3
 
-const separatortAPI: Object = {
+const separatorAPI: Object = {
   component: "separator",
   props: [
     {
@@ -30,8 +30,14 @@ const separatortAPI: Object = {
             "When <Code>true</Code>, signifies that it is purely visual, carries no semantic meaning, and ensures it is not present in the accessibility tree.",
         },
       ],
+      dataAttribute: [
+        {
+          attribute: "[data-orientation]",
+          values: ["vertical", "horizontal"],
+        },
+      ],
     },
   ],
 };
 
-export default separatortAPI;
+export default separatorAPI;

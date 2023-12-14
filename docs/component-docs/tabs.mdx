@@ -2,20 +2,24 @@
 sidebar_position: 23
 ---
 
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
-
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+import PropTable from "./component/PropTable.js";
+import DataAttributeTable from "./component/DataAttributeTable.js";
+import KeyboardInteractionTable from "./component/KeyboardInteractionTable.js";
+import tabsAPI from "./data/tabs.ts";
 
 # Tabs
+
 한 번에 하나씩 표시되는 콘텐츠(탭 패널이라고도 함)의 계층화된 섹션 집합(탭 패널이라고도 함)입니다.
 
 <Tabs>
 <TabItem value="js" label="index.js">
 
 ```jsx
-import React from 'react';
-import * as Tabs from '@radix-ui/react-tabs';
-import './styles.css';
+import React from "react";
+import * as Tabs from "@radix-ui/react-tabs";
+import "./styles.css";
 
 const TabsDemo = () => (
   <Tabs.Root className="TabsRoot" defaultValue="tab1">
@@ -28,7 +32,9 @@ const TabsDemo = () => (
       </Tabs.Trigger>
     </Tabs.List>
     <Tabs.Content className="TabsContent" value="tab1">
-      <p className="Text">Make changes to your account here. Click save when you're done.</p>
+      <p className="Text">
+        Make changes to your account here. Click save when you're done.
+      </p>
       <fieldset className="Fieldset">
         <label className="Label" htmlFor="name">
           Name
@@ -41,12 +47,16 @@ const TabsDemo = () => (
         </label>
         <input className="Input" id="username" defaultValue="@peduarte" />
       </fieldset>
-      <div style={{ display: 'flex', marginTop: 20, justifyContent: 'flex-end' }}>
+      <div
+        style={{ display: "flex", marginTop: 20, justifyContent: "flex-end" }}
+      >
         <button className="Button green">Save changes</button>
       </div>
     </Tabs.Content>
     <Tabs.Content className="TabsContent" value="tab2">
-      <p className="Text">Change your password here. After saving, you'll be logged out.</p>
+      <p className="Text">
+        Change your password here. After saving, you'll be logged out.
+      </p>
       <fieldset className="Fieldset">
         <label className="Label" htmlFor="currentPassword">
           Current password
@@ -65,7 +75,9 @@ const TabsDemo = () => (
         </label>
         <input className="Input" id="confirmPassword" type="password" />
       </fieldset>
-      <div style={{ display: 'flex', marginTop: 20, justifyContent: 'flex-end' }}>
+      <div
+        style={{ display: "flex", marginTop: 20, justifyContent: "flex-end" }}
+      >
         <button className="Button green">Change password</button>
       </div>
     </Tabs.Content>
@@ -74,14 +86,15 @@ const TabsDemo = () => (
 
 export default TabsDemo;
 ```
+
 </TabItem>
 <TabItem value="css" label="styles.css">
 
 ```css
-@import '@radix-ui/colors/black-alpha.css';
-@import '@radix-ui/colors/green.css';
-@import '@radix-ui/colors/mauve.css';
-@import '@radix-ui/colors/violet.css';
+@import "@radix-ui/colors/black-alpha.css";
+@import "@radix-ui/colors/green.css";
+@import "@radix-ui/colors/mauve.css";
+@import "@radix-ui/colors/violet.css";
 
 /* reset */
 button,
@@ -126,7 +139,7 @@ input {
 .TabsTrigger:hover {
   color: var(--violet-11);
 }
-.TabsTrigger[data-state='active'] {
+.TabsTrigger[data-state="active"] {
   color: var(--violet-11);
   box-shadow: inset 0 -1px 0 0 currentColor, 0 1px 0 0 currentColor;
 }
@@ -207,11 +220,11 @@ input {
   box-shadow: 0 0 0 2px var(--green-7);
 }
 ```
+
 </TabItem>
 </Tabs>
 
-
-### 특징
+## 특징
 
 ![checkbox icon](../../static/img/checkboxicon.png) 제어 또는 비제어 가능
 
@@ -221,25 +234,24 @@ input {
 
 ![checkbox icon](../../static/img/checkboxicon.png) 완전한 키보드 탐색
 
-
-export const Highlight = ({children, color}) => (
-  <span
-    style={{color: color}}
-  >
-    {children}
-  </span>
+export const Highlight = ({ children, color }) => (
+  <span style={{ color: color }}>{children}</span>
 );
 
 ## <Highlight color='#1C5AEC'>설치</Highlight>
+
 커맨드라인에서 컴포넌트를 설치하세요.
+
 ```bash
-npm install @radix-ui/react-tabs 
+npm install @radix-ui/react-tabs
 ```
 
 ## <Highlight color='#1C5AEC'>구성</Highlight>
+
 모든 구성요소를 가져와서 조합하세요.
+
 ```jsx
-import * as Tabs from '@radix-ui/react-tabs';
+import * as Tabs from "@radix-ui/react-tabs";
 
 export default () => (
   <Tabs.Root>
@@ -251,33 +263,63 @@ export default () => (
 );
 ```
 
-
 ## <Highlight color='#1C5AEC'>API 참조</Highlight>
+
 ### <Highlight color='#1C5AEC'>Root</Highlight>
+
 Tabs의 모든 부분을 포함합니다.
-```jsx
-```
+
+<PropTable api={tabsAPI} category="root" />
+<DataAttributeTable api={tabsAPI} category="root" />
 
 ### <Highlight color='#1C5AEC'>List</Highlight>
+
 활성 콘텐츠의 가장자리를 따라 정렬된 트리거를 포함합니다.
-```jsx
-```
+
+<PropTable api={tabsAPI} category="list" />
+<DataAttributeTable api={tabsAPI} category="list" />
 
 ### <Highlight color='#1C5AEC'>Trigger</Highlight>
+
 관련 콘텐츠를 활성화하는 단추입니다.
-```jsx
-```
+
+<PropTable api={tabsAPI} category="trigger" />
+<DataAttributeTable api={tabsAPI} category="trigger" />
 
 ### <Highlight color='#1C5AEC'>Content</Highlight>
+
 각 트리거와 연관된 콘텐츠를 포함합니다.
-```jsx
-```
+
+<PropTable api={tabsAPI} category="content" />
+<DataAttributeTable api={tabsAPI} category="content" />
 
 ## <Highlight color='#1C5AEC'>예</Highlight>
 
+#### Vertical
+
+You can create vertical tabs by using the orientation prop.
+
+```jsx
+import * as Tabs from "@radix-ui/react-tabs";
+
+export default () => (
+  <Tabs.Root defaultValue="tab1" orientation="vertical">
+    <Tabs.List aria-label="tabs example">
+      <Tabs.Trigger value="tab1">One</Tabs.Trigger>
+      <Tabs.Trigger value="tab2">Two</Tabs.Trigger>
+      <Tabs.Trigger value="tab3">Three</Tabs.Trigger>
+    </Tabs.List>
+    <Tabs.Content value="tab1">Tab one content</Tabs.Content>
+    <Tabs.Content value="tab2">Tab two content</Tabs.Content>
+    <Tabs.Content value="tab3">Tab three content</Tabs.Content>
+  </Tabs.Root>
+);
+```
+
 ## <Highlight color='#1C5AEC'>접근성</Highlight>
+
 [`Tabs WAI-ARIA design pattern`](https://www.w3.org/WAI/ARIA/apg/patterns/tabs/)을 준수합니다.
 
 ### <Highlight color='#1C5AEC'>키보드 상호작용</Highlight>
-```jsx
-```
+
+<KeyboardInteractionTable api={tabsAPI} category="keyboardInteractions" />

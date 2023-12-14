@@ -2,22 +2,27 @@
 sidebar_position: 14
 ---
 
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
-
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+import PropTable from "./component/PropTable.js";
+import DataAttributeTable from "./component/DataAttributeTable.js";
+import CssVariableTable from "./component/CssVariableTable.js";
+import KeyboardInteractionTable from "./component/KeyboardInteractionTable.js";
+import navigationMenuAPI from "./data/navigation-menu.ts";
 
 # Navigation Menu
+
 웹사이트 탐색을 위한 링크 모음입니다.
 
 <Tabs>
 <TabItem value="js" label="index.js">
 
 ```jsx
-import React from 'react';
-import * as NavigationMenu from '@radix-ui/react-navigation-menu';
-import classNames from 'classnames';
-import { CaretDownIcon } from '@radix-ui/react-icons';
-import './styles.css';
+import React from "react";
+import * as NavigationMenu from "@radix-ui/react-navigation-menu";
+import classNames from "classnames";
+import { CaretDownIcon } from "@radix-ui/react-icons";
+import "./styles.css";
 
 const NavigationMenuDemo = () => {
   return (
@@ -29,16 +34,24 @@ const NavigationMenuDemo = () => {
           </NavigationMenu.Trigger>
           <NavigationMenu.Content className="NavigationMenuContent">
             <ul className="List one">
-              <li style={{ gridRow: 'span 3' }}>
+              <li style={{ gridRow: "span 3" }}>
                 <NavigationMenu.Link asChild>
                   <a className="Callout" href="/">
-                    <svg aria-hidden width="38" height="38" viewBox="0 0 25 25" fill="white">
+                    <svg
+                      aria-hidden
+                      width="38"
+                      height="38"
+                      viewBox="0 0 25 25"
+                      fill="white"
+                    >
                       <path d="M12 25C7.58173 25 4 21.4183 4 17C4 12.5817 7.58173 9 12 9V25Z"></path>
                       <path d="M12 0H4V8H12V0Z"></path>
                       <path d="M17 8C19.2091 8 21 6.20914 21 4C21 1.79086 19.2091 0 17 0C14.7909 0 13 1.79086 13 4C13 6.20914 14.7909 8 17 8Z"></path>
                     </svg>
                     <div className="CalloutHeading">Radix Primitives</div>
-                    <p className="CalloutText">Unstyled, accessible components for React.</p>
+                    <p className="CalloutText">
+                      Unstyled, accessible components for React.
+                    </p>
                   </a>
                 </NavigationMenu.Link>
               </li>
@@ -62,22 +75,38 @@ const NavigationMenuDemo = () => {
           </NavigationMenu.Trigger>
           <NavigationMenu.Content className="NavigationMenuContent">
             <ul className="List two">
-              <ListItem title="Introduction" href="/primitives/docs/overview/introduction">
+              <ListItem
+                title="Introduction"
+                href="/primitives/docs/overview/introduction"
+              >
                 Build high-quality, accessible design systems and web apps.
               </ListItem>
-              <ListItem title="Getting started" href="/primitives/docs/overview/getting-started">
-                A quick tutorial to get you up and running with Radix Primitives.
+              <ListItem
+                title="Getting started"
+                href="/primitives/docs/overview/getting-started"
+              >
+                A quick tutorial to get you up and running with Radix
+                Primitives.
               </ListItem>
               <ListItem title="Styling" href="/primitives/docs/guides/styling">
                 Unstyled and compatible with any styling solution.
               </ListItem>
-              <ListItem title="Animation" href="/primitives/docs/guides/animation">
+              <ListItem
+                title="Animation"
+                href="/primitives/docs/guides/animation"
+              >
                 Use CSS keyframes or any animation library of your choice.
               </ListItem>
-              <ListItem title="Accessibility" href="/primitives/docs/overview/accessibility">
+              <ListItem
+                title="Accessibility"
+                href="/primitives/docs/overview/accessibility"
+              >
                 Tested in a range of browsers and assistive technologies.
               </ListItem>
-              <ListItem title="Releases" href="/primitives/docs/overview/releases">
+              <ListItem
+                title="Releases"
+                href="/primitives/docs/overview/releases"
+              >
                 Radix Primitives releases and their changelogs.
               </ListItem>
             </ul>
@@ -85,7 +114,10 @@ const NavigationMenuDemo = () => {
         </NavigationMenu.Item>
 
         <NavigationMenu.Item>
-          <NavigationMenu.Link className="NavigationMenuLink" href="https://github.com/radix-ui">
+          <NavigationMenu.Link
+            className="NavigationMenuLink"
+            href="https://github.com/radix-ui"
+          >
             Github
           </NavigationMenu.Link>
         </NavigationMenu.Item>
@@ -102,28 +134,35 @@ const NavigationMenuDemo = () => {
   );
 };
 
-const ListItem = React.forwardRef(({ className, children, title, ...props }, forwardedRef) => (
-  <li>
-    <NavigationMenu.Link asChild>
-      <a className={classNames('ListItemLink', className)} {...props} ref={forwardedRef}>
-        <div className="ListItemHeading">{title}</div>
-        <p className="ListItemText">{children}</p>
-      </a>
-    </NavigationMenu.Link>
-  </li>
-));
+const ListItem = React.forwardRef(
+  ({ className, children, title, ...props }, forwardedRef) => (
+    <li>
+      <NavigationMenu.Link asChild>
+        <a
+          className={classNames("ListItemLink", className)}
+          {...props}
+          ref={forwardedRef}
+        >
+          <div className="ListItemHeading">{title}</div>
+          <p className="ListItemText">{children}</p>
+        </a>
+      </NavigationMenu.Link>
+    </li>
+  )
+);
 
 export default NavigationMenuDemo;
 ```
+
 </TabItem>
 <TabItem value="css" label="styles.css">
 
 ```css
-@import '@radix-ui/colors/black-alpha.css';
-@import '@radix-ui/colors/indigo.css';
-@import '@radix-ui/colors/mauve.css';
-@import '@radix-ui/colors/purple.css';
-@import '@radix-ui/colors/violet.css';
+@import "@radix-ui/colors/black-alpha.css";
+@import "@radix-ui/colors/indigo.css";
+@import "@radix-ui/colors/mauve.css";
+@import "@radix-ui/colors/purple.css";
+@import "@radix-ui/colors/violet.css";
 
 /* reset */
 button,
@@ -192,16 +231,16 @@ p {
   animation-duration: 250ms;
   animation-timing-function: ease;
 }
-.NavigationMenuContent[data-motion='from-start'] {
+.NavigationMenuContent[data-motion="from-start"] {
   animation-name: enterFromLeft;
 }
-.NavigationMenuContent[data-motion='from-end'] {
+.NavigationMenuContent[data-motion="from-end"] {
   animation-name: enterFromRight;
 }
-.NavigationMenuContent[data-motion='to-start'] {
+.NavigationMenuContent[data-motion="to-start"] {
   animation-name: exitToLeft;
 }
-.NavigationMenuContent[data-motion='to-end'] {
+.NavigationMenuContent[data-motion="to-end"] {
   animation-name: exitToRight;
 }
 @media only screen and (min-width: 600px) {
@@ -220,10 +259,10 @@ p {
   z-index: 1;
   transition: width, transform 250ms ease;
 }
-.NavigationMenuIndicator[data-state='visible'] {
+.NavigationMenuIndicator[data-state="visible"] {
   animation: fadeIn 200ms ease;
 }
-.NavigationMenuIndicator[data-state='hidden'] {
+.NavigationMenuIndicator[data-state="hidden"] {
   animation: fadeOut 200ms ease;
 }
 
@@ -235,14 +274,15 @@ p {
   background-color: white;
   border-radius: 6px;
   overflow: hidden;
-  box-shadow: hsl(206 22% 7% / 35%) 0px 10px 38px -10px, hsl(206 22% 7% / 20%) 0px 10px 20px -15px;
+  box-shadow: hsl(206 22% 7% / 35%) 0px 10px 38px -10px, hsl(206 22% 7% / 20%) 0px
+      10px 20px -15px;
   height: var(--radix-navigation-menu-viewport-height);
   transition: width, height, 300ms ease;
 }
-.NavigationMenuViewport[data-state='open'] {
+.NavigationMenuViewport[data-state="open"] {
   animation: scaleIn 200ms ease;
 }
-.NavigationMenuViewport[data-state='closed'] {
+.NavigationMenuViewport[data-state="closed"] {
   animation: scaleOut 200ms ease;
 }
 @media only screen and (min-width: 600px) {
@@ -348,7 +388,7 @@ p {
   top: 1px;
   transition: transform 250ms ease;
 }
-[data-state='open'] > .CaretDown {
+[data-state="open"] > .CaretDown {
   transform: rotate(-180deg);
 }
 
@@ -446,11 +486,11 @@ p {
   }
 }
 ```
+
 </TabItem>
 </Tabs>
 
-
-### 특징
+## 특징
 
 ![checkbox icon](../../static/img/checkboxicon.png) 제어 또는 비제어 가능
 
@@ -466,25 +506,24 @@ p {
 
 ![checkbox icon](../../static/img/checkboxicon.png) 사용자 지정 타이밍을 지원
 
-
-export const Highlight = ({children, color}) => (
-  <span
-    style={{color: color}}
-  >
-    {children}
-  </span>
+export const Highlight = ({ children, color }) => (
+  <span style={{ color: color }}>{children}</span>
 );
 
 ## <Highlight color='#1C5AEC'>설치</Highlight>
+
 커맨드라인에서 컴포넌트를 설치하세요.
+
 ```bash
 npm install @radix-ui/react-navigation-menu
 ```
 
 ## <Highlight color='#1C5AEC'>구성</Highlight>
+
 모든 구성요소를 가져와서 조합하세요.
+
 ```jsx
-import * as NavigationMenu from '@radix-ui/react-navigation-menu';
+import * as NavigationMenu from "@radix-ui/react-navigation-menu";
 
 export default () => (
   <NavigationMenu.Root>
@@ -518,76 +557,377 @@ export default () => (
 );
 ```
 
-
 ## <Highlight color='#1C5AEC'>API 참조</Highlight>
+
 ### <Highlight color='#1C5AEC'>Root</Highlight>
+
 Navigation menu의 모든 부분을 포함합니다.
-```jsx
-```
+
+<PropTable api={navigationMenuAPI} category="root" />
+<DataAttributeTable api={navigationMenuAPI} category="root" />
 
 ### <Highlight color='#1C5AEC'>Sub</Highlight>
+
 하위 메뉴를 나타냅니다. 중첩할 때 루트 부분 대신 사용하여 하위 메뉴를 만듭니다.
-```jsx
-```
+
+<PropTable api={navigationMenuAPI} category="sub" />
+<DataAttributeTable api={navigationMenuAPI} category="sub" />
 
 ### <Highlight color='#1C5AEC'>List</Highlight>
+
 최상위 메뉴 항목을 포함합니다.
-```jsx
-```
+
+<PropTable api={navigationMenuAPI} category="list" />
+<DataAttributeTable api={navigationMenuAPI} category="list" />
 
 ### <Highlight color='#1C5AEC'>Item</Highlight>
+
 내용 조합이 있는 링크 또는 트리거를 포함하는 최상위 메뉴 항목입니다.
-```jsx
-```
+
+<PropTable api={navigationMenuAPI} category="item" />
 
 ### <Highlight color='#1C5AEC'>Trigger</Highlight>
+
 콘텐츠를 토글하는 버튼입니다.
-```jsx
-```
+
+<PropTable api={navigationMenuAPI} category="trigger" />
+<DataAttributeTable api={navigationMenuAPI} category="trigger" />
 
 ### <Highlight color='#1C5AEC'>Content</Highlight>
+
 각 트리거와 연관된 내용을 포함합니다.
-```jsx
-```
+
+<PropTable api={navigationMenuAPI} category="content" />
+<DataAttributeTable api={navigationMenuAPI} category="content" />
 
 ### <Highlight color='#1C5AEC'>Link</Highlight>
+
 탐색링크입니다.
-```jsx
-```
+
+<PropTable api={navigationMenuAPI} category="link" />
+<DataAttributeTable api={navigationMenuAPI} category="link" />
 
 ### <Highlight color='#1C5AEC'>Indicator</Highlight>
+
 목록 아래에 렌더링하는 선택적 인디케이터 요소는 현재 활성 트리거를 강조 표시하는 데 사용됩니다.
-```jsx
-```
+
+<PropTable api={navigationMenuAPI} category="indicator" />
+<DataAttributeTable api={navigationMenuAPI} category="indicator" />
 
 ### <Highlight color='#1C5AEC'>Viewport</Highlight>
+
 활성 콘텐츠를 목록 외부로 렌더링하는 데 사용되는 선택적 뷰포트 요소입니다.
-```jsx
-```
+
+<PropTable api={navigationMenuAPI} category="viewport" />
+<DataAttributeTable api={navigationMenuAPI} category="viewport" />
+<CssVariableTable api={navigationMenuAPI} category="viewport" />
 
 ## <Highlight color='#1C5AEC'>예</Highlight>
+
+### Vertical
+
+You can create a vertical menu by using the orientation prop.
+
 ```jsx
+<NavigationMenu.Root orientation="vertical">
+  <NavigationMenu.List>
+    <NavigationMenu.Item>
+      <NavigationMenu.Trigger>Item one</NavigationMenu.Trigger>
+      <NavigationMenu.Content>Item one content</NavigationMenu.Content>
+    </NavigationMenu.Item>
+    <NavigationMenu.Item>
+      <NavigationMenu.Trigger>Item two</NavigationMenu.Trigger>
+      <NavigationMenu.Content>Item Two content</NavigationMenu.Content>
+    </NavigationMenu.Item>
+  </NavigationMenu.List>
+</NavigationMenu.Root>
+```
+
+### Flexible layouts
+
+Use the `Viewport` part when you need extra control over where `Content` is rendered.
+This can be helpful when your design requires an adjusted DOM structure or if you need flexibility to achieve `advanced animation`.
+Tab focus will be maintained automatically.
+
+```jsx
+<NavigationMenu.Root>
+  <NavigationMenu.List>
+    <NavigationMenu.Item>
+      <NavigationMenu.Trigger>Item one</NavigationMenu.Trigger>
+      <NavigationMenu.Content>Item one content</NavigationMenu.Content>
+    </NavigationMenu.Item>
+    <NavigationMenu.Item>
+      <NavigationMenu.Trigger>Item two</NavigationMenu.Trigger>
+      <NavigationMenu.Content>Item two content</NavigationMenu.Content>
+    </NavigationMenu.Item>
+  </NavigationMenu.List>
+
+  {/* NavigationMenu.Content will be rendered here when active */}
+  <NavigationMenu.Viewport />
+</NavigationMenu.Root>
+```
+
+### With indicator
+
+You can use the optional `Indicator` part to highlight the currently active `Trigger`, this is useful when you want to provide an animated visual cue such as an arrow or highlight to accompany the `Viewport`.
+
+```jsx
+// index.jsx
+import * as NavigationMenu from "@radix-ui/react-navigation-menu";
+import "./styles.css";
+
+export default () => (
+  <NavigationMenu.Root>
+    <NavigationMenu.List>
+      <NavigationMenu.Item>
+        <NavigationMenu.Trigger>Item one</NavigationMenu.Trigger>
+        <NavigationMenu.Content>Item one content</NavigationMenu.Content>
+      </NavigationMenu.Item>
+      <NavigationMenu.Item>
+        <NavigationMenu.Trigger>Item two</NavigationMenu.Trigger>
+        <NavigationMenu.Content>Item two content</NavigationMenu.Content>
+      </NavigationMenu.Item>
+
+      <NavigationMenu.Indicator className="NavigationMenuIndicator" />
+    </NavigationMenu.List>
+
+    <NavigationMenu.Viewport />
+  </NavigationMenu.Root>
+);
+```
+
+```css
+/* styles.css */
+.NavigationMenuIndicator {
+  background-color: grey;
+}
+.NavigationMenuIndicator[data-orientation="horizontal"] {
+  height: 3px;
+  transition: width, transform, 250ms ease;
+}
+```
+
+### With submenus
+
+Create a submenu by nesting your `NavigationMenu` and using the `Sub` part in place of its `Root`.
+Submenus work differently to `Root` navigation menus and are similar to `Tabs` in that one item should always be active, so be sure to assign and set a `defaultValue`.
+
+```jsx
+<NavigationMenu.Root>
+  <NavigationMenu.List>
+    <NavigationMenu.Item>
+      <NavigationMenu.Trigger>Item one</NavigationMenu.Trigger>
+      <NavigationMenu.Content>Item one content</NavigationMenu.Content>
+    </NavigationMenu.Item>
+    <NavigationMenu.Item>
+      <NavigationMenu.Trigger>Item two</NavigationMenu.Trigger>
+      <NavigationMenu.Content>
+        <NavigationMenu.Sub defaultValue="sub1">
+          <NavigationMenu.List>
+            <NavigationMenu.Item value="sub1">
+              <NavigationMenu.Trigger>Sub item one</NavigationMenu.Trigger>
+              <NavigationMenu.Content>
+                Sub item one content
+              </NavigationMenu.Content>
+            </NavigationMenu.Item>
+            <NavigationMenu.Item value="sub2">
+              <NavigationMenu.Trigger>Sub item two</NavigationMenu.Trigger>
+              <NavigationMenu.Content>
+                Sub item two content
+              </NavigationMenu.Content>
+            </NavigationMenu.Item>
+          </NavigationMenu.List>
+        </NavigationMenu.Sub>
+      </NavigationMenu.Content>
+    </NavigationMenu.Item>
+  </NavigationMenu.List>
+</NavigationMenu.Root>
+```
+
+### With client side routing
+
+If you need to use the `Link` component provided by your routing package then we recommend composing with `NavigationMenu.Link` via a custom component.
+This will ensure accessibility and consistent keyboard control is maintained.
+Here's an example using Next.js:
+
+```jsx
+// index.jsx
+import { useRouter } from "next/router";
+import NextLink from "next/link";
+import * as NavigationMenu from "@radix-ui/react-navigation-menu";
+import "./styles.css";
+
+const Link = ({ href, ...props }) => {
+  const router = useRouter();
+  const isActive = router.asPath === href;
+
+  return (
+    <NextLink href={href} passHref legacyBehavior>
+      <NavigationMenu.Link
+        className="NavigationMenuLink"
+        active={isActive}
+        {...props}
+      />
+    </NextLink>
+  );
+};
+
+export default () => (
+  <NavigationMenu.Root>
+    <NavigationMenu.List>
+      <NavigationMenu.Item>
+        <Link href="/">Home</Link>
+      </NavigationMenu.Item>
+      <NavigationMenu.Item>
+        <Link href="/about">About</Link>
+      </NavigationMenu.Item>
+    </NavigationMenu.List>
+  </NavigationMenu.Root>
+);
+```
+
+```css
+/* styles.css */
+.NavigationMenuLink {
+  text-decoration: none;
+}
+.NavigationMenuLink[data-active] {
+  text-decoration: "underline";
+}
+```
+
+### Advanced animation
+
+We expose `--radix-navigation-menu-viewport-[width|height]` and `data-motion['from-start'|'to-start'|'from-end'|'to-end']` attributes to allow you to animate `Viewport` size and `Content` position based on the enter/exit direction.
+
+Combining these with `position: absolute`; allows you to create smooth overlapping animation effects when moving between items.
+
+```jsx
+// index.jsx
+import * as NavigationMenu from "@radix-ui/react-navigation-menu";
+import "./styles.css";
+
+export default () => (
+  <NavigationMenu.Root>
+    <NavigationMenu.List>
+      <NavigationMenu.Item>
+        <NavigationMenu.Trigger>Item one</NavigationMenu.Trigger>
+        <NavigationMenu.Content className="NavigationMenuContent">
+          Item one content
+        </NavigationMenu.Content>
+      </NavigationMenu.Item>
+      <NavigationMenu.Item>
+        <NavigationMenu.Trigger>Item two</NavigationMenu.Trigger>
+        <NavigationMenu.Content className="NavigationMenuContent">
+          Item two content
+        </NavigationMenu.Content>
+      </NavigationMenu.Item>
+    </NavigationMenu.List>
+
+    <NavigationMenu.Viewport className="NavigationMenuViewport" />
+  </NavigationMenu.Root>
+);
+```
+
+```css
+/* styles.css */
+.NavigationMenuContent {
+  position: absolute;
+  top: 0;
+  left: 0;
+  animation-duration: 250ms;
+  animation-timing-function: ease;
+}
+.NavigationMenuContent[data-motion="from-start"] {
+  animation-name: enterFromLeft;
+}
+.NavigationMenuContent[data-motion="from-end"] {
+  animation-name: enterFromRight;
+}
+.NavigationMenuContent[data-motion="to-start"] {
+  animation-name: exitToLeft;
+}
+.NavigationMenuContent[data-motion="to-end"] {
+  animation-name: exitToRight;
+}
+
+.NavigationMenuViewport {
+  position: relative;
+  width: var(--radix-navigation-menu-viewport-width);
+  height: var(--radix-navigation-menu-viewport-height);
+  transition: width, height, 250ms ease;
+}
+
+@keyframes enterFromRight {
+  from {
+    opacity: 0;
+    transform: translateX(200px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes enterFromLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-200px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes exitToRight {
+  from {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateX(200px);
+  }
+}
+
+@keyframes exitToLeft {
+  from {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateX(-200px);
+  }
+}
 ```
 
 ## <Highlight color='#1C5AEC'>접근성</Highlight>
+
 [`Navigation role requirements`](https://www.w3.org/TR/wai-aria-1.2/#navigation)을 준수합니다.
 
 ### <Highlight color='#1C5AEC'>Menubar의 차이점</Highlight>
-`NavigationMenu`를 `menubar`와 혼동해서는 안 되지만, 
-이 프리미티브는 name `menu`를 공유하여 navigation link 집합을 지칭하지만 WAI-ARIA `menu` 역할을 사용하지 않습니다. 
-`menu`와 `menubar`는 복합 포커스 관리 및 첫 글자 탐색과 같은 복잡한 기능을 특징으로 하기 때문에 
+
+`NavigationMenu`를 `menubar`와 혼동해서는 안 되지만,
+이 프리미티브는 name `menu`를 공유하여 navigation link 집합을 지칭하지만 WAI-ARIA `menu` 역할을 사용하지 않습니다.
+`menu`와 `menubar`는 복합 포커스 관리 및 첫 글자 탐색과 같은 복잡한 기능을 특징으로 하기 때문에
 데스크톱 응용 프로그램 창에서 가장 흔히 볼 수 있는 native 운영체제 menu와 같이 동작하기 때문입니다.
-이러한 기능은 종종 [`unnecessary for website navigation`](https://github.com/w3c/aria-practices/issues/353)으로 간주되며 
+이러한 기능은 종종 [`unnecessary for website navigation`](https://github.com/w3c/aria-practices/issues/353)으로 간주되며
 최악의 경우 기존 웹 사이트 패턴에 익숙한 사용자를 혼란스럽게 할 수 있습니다.
 
 자세한 내용은 [`W3C  Disclosure Navigation Menu`](https://www.w3.org/WAI/ARIA/apg/patterns/disclosure/examples/disclosure-navigation/) 예제를 참조하십시오
 
 ### <Highlight color='#1C5AEC'>링크 사용 및 aria-current</Highlight>
+
 menu 내의 모든 탐색 링크에 대해 `NavigationMenu.Link`를 사용하는 것은 중요합니다.
-이는 기본 목록뿐만 아니라 `NavigationMenu.Content`를 통해 렌더링되는 모든 콘텐츠 내에서도 적용됩니다. 
-이렇게 하면 일관된 키보드 상호 작용과 접근성을 보장할 뿐만 아니라 `aria-current` 및 active style 설정을 위한 `active` prop에 대한 액세스도 가능합니다. 
+이는 기본 목록뿐만 아니라 `NavigationMenu.Content`를 통해 렌더링되는 모든 콘텐츠 내에서도 적용됩니다.
+이렇게 하면 일관된 키보드 상호 작용과 접근성을 보장할 뿐만 아니라 `aria-current` 및 active style 설정을 위한 `active` prop에 대한 액세스도 가능합니다.
 타사 라우팅 구성 요소와의 사용에 대한 자세한 내용은 이 예시를 참조하십시오
 
 ### <Highlight color='#1C5AEC'>키보드 상호작용</Highlight>
-```jsx
-```
+
+<KeyboardInteractionTable
+  api={navigationMenuAPI}
+  category="keyboardInteractions"
+/>
