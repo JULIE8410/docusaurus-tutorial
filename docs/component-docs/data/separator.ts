@@ -12,8 +12,8 @@ const separatorAPI: Object = {
           type: "boolean",
           defaultValue: "false",
           description:
-            "Change the default rendered element for the one passed as a child, merging their props and behavior. <br /> <br /> Read our <a href='../guides/composition'>Composition</a> guide for more details.",
-          guide: "Composition",
+            "자식으로 전달된 기본 렌더링 요소를 변경하여 props와 동작을 병합합니다. 자세한 내용은 Composition 가이드를 참조하십시오.",
+          guide: "Composition 바로가기",
           url: "../guides/composition",
         },
         {
@@ -21,13 +21,13 @@ const separatorAPI: Object = {
           type: '"horizontal" | "vertical"',
           typeSimple: "enum",
           defaultValue: '"horizontal"',
-          description: "The orientation of the separator.",
+          description: "Separator의 방향",
         },
         {
           name: "decorative",
           type: "boolean",
           description:
-            "When <Code>true</Code>, signifies that it is purely visual, carries no semantic meaning, and ensures it is not present in the accessibility tree.",
+            "true일 경우 순수하게 시각적이고 의미론적 의미를 갖지 않으며 접근성 트리에 존재하지 않음을 의미합니다.",
         },
       ],
       dataAttribute: [

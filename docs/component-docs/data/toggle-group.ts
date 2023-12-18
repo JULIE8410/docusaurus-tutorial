@@ -12,8 +12,8 @@ const toggleGroupAPI: Object = {
           type: "boolean",
           defaultValue: "false",
           description:
-            "Change the default rendered element for the one passed as a child, merging their props and behavior. <br /> <br /> Read our <a href='../guides/composition'>Composition</a> guide for more details.",
-          guide: "Composition",
+            "자식으로 전달된 기본 렌더링 요소를 변경하여 props와 동작을 병합합니다. 자세한 내용은 Composition 가이드를 참조하십시오.",
+          guide: "Composition 바로가기",
           url: "../guides/composition",
         },
         {
@@ -22,21 +22,21 @@ const toggleGroupAPI: Object = {
           type: '"single" | "multiple"',
           typeSimple: "enum",
           description:
-            "Determines whether a single or multiple items can be pressed at a time.",
+            "한 번에 단일 또는 여러 항목을 누를 수 있는지 여부를 결정합니다.",
         },
         {
           name: "value",
           required: false,
           type: "string",
           description:
-            'The controlled value of the pressed item when <Code>type</Code> is{" "} <Code>"single"</Code>. Must be used in conjunction with{" "} <Code>onValueChange</Code>.',
+            '타입이 "single"일 때 눌린 항목의 제어된 값입니다. onValueChange와 함께 사용해야 합니다.',
         },
         {
           name: "defaultValue",
           required: false,
           type: "string",
           description:
-            'The value of the item to show as pressed when initially rendered and{" "} <Code>type</Code> is <Code>"single"</Code>. Use when you do not need to control the state of the items.',
+            '초기 렌더링 및 입력 시 눌려진 상태로 표시할 항목의 값이 "single"입니다. 항목의 상태를 제어할 필요가 없을 때 사용합니다.',
         },
         {
           name: "onValueChange",
@@ -44,7 +44,7 @@ const toggleGroupAPI: Object = {
           type: "(value: string) => void",
           typeSimple: "function",
           description:
-            'Event handler called when the pressed state of an item changes and{" "} <Code>type</Code> is <Code>"single"</Code>.',
+            '항목의 눌림 상태가 변경되고 타입이 "single"일 때 이벤트 핸들러가 호출됩니다.',
         },
         {
           name: "value",
@@ -52,7 +52,7 @@ const toggleGroupAPI: Object = {
           defaultValue: "[]",
           type: "string[]",
           description:
-            'The controlled value of the pressed items when <Code>type</Code> is{" "} <Code>"multiple"</Code>. Must be used in conjunction with{" "} <Code>onValueChange</Code>.',
+            '타입이 "multiple"일 때 눌린 항목의 제어된 값입니다. onValueChange와 함께 사용해야 합니다.',
         },
         {
           name: "defaultValue",
@@ -60,7 +60,7 @@ const toggleGroupAPI: Object = {
           defaultValue: "[]",
           type: "string[]",
           description:
-            'The values of the items to show as pressed when initially rendered and{" "} <Code>type</Code> is <Code>"multiple"</Code>. Use when you do not need to control the state of the items.',
+            '초기 렌더링 및 입력 시 눌려진 상태로 표시되는 항목의 값은 "multiple"입니다. 항목의 상태를 제어할 필요가 없을 때 사용합니다.',
         },
         {
           name: "onValueChange",
@@ -68,7 +68,7 @@ const toggleGroupAPI: Object = {
           type: "(value: string[]) => void",
           typeSimple: "function",
           description:
-            'Event handler called when the pressed state of an item changes and{" "} <Code>type</Code> is <Code>"multiple"</Code>.',
+            '항목의 눌림 상태가 변경되고 타입이 "multiple"일 때 이벤트 핸들러가 호출됩니다.',
         },
         {
           name: "disabled",
@@ -76,7 +76,7 @@ const toggleGroupAPI: Object = {
           type: "boolean",
           defaultValue: "false",
           description:
-            "When <Code>true</Code>, prevents the user from interacting with the toggle group and all its items.",
+            "true일 경우 사용자가 토글 그룹 및 해당 항목과 상호 작용하지 못하도록 합니다.",
         },
         {
           name: "rovingFocus",
@@ -84,7 +84,7 @@ const toggleGroupAPI: Object = {
           type: "boolean",
           defaultValue: "true",
           description:
-            "When <Code>false</Code>, navigating through the items using arrow keys will be disabled.",
+            "false일 경우 화살표 키를 사용하여 항목을 탐색할 수 없습니다.",
         },
         {
           name: "orientation",
@@ -93,7 +93,7 @@ const toggleGroupAPI: Object = {
           typeSimple: "enum",
           defaultValue: "undefined",
           description:
-            'The orientation of the component, which determines how focus moves:{" "} <Code>horizontal</Code> for left/right arrows and{" "} <Code>vertical</Code> for up/down arrows.',
+            "초점 이동 방법을 결정하는 구성 요소의 방향: 왼쪽/오른쪽 화살표의 경우 수평, 위쪽/아래쪽 화살표의 경우 수직입니다.",
         },
         {
           name: "dir",
@@ -101,7 +101,7 @@ const toggleGroupAPI: Object = {
           type: '"ltr" | "rtl"',
           typeSimple: "enum",
           description:
-            "The reading direction of the toggle group. If omitted, inherits globally from <Code>DirectionProvider</Code> or assumes LTR (left-to-right) reading mode.",
+            "토글 그룹의 읽기 방향. 생략된 경우 DirectionProvider에서 전역적으로 상속되거나 LTR(좌-우) 읽기 모드로 가정합니다.",
         },
         {
           name: "loop",
@@ -109,7 +109,7 @@ const toggleGroupAPI: Object = {
           type: "boolean",
           defaultValue: "true",
           description:
-            'When <Code>true</Code> and <Code>rovingFocus</Code> is{" "} <Code>true</Code>, keyboard navigation will loop from last item to first, and vice versa.',
+            "true이고 rovingFocus가 true이면 키보드 탐색이 마지막 항목에서 첫 번째 항목으로, 그 반대로 루프됩니다.",
         },
       ],
       dataAttribute: [
@@ -128,21 +128,21 @@ const toggleGroupAPI: Object = {
           type: "boolean",
           defaultValue: "false",
           description:
-            "Change the default rendered element for the one passed as a child, merging their props and behavior. <br /> <br /> Read our <a href='../guides/composition'>Composition</a> guide for more details.",
-          guide: "Composition",
+            "자식으로 전달된 기본 렌더링 요소를 변경하여 props와 동작을 병합합니다. 자세한 내용은 Composition 가이드를 참조하십시오.",
+          guide: "Composition 바로가기",
           url: "../guides/composition",
         },
         {
           name: "value",
           required: true,
           type: "string",
-          description: "A unique value for the item.",
+          description: "항목의 고유 값입니다.",
         },
         {
           name: "disabled",
           type: "boolean",
           description:
-            "When <Code>true</Code>, prevents the user from interacting with the item.",
+            "true일 경우 사용자가 항목과 상호 작용하지 못하도록 합니다.",
         },
       ],
       dataAttribute: [
@@ -152,7 +152,7 @@ const toggleGroupAPI: Object = {
         },
         {
           attribute: "[data-disabled]",
-          values: "Present when disabled",
+          values: "비활성화된 경우 표시됩니다.",
         },
         {
           attribute: "[data-orientation]",
@@ -168,39 +168,39 @@ const toggleGroupAPI: Object = {
         {
           keys: ["Tab"],
           description:
-            "Moves focus to either the pressed item or the first item in the group.",
+            "누른 항목 또는 그룹의 첫 번째 항목으로 포커스를 이동합니다.",
         },
         {
           keys: ["Space"],
-          description: "Activates/deactivates the item.",
+          description: "항목을 활성화/비활성화합니다.",
         },
         {
           keys: ["Enter"],
-          description: "Activates/deactivates the item.",
+          description: "항목을 활성화/비활성화합니다.",
         },
         {
           keys: ["ArrowDown"],
-          description: "Moves focus to the next item in the group.",
+          description: "포커스를 그룹의 다음 항목으로 이동합니다.",
         },
         {
           keys: ["ArrowRight"],
-          description: "Moves focus to the next item in the group.",
+          description: "포커스를 그룹의 다음 항목으로 이동합니다.",
         },
         {
           keys: ["ArrowUp"],
-          description: "Moves focus to the previous item in the group.",
+          description: "포커스를 그룹의 이전 항목으로 이동합니다.",
         },
         {
           keys: ["ArrowLeft"],
-          description: "Moves focus to the previous item in the group.",
+          description: "포커스를 그룹의 이전 항목으로 이동합니다.",
         },
         {
           keys: ["Home"],
-          description: "Moves focus to the first item.",
+          description: "첫 번째 항목으로 포커스를 이동합니다.",
         },
         {
           keys: ["End"],
-          description: "Moves focus to the last item.",
+          description: "포커스를 마지막 항목으로 이동합니다.",
         },
       ],
     },

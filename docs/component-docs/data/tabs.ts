@@ -12,8 +12,8 @@ const tabsAPI: Object = {
           type: "boolean",
           defaultValue: "false",
           description:
-            "Change the default rendered element for the one passed as a child, merging their props and behavior. <br /> <br /> Read our <a href='../guides/composition'>Composition</a> guide for more details.",
-          guide: "Composition",
+            "자식으로 전달된 기본 렌더링 요소를 변경하여 props와 동작을 병합합니다. 자세한 내용은 Composition 가이드를 참조하십시오.",
+          guide: "Composition 바로가기",
           url: "../guides/composition",
         },
         {
@@ -21,21 +21,21 @@ const tabsAPI: Object = {
           required: false,
           type: "string",
           description:
-            "The value of the tab that should be active when initially rendered. Use when you do not need to control the state of the tabs.",
+            "처음 렌더링할 때 활성화되어야 하는 탭의 값입니다. 탭의 상태를 제어할 필요가 없을 때 사용합니다.",
         },
         {
           name: "value",
           required: false,
           type: "string",
           description:
-            "The controlled value of the tab to activate. Should be used in conjunction with <Code>onValueChange</Code>.",
+            "활성화할 탭의 제어된 값입니다. onValueChange와 함께 사용해야 합니다.",
         },
         {
           name: "onValueChange",
           required: false,
           type: "(value: string) => void",
           typeSimple: "function",
-          description: "Event handler called when the value changes.",
+          description: "값이 변경될 때 이벤트 핸들러가 호출됩니다.",
         },
         {
           name: "orientation",
@@ -43,7 +43,7 @@ const tabsAPI: Object = {
           type: '"horizontal" | "vertical" | undefined',
           typeSimple: "enum",
           defaultValue: '"horizontal"',
-          description: "The orientation of the component.",
+          description: "Component의 방향",
         },
         {
           name: "dir",
@@ -51,7 +51,7 @@ const tabsAPI: Object = {
           type: '"ltr" | "rtl"',
           typeSimple: "enum",
           description:
-            'The reading direction of the tabs. If omitted, inherits globally from{" "} <Code>DirectionProvider</Code> or assumes LTR (left-to-right) reading mode.',
+            "탭의 읽기 방향. 생략된 경우 DirectionProvider에서 전역적으로 상속되거나 LTR(좌-우) 읽기 모드로 가정합니다.",
         },
         {
           name: "activationMode",
@@ -60,7 +60,7 @@ const tabsAPI: Object = {
           typeSimple: "enum",
           defaultValue: '"automatic"',
           description:
-            "When <Code>automatic</Code>, tabs are activated when receiving focus. When <Code>manual</Code>, tabs are activated when clicked.",
+            '"automatic"인 경우 탭은 포커스를 받을 때 활성화됩니다. "manual"인 경우 탭은 클릭할 때 활성화됩니다.',
         },
       ],
       dataAttribute: [
@@ -79,8 +79,8 @@ const tabsAPI: Object = {
           type: "boolean",
           defaultValue: "false",
           description:
-            "Change the default rendered element for the one passed as a child, merging their props and behavior. <br /> <br /> Read our <a href='../guides/composition'>Composition</a> guide for more details.",
-          guide: "Composition",
+            "자식으로 전달된 기본 렌더링 요소를 변경하여 props와 동작을 병합합니다. 자세한 내용은 Composition 가이드를 참조하십시오.",
+          guide: "Composition 바로가기",
           url: "../guides/composition",
         },
         {
@@ -89,7 +89,7 @@ const tabsAPI: Object = {
           type: "boolean",
           defaultValue: "true",
           description:
-            "When <Code>true</Code>, keyboard navigation will loop from last tab to first, and vice versa.",
+            "true일 경우 키보드 탐색이 마지막 탭에서 첫 번째 탭으로, 그 반대로 루프됩니다.",
         },
       ],
       dataAttribute: [
@@ -108,16 +108,15 @@ const tabsAPI: Object = {
           type: "boolean",
           defaultValue: "false",
           description:
-            "Change the default rendered element for the one passed as a child, merging their props and behavior. <br /> <br /> Read our <a href='../guides/composition'>Composition</a> guide for more details.",
-          guide: "Composition",
+            "자식으로 전달된 기본 렌더링 요소를 변경하여 props와 동작을 병합합니다. 자세한 내용은 Composition 가이드를 참조하십시오.",
+          guide: "Composition 바로가기",
           url: "../guides/composition",
         },
         {
           name: "value",
           required: true,
           type: "string",
-          description:
-            "A unique value that associates the trigger with a content.",
+          description: "트리거를 콘텐츠와 연결하는 고유 값입니다.",
         },
         {
           name: "disabled",
@@ -125,7 +124,7 @@ const tabsAPI: Object = {
           type: "boolean",
           defaultValue: "false",
           description:
-            "When <Code>true</Code>, prevents the user from interacting with the tab.",
+            "true일 경우 사용자가 탭과 상호 작용하지 못하도록 합니다.",
         },
       ],
       dataAttribute: [
@@ -135,7 +134,7 @@ const tabsAPI: Object = {
         },
         {
           attribute: "[data-disabled]",
-          values: "Present when disabled",
+          values: "비활성화된 경우 표시됩니다.",
         },
         {
           attribute: "[data-orientation]",
@@ -152,22 +151,21 @@ const tabsAPI: Object = {
           type: "boolean",
           defaultValue: "false",
           description:
-            "Change the default rendered element for the one passed as a child, merging their props and behavior. <br /> <br /> Read our <a href='../guides/composition'>Composition</a> guide for more details.",
-          guide: "Composition",
+            "자식으로 전달된 기본 렌더링 요소를 변경하여 props와 동작을 병합합니다. 자세한 내용은 Composition 가이드를 참조하십시오.",
+          guide: "Composition 바로가기",
           url: "../guides/composition",
         },
         {
           name: "value",
           required: true,
           type: "string",
-          description:
-            "A unique value that associates the content with a trigger.",
+          description: "내용을 트리거와 연결하는 고유 값입니다.",
         },
         {
           name: "forceMount",
           type: "boolean",
           description:
-            "Used to force mounting when more control is needed. Useful when controlling animation with React animation libraries.",
+            "더 많은 제어가 필요할 때 강제로 마운팅시키는 데 사용됩니다. 리액트 애니메이션 라이브러리로 애니메이션을 제어할 때 유용합니다.",
         },
       ],
       dataAttribute: [
@@ -189,37 +187,37 @@ const tabsAPI: Object = {
         {
           keys: ["Tab"],
           description:
-            "When focus moves onto the tabs, focuses the active trigger. When a trigger is focused, moves focus to the active content.",
+            "포커스가 탭으로 이동하면 활성 트리거에 포커스를 맞춥니다. 트리거가 포커스되면 포커스를 활성 컨텐츠로 이동합니다.",
         },
         {
           keys: ["ArrowDown"],
           description:
-            'Moves focus to the next trigger depending on <Code>orientation</Code>{" "} and activates its associated content.',
+            " 방향에 따라 포커스를 다음 트리거로 이동하고 관련 내용을 활성화합니다.",
         },
         {
           keys: ["ArrowRight"],
           description:
-            'Moves focus to the next trigger depending on <Code>orientation</Code>{" "} and activates its associated content.',
+            " 방향에 따라 포커스를 다음 트리거로 이동하고 관련 내용을 활성화합니다.",
         },
         {
           keys: ["ArrowUp"],
           description:
-            'Moves focus to the previous trigger depending on{" "} <Code>orientation</Code> and activates its associated content.',
+            "방향에 따라 포커스를 이전 트리거로 이동하고 관련 내용을 활성화합니다.",
         },
         {
           keys: ["ArrowLeft"],
           description:
-            'Moves focus to the previous trigger depending on{" "} <Code>orientation</Code> and activates its associated content.',
+            "방향에 따라 포커스를 이전 트리거로 이동하고 관련 내용을 활성화합니다.",
         },
         {
           keys: ["Home"],
           description:
-            "Moves focus to the first trigger and activates its associated content.",
+            "포커스를 첫 번째 트리거로 이동하고 관련 내용을 활성화합니다.",
         },
         {
           keys: ["End"],
           description:
-            "Moves focus to the last trigger and activates its associated content.",
+            "포커스를 마지막 트리거로 이동하고 관련 내용을 활성화합니다.",
         },
       ],
     },

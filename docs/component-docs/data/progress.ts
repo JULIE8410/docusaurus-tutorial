@@ -11,26 +11,26 @@ const progressAPI: Object = {
           type: "boolean",
           defaultValue: "false",
           description:
-            "Change the default rendered element for the one passed as a child, merging their props and behavior. <br /> <br /> Read our <a href='../guides/composition'>Composition</a> guide for more details.",
-          guide: "Composition",
+            "자식으로 전달된 기본 렌더링 요소를 변경하여 props와 동작을 병합합니다. 자세한 내용은 Composition 가이드를 참조하십시오.",
+          guide: "Composition 바로가기",
           url: "../guides/composition",
         },
         {
           name: "value",
           type: "number | null",
-          description: "The progress value.",
+          description: "Progress의 값",
         },
         {
           name: "max",
           type: "number",
-          description: "The maximum progress value.",
+          description: "Progress의 최대값",
         },
         {
           name: "getValueLabel",
           type: "(value: number, max: number) => string",
           typeSimple: "function",
           description:
-            "A function to get the accessible label text representing the current value in a human-readable format. If not provided, the value label will be read as the numeric value as a percentage of the max value.",
+            "현재 값을 나타내는 접근 가능한 레이블 텍스트를 사람이 읽을 수 있는 형식으로 가져오는 함수입니다. 제공되지 않은 경우 값 레이블은 최대값의 백분율로 숫자 값으로 읽힙니다.",
         },
       ],
       dataAttribute: [
@@ -40,11 +40,11 @@ const progressAPI: Object = {
         },
         {
           attribute: "[data-value]",
-          values: "The current value",
+          values: "현재값",
         },
         {
           attribute: "[data-max]",
-          values: "The max value",
+          values: "최대값",
         },
       ],
     },
@@ -57,8 +57,8 @@ const progressAPI: Object = {
           type: "boolean",
           defaultValue: "false",
           description:
-            "Change the default rendered element for the one passed as a child, merging their props and behavior. <br /> <br /> Read our <a href='../guides/composition'>Composition</a> guide for more details.",
-          guide: "Composition",
+            "자식으로 전달된 기본 렌더링 요소를 변경하여 props와 동작을 병합합니다. 자세한 내용은 Composition 가이드를 참조하십시오.",
+          guide: "Composition 바로가기",
           url: "../guides/composition",
         },
       ],
@@ -69,45 +69,13 @@ const progressAPI: Object = {
         },
         {
           attribute: "[data-value]",
-          values: "The current value",
+          values: "현재값",
         },
         {
           attribute: "[data-max]",
-          values: "The max value",
+          values: "최대값",
         },
       ],
-    },
-    {
-      tag: "portal",
-      props: [],
-    },
-    {
-      tag: "overlay",
-      props: [],
-      dataAttribute: [],
-    },
-    {
-      tag: "content",
-      props: [],
-      dataAttribute: [],
-    },
-    {
-      tag: "close",
-      props: [],
-    },
-    {
-      tag: "title",
-      props: [],
-    },
-    {
-      tag: "description",
-      props: [],
-    },
-  ],
-  accessibility: [
-    {
-      tag: "keyboardInteractions",
-      props: [],
     },
   ],
 };

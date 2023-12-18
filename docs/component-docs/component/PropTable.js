@@ -59,7 +59,8 @@ function DataElement(props) {
       <td>{typeSimple ? `${typeSimple} ${type}` : type}</td>
       <td>{defaultValue}</td>
       <td>
-        {description} {guide ? <a href={url}>{guide}</a> : ""}
+        {description}
+        {/* {guide ? <a href={url}>{guide}</a> : ""} */}
       </td>
     </tr>
   );

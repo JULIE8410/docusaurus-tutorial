@@ -11,45 +11,45 @@ const radioGroupAPI: Object = {
           type: "boolean",
           defaultValue: "false",
           description:
-            "Change the default rendered element for the one passed as a child, merging their props and behavior. <br /> <br /> Read our <a href='../guides/composition'>Composition</a> guide for more details.",
-          guide: "Composition",
+            "자식으로 전달된 기본 렌더링 요소를 변경하여 props와 동작을 병합합니다. 자세한 내용은 Composition 가이드를 참조하십시오.",
+          guide: "Composition 바로가기",
           url: "../guides/composition",
         },
         {
           name: "defaultValue",
           type: "string",
           description:
-            "The value of the radio item that should be checked when initially rendered. Use when you do not need to control the state of the radio items.",
+            "처음 렌더링할 때 확인해야 하는 라디오 항목의 값. 라디오 항목의 상태를 제어할 필요가 없을 때 사용합니다.",
         },
         {
           name: "value",
           type: "string",
           description:
-            "The controlled value of the radio item to check. Should be used in conjunction with <Code>onValueChange</Code>.",
+            "확인할 라디오 항목의 제어된 값입니다. onValueChange와 함께 사용해야 합니다.",
         },
         {
           name: "onValueChange",
           type: "(value: string) => void",
           typeSimple: "function",
-          description: "Event handler called when the value changes.",
+          description: "값이 변경될 때 이벤트 핸들러가 호출됩니다.",
         },
         {
           name: "disabled",
           type: "boolean",
           description:
-            "When <Code>true</Code>, prevents the user from interacting with radio items.",
+            "true일 경우 사용자가 라디오 항목과 상호 작용하지 못하도록 합니다.",
         },
         {
           name: "name",
           type: "string",
           description:
-            "The name of the group. Submitted with its owning form as part of a name/value pair.",
+            "그룹 이름. 이름/값 쌍의 일부로 소유 양식과 함께 제출됩니다.",
         },
         {
           name: "required",
           type: "boolean",
           description:
-            "When <Code>true</Code>, indicates that the user must check a radio item before the owning form can be submitted.",
+            "true일 경우 소유 양식을 제출하기 전에 사용자가 라디오 항목을 확인해야 함을 나타냅니다.",
         },
         {
           name: "orientation",
@@ -57,7 +57,7 @@ const radioGroupAPI: Object = {
           type: '"horizontal" | "vertical" | undefined',
           typeSimple: "enum",
           defaultValue: "undefined",
-          description: "The orientation of the component.",
+          description: "컴포넌트의 방향",
         },
         {
           name: "dir",
@@ -65,7 +65,7 @@ const radioGroupAPI: Object = {
           type: '"ltr" | "rtl"',
           typeSimple: "enum",
           description:
-            "The reading direction of the radio group. If omitted, inherits globally from <Code>DirectionProvider</Code> or assumes LTR (left-to-right) reading mode.",
+            "라디오 그룹의 읽기 방향. 생략된 경우 DirectionProvider에서 전역적으로 상속되거나 LTR(좌-우) 읽기 모드로 가정합니다.",
         },
         {
           name: "loop",
@@ -73,13 +73,13 @@ const radioGroupAPI: Object = {
           type: "boolean",
           defaultValue: "true",
           description:
-            "When <Code>true</Code>, keyboard navigation will loop from last item to first, and vice versa.",
+            "true일 경우 키보드 탐색이 마지막 항목에서 첫 번째 항목으로, 그 반대로 루프됩니다.",
         },
       ],
       dataAttribute: [
         {
           attribute: "[data-disabled]",
-          values: "Present when disabled",
+          values: "비활성화된 경우 표시됩니다.",
         },
       ],
     },
@@ -92,27 +92,26 @@ const radioGroupAPI: Object = {
           type: "boolean",
           defaultValue: "false",
           description:
-            "Change the default rendered element for the one passed as a child, merging their props and behavior. <br /> <br /> Read our <a href='../guides/composition'>Composition</a> guide for more details.",
-          guide: "Composition",
+            "자식으로 전달된 기본 렌더링 요소를 변경하여 props와 동작을 병합합니다. 자세한 내용은 Composition 가이드를 참조하십시오.",
+          guide: "Composition 바로가기",
           url: "../guides/composition",
         },
         {
           name: "value",
           type: "string",
-          description:
-            "The value given as data when submitted with a <Code>name</Code>.",
+          description: "이름과 함께 제출될 때 데이터로 제공되는 값입니다.",
         },
         {
           name: "disabled",
           type: "boolean",
           description:
-            "When <Code>true</Code>, prevents the user from interacting with the radio item.",
+            "true일 경우 사용자가 라디오 항목과 상호 작용하지 못하도록 합니다.",
         },
         {
           name: "required",
           type: "boolean",
           description:
-            "When <Code>true</Code>, indicates that the user must check the radio item before the owning form can be submitted.",
+            "true일 경우 소유 양식을 제출하기 전에 사용자가 라디오 항목을 확인해야 함을 나타냅니다.",
         },
       ],
       dataAttribute: [
@@ -122,7 +121,7 @@ const radioGroupAPI: Object = {
         },
         {
           attribute: "[data-disabled]",
-          values: "Present when disabled",
+          values: "비활성화된 경우 표시됩니다.",
         },
       ],
     },
@@ -135,15 +134,15 @@ const radioGroupAPI: Object = {
           type: "boolean",
           defaultValue: "false",
           description:
-            "Change the default rendered element for the one passed as a child, merging their props and behavior. <br /> <br /> Read our <a href='../guides/composition'>Composition</a> guide for more details.",
-          guide: "Composition",
+            "자식으로 전달된 기본 렌더링 요소를 변경하여 props와 동작을 병합합니다. 자세한 내용은 Composition 가이드를 참조하십시오.",
+          guide: "Composition 바로가기",
           url: "../guides/composition",
         },
         {
           name: "forceMount",
           type: "boolean",
           description:
-            "Used to force mounting when more control is needed. Useful when controlling animation with React animation libraries.",
+            "더 많은 제어가 필요할 때 강제로 마운트시키는 데 사용됩니다. 리액트 애니메이션 라이브러리로 애니메이션을 제어할 때 유용합니다.",
         },
       ],
       dataAttribute: [
@@ -153,7 +152,7 @@ const radioGroupAPI: Object = {
         },
         {
           attribute: "[data-disabled]",
-          values: "Present when disabled",
+          values: "비활성화된 경우 표시됩니다.",
         },
       ],
     },
@@ -165,29 +164,32 @@ const radioGroupAPI: Object = {
         {
           keys: ["Tab"],
           description:
-            "Moves focus to either the checked radio item or the first radio item in the group.",
+            "포커스를 선택한 라디오 항목 또는 그룹의 첫 번째 라디오 항목으로 이동합니다.",
         },
         {
           keys: ["Space"],
-          description: "When focus is on an unchecked radio item, checks it.",
+          description:
+            "선택되지 않은 라디오 항목에 초점이 맞추어져 있으면 확인합니다.",
         },
         {
           keys: ["ArrowDown"],
           description:
-            "Moves focus and checks the next radio item in the group.",
+            "포커스를 이동하고 그룹의 다음 라디오 항목을 확인합니다.",
         },
         {
           keys: ["ArrowRight"],
           description:
-            "Moves focus and checks the next radio item in the group.",
+            "포커스를 이동하고 그룹의 다음 라디오 항목을 확인합니다.",
         },
         {
           keys: ["ArrowUp"],
-          description: "Moves focus to the previous radio item in the group.",
+          description:
+            "포커스를 이동하고 그룹의 이전 라디오 항목을 확인합니다.",
         },
         {
           keys: ["ArrowLeft"],
-          description: "Moves focus to the previous radio item in the group.",
+          description:
+            "포커스를 이동하고 그룹의 이전 라디오 항목을 확인합니다.",
         },
       ],
     },

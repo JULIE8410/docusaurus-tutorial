@@ -9,20 +9,20 @@ const alertDialogAPI: Object = {
           name: "defaultOpen",
           type: "boolean",
           description:
-            "The open state of the dialog when it is initially rendered. Use when you do not need to control its open state.",
+            "Dialog가 처음 렌더링될 때 열려 있는 상태입니다. 열려 있는 상태를 제어할 필요가 없을 때 사용합니다.",
         },
         {
           name: "open",
           type: "boolean",
           description:
-            "The controlled open state of the dialog. Must be used in conjunction with <Code>onOpenChange</Code>.",
+            "Dialog의 제어된 열린 상태입니다. OpenChange와 함께 사용해야 합니다.",
         },
         {
           name: "onOpenChange",
           type: "(open: boolean) => void",
           typeSimple: "function",
           description:
-            "Event handler called when the open state of the dialog changes.",
+            "Dialog의 열린 상태가 변경될 때 이벤트 처리기가 호출됩니다.",
         },
       ],
     },
@@ -35,8 +35,8 @@ const alertDialogAPI: Object = {
           type: "boolean",
           defaultValue: "false",
           description:
-            "Change the default rendered element for the one passed as a child, merging their props and behavior. <br /> <br /> Read our <a href='../guides/composition'>Composition</a> guide for more details.",
-          guide: "Composition",
+            "자식으로 전달된 기본 렌더링 요소를 변경하여 props와 동작을 병합합니다. 자세한 내용은 Composition 가이드를 참조하십시오.",
+          guide: "Composition 바로가기",
           url: "../guides/composition",
         },
       ],
@@ -54,14 +54,13 @@ const alertDialogAPI: Object = {
           name: "forceMount",
           type: "boolean",
           description:
-            "Used to force mounting when more control is needed. Useful when controlling animation with React animation libraries. If used on this part, it will be inherited by <Code>AlertDialog.Overlay</Code> and{' '} <Code>AlertDialog.Content</Code>.",
+            "더 많은 제어가 필요할 때 강제로 장착하는 데 사용됩니다. 리액트 애니메이션 라이브러리로 애니메이션을 제어할 때 유용합니다. 여기에서 사용할 경우 AlertDialog.Overlay 및 AlertDialog.Content가 상속합니다.",
         },
         {
           name: "container",
           type: "HTMLElement",
           defaultValue: "document.body",
-          description:
-            "Specify a container element to portal the content into.",
+          description: "내용을 포탈할 컨테이너 요소를 지정합니다.",
         },
       ],
     },
@@ -74,15 +73,15 @@ const alertDialogAPI: Object = {
           type: "boolean",
           defaultValue: "false",
           description:
-            "Change the default rendered element for the one passed as a child, merging their props and behavior. <br /> <br /> Read our <a href='../guides/composition'>Composition</a> guide for more details.",
-          guide: "Composition",
+            "자식으로 전달된 기본 렌더링 요소를 변경하여 props와 동작을 병합합니다. 자세한 내용은 Composition 가이드를 참조하십시오.",
+          guide: "Composition 바로가기",
           url: "../guides/composition",
         },
         {
           name: "forceMount",
           type: "boolean",
           description:
-            "Used to force mounting when more control is needed. Useful when controlling animation with React animation libraries. It inherits from{' '} <Code>AlertDialog.Portal</Code>.",
+            "더 많은 제어가 필요할 때 강제로 마운팅시키는 데 사용됩니다. 리액트 애니메이션 라이브러리로 애니메이션을 제어할 때 유용합니다. AlertDialog.Portal에서 상속됩니다.",
         },
       ],
       dataAttribute: [
@@ -101,36 +100,36 @@ const alertDialogAPI: Object = {
           type: "boolean",
           defaultValue: "false",
           description:
-            "Change the default rendered element for the one passed as a child, merging their props and behavior. <br /> <br /> Read our <a href='../guides/composition'>Composition</a> guide for more details.",
-          guide: "Composition",
+            "자식으로 전달된 기본 렌더링 요소를 변경하여 props와 동작을 병합합니다. 자세한 내용은 Composition 가이드를 참조하십시오.",
+          guide: "Composition 바로가기",
           url: "../guides/composition",
         },
         {
           name: "forceMount",
           type: "boolean",
           description:
-            "Used to force mounting when more control is needed. Useful when controlling animation with React animation libraries. It inherits from{' '} <Code>AlertDialog.Portal</Code>.",
+            "더 많은 제어가 필요할 때 강제로 마운팅시키는 데 사용됩니다. 리액트 애니메이션 라이브러리로 애니메이션을 제어할 때 유용합니다. AlertDialog.Portal에서 상속됩니다.",
         },
         {
           name: "onOpenAutoFocus",
           type: "(event: Event) => void",
           typeSimple: "function",
           description:
-            "Event handler called when focus moves to the destructive action after opening. It can be prevented by calling{' '} <Code>event.preventDefault</Code>.",
+            "열린 후 포커스가 파괴적인 동작으로 이동할 때 이벤트 핸들러가 호출됩니다. 이는 event.preventDefault를 호출하여 방지할 수 있습니다.",
         },
         {
           name: "onCloseAutoFocus",
           type: "(event: Event) => void",
           typeSimple: "function",
           description:
-            "Event handler called when focus moves to the trigger after closing. It can be prevented by calling <Code>event.preventDefault</Code>.",
+            "닫힘 후 포커스가 트리거로 이동하면 이벤트 핸들러가 호출됩니다. 이는 event.preventDefault를 호출하여 방지할 수 있습니다.",
         },
         {
           name: "onEscapeKeyDown",
           type: "(event: KeyboardEvent) => void",
           typeSimple: "function",
           description:
-            "Event handler called when the escape key is down. It can be prevented by calling <Code>event.preventDefault</Code>.",
+            "escape key가 다운되었을 때 이벤트 핸들러가 호출되었습니다. 이는 event.preventDefault를 호출하여 방지할 수 있습니다.",
         },
       ],
       dataAttribute: [
@@ -149,8 +148,8 @@ const alertDialogAPI: Object = {
           type: "boolean",
           defaultValue: "false",
           description:
-            "Change the default rendered element for the one passed as a child, merging their props and behavior. <br /> <br /> Read our <a href='../guides/composition'>Composition</a> guide for more details.",
-          guide: "Composition",
+            "자식으로 전달된 기본 렌더링 요소를 변경하여 props와 동작을 병합합니다. 자세한 내용은 Composition 가이드를 참조하십시오.",
+          guide: "Composition 바로가기",
           url: "../guides/composition",
         },
       ],
@@ -164,8 +163,8 @@ const alertDialogAPI: Object = {
           type: "boolean",
           defaultValue: "false",
           description:
-            "Change the default rendered element for the one passed as a child, merging their props and behavior. <br /> <br /> Read our <a href='../guides/composition'>Composition</a> guide for more details.",
-          guide: "Composition",
+            "자식으로 전달된 기본 렌더링 요소를 변경하여 props와 동작을 병합합니다. 자세한 내용은 Composition 가이드를 참조하십시오.",
+          guide: "Composition 바로가기",
           url: "../guides/composition",
         },
       ],
@@ -179,8 +178,8 @@ const alertDialogAPI: Object = {
           type: "boolean",
           defaultValue: "false",
           description:
-            "Change the default rendered element for the one passed as a child, merging their props and behavior. <br /> <br /> Read our <a href='../guides/composition'>Composition</a> guide for more details.",
-          guide: "Composition",
+            "자식으로 전달된 기본 렌더링 요소를 변경하여 props와 동작을 병합합니다. 자세한 내용은 Composition 가이드를 참조하십시오.",
+          guide: "Composition 바로가기",
           url: "../guides/composition",
         },
       ],
@@ -194,8 +193,8 @@ const alertDialogAPI: Object = {
           type: "boolean",
           defaultValue: "false",
           description:
-            "Change the default rendered element for the one passed as a child, merging their props and behavior. <br /> <br /> Read our <a href='../guides/composition'>Composition</a> guide for more details.",
-          guide: "Composition",
+            "자식으로 전달된 기본 렌더링 요소를 변경하여 props와 동작을 병합합니다. 자세한 내용은 Composition 가이드를 참조하십시오.",
+          guide: "Composition 바로가기",
           url: "../guides/composition",
         },
       ],
@@ -207,24 +206,24 @@ const alertDialogAPI: Object = {
       props: [
         {
           keys: ["Space"],
-          description: "Opens/closes the dialog.",
+          description: "대화상자를 열거나 닫습니다.",
         },
         {
           keys: ["Enter"],
-          description: "Opens/closes the dialog.",
+          description: "대화상자를 열거나 닫습니다.",
         },
         {
           keys: ["Tab"],
-          description: "Moves focus to the next focusable element.",
+          description: "포커스를 다음 포커스 가능한 요소로 이동합니다.",
         },
         {
           keys: ["Shift + Tab"],
-          description: "Moves focus to the previous focusable element.",
+          description: "포커스를 이전 포커스 가능한 요소로 이동합니다.",
         },
         {
           keys: ["Esc"],
           description:
-            "Closes the dialog and moves focus to <Code>AlertDialog.Trigger</Code>.",
+            "대화상자를 닫고 포커스를 AlertDialog.Trigger로 이동합니다.",
         },
       ],
     },

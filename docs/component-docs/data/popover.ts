@@ -9,20 +9,20 @@ const popoverAPI: Object = {
           name: "defaultOpen",
           type: "boolean",
           description:
-            "The open state of the popover when it is initially rendered. Use when you do not need to control its open state.",
+            "처음 렌더링될 때 팝업의 열린 상태입니다. 열린 상태를 제어할 필요가 없을 때 사용합니다.",
         },
         {
           name: "open",
           type: "boolean",
           description:
-            "The controlled open state of the popover. Must be used in conjunction with <Code>onOpenChange</Code>.",
+            "제어된 팝오버의 열린 상태입니다. onOpenChange와 함께 사용해야 합니다.",
         },
         {
           name: "onOpenChange",
           type: "(open: boolean) => void",
           typeSimple: "function",
           description:
-            "Event handler called when the open state of the popover changes.",
+            "팝오버의 열린 상태가 변경될 때 이벤트 핸들러가 호출됩니다.",
         },
         {
           name: "modal",
@@ -30,7 +30,7 @@ const popoverAPI: Object = {
           type: "boolean",
           defaultValue: "false",
           description:
-            "The modality of the popover. When set to <Code>true</Code>, interaction with outside elements will be disabled and only popover content will be visible to screen readers.",
+            "팝오버의 모달리티(modality) 입니다. true로 설정하면 외부 요소와의 상호 작용이 비활성화되고 화면 판독기에 팝오버 컨텐츠만 표시됩니다.",
         },
       ],
     },
@@ -43,8 +43,8 @@ const popoverAPI: Object = {
           type: "boolean",
           defaultValue: "false",
           description:
-            "Change the default rendered element for the one passed as a child, merging their props and behavior. <br /> <br /> Read our <a href='../guides/composition'>Composition</a> guide for more details.",
-          guide: "Composition",
+            "자식으로 전달된 기본 렌더링 요소를 변경하여 props와 동작을 병합합니다. 자세한 내용은 Composition 가이드를 참조하십시오.",
+          guide: "Composition 바로가기",
           url: "../guides/composition",
         },
       ],
@@ -64,8 +64,8 @@ const popoverAPI: Object = {
           type: "boolean",
           defaultValue: "false",
           description:
-            "Change the default rendered element for the one passed as a child, merging their props and behavior. <br /> <br /> Read our <a href='../guides/composition'>Composition</a> guide for more details.",
-          guide: "Composition",
+            "자식으로 전달된 기본 렌더링 요소를 변경하여 props와 동작을 병합합니다. 자세한 내용은 Composition 가이드를 참조하십시오.",
+          guide: "Composition 바로가기",
           url: "../guides/composition",
         },
       ],
@@ -77,14 +77,13 @@ const popoverAPI: Object = {
           name: "forceMount",
           type: "boolean",
           description:
-            "Used to force mounting when more control is needed. Useful when controlling animation with React animation libraries. If used on this part, it will be inherited by <Code>Popover.Content</Code>.",
+            "더 많은 제어가 필요할 때 강제로 마운트시키기 위해 사용됩니다. React 애니메이션 라이브러리로 애니메이션을 제어할 때 유용합니다. 이 부분에서 사용하면 Popover.Content에서 상속됩니다.",
         },
         {
           name: "container",
           type: "HTMLElement",
           defaultValue: "document.body",
-          description:
-            "Specify a container element to portal the content into.",
+          description: "내용을 포탈할 컨테이너 요소를 지정합니다.",
         },
       ],
     },
@@ -97,8 +96,8 @@ const popoverAPI: Object = {
           type: "boolean",
           defaultValue: "false",
           description:
-            "Change the default rendered element for the one passed as a child, merging their props and behavior. <br /> <br /> Read our <a href='../guides/composition'>Composition</a> guide for more details.",
-          guide: "Composition",
+            "자식으로 전달된 기본 렌더링 요소를 변경하여 props와 동작을 병합합니다. 자세한 내용은 Composition 가이드를 참조하십시오.",
+          guide: "Composition 바로가기",
           url: "../guides/composition",
         },
         {
@@ -106,48 +105,48 @@ const popoverAPI: Object = {
           type: "(event: Event) => void",
           typeSimple: "function",
           description:
-            'Event handler called when focus moves into the component after opening. It can be prevented by calling{" "} <Code>event.preventDefault</Code>.',
+            "열린 후 포커스가 컴포넌트로 이동할 때 이벤트 핸들러가 호출됩니다. 이는 event.preventDefault를 호출하여 방지할 수 있습니다.",
         },
         {
           name: "onCloseAutoFocus",
           type: "(event: Event) => void",
           typeSimple: "function",
           description:
-            "Event handler called when focus moves to the trigger after closing. It can be prevented by calling <Code>event.preventDefault</Code>.",
+            "닫힘 후 포커스가 트리거로 이동하면 이벤트 핸들러가 호출됩니다. 이는 event.preventDefault를 호출하여 방지할 수 있습니다.",
         },
         {
           name: "onEscapeKeyDown",
           type: "(event: KeyboardEvent) => void",
           typeSimple: "function",
           description:
-            "Event handler called when the escape key is down. It can be prevented by calling <Code>event.preventDefault</Code>.",
+            "escape key가 눌러졌을 때 이벤트 핸들러가 호출됩니다. 이는 event.preventDefault를 호출하여 방지할 수 있습니다.",
         },
         {
           name: "onPointerDownOutside",
           type: "(event: PointerDownOutsideEvent) => void",
           typeSimple: "function",
           description:
-            'Event handler called when a pointer event occurs outside the bounds of the component. It can be prevented by calling{" "} <Code>event.preventDefault</Code>.',
+            "포인터 이벤트가 컴포넌트의 경계 밖에서 발생하면 이벤트 처리기가 호출됩니다. 이는 event.preventDefault를 호출하여 방지할 수 있습니다.",
         },
         {
           name: "onFocusOutside",
           type: "(event: FocusOutsideEvent) => void",
           typeSimple: "function",
           description:
-            'Event handler called when focus moves outside the bounds of the component. It can be prevented by calling{" "} <Code>event.preventDefault</Code>.',
+            "포커스가 컴포넌트의 경계 밖으로 이동할 때 이벤트 핸들러가 호출됩니다. 이는 event.preventDefault를 호출하여 방지할 수 있습니다.",
         },
         {
           name: "onInteractOutside",
           type: "(event: PointerDownOutsideEvent | FocusOutsideEvent) => void",
           typeSimple: "function",
           description:
-            "Event handler called when an interaction (pointer or focus event) happens outside the bounds of the component. It can be prevented by calling <Code>event.preventDefault</Code>.",
+            "상호 작용(포인트 또는 포커스 이벤트)이 컴포넌트의 경계 밖에서 발생할 때 이벤트 핸들러가 호출됩니다. 이는 event.preventDefault를 호출하여 방지할 수 있습니다.",
         },
         {
           name: "forceMount",
           type: "boolean",
           description:
-            'Used to force mounting when more control is needed. Useful when controlling animation with React animation libraries. It inherits from{" "} <Code>Popover.Portal</Code>.',
+            "제어가 더 필요할 때 강제로 마운트시키는 데 사용됩니다. React 애니메이션 라이브러리로 애니메이션을 제어할 때 유용합니다. Popover.Portal에서 상속됩니다.",
         },
         {
           name: "side",
@@ -155,35 +154,33 @@ const popoverAPI: Object = {
           typeSimple: "enum",
           defaultValue: '"bottom"',
           description:
-            "The preferred side of the anchor to render against when open. Will be reversed when collisions occur and <Code>avoidCollisions</Code> is enabled.",
+            "열려 있을 때 상대로 렌더링할 앵커의 기본 설정으로, 충돌이 충돌 방지가 활성화되면 반전됩니다.",
         },
         {
           name: "sideOffset",
           type: "number",
           defaultValue: "0",
-          description: "The distance in pixels from the anchor.",
+          description: "Anchor로부터의 거리(픽셀)입니다.",
         },
         {
           name: "align",
           type: '"start" | "center" | "end"',
           typeSimple: "enum",
           defaultValue: '"center"',
-          description:
-            "The preferred alignment against the anchor. May change when collisions occur.",
+          description: "Anchor에 대한 선호 정렬로, 충돌 시 변경될 수 있습니다.",
         },
         {
           name: "alignOffset",
           type: "number",
           defaultValue: "0",
-          description:
-            'An offset in pixels from the <Code>"start"</Code> or{" "} <Code>"end"</Code> alignment options.',
+          description: '"start" 또는 "end" 정렬 옵션의 픽셀 단위 오프셋입니다.',
         },
         {
           name: "avoidCollisions",
           type: "boolean",
           defaultValue: "true",
           description:
-            "When <Code>true</Code>, overrides the <Code>side</Code> and <Code>align</Code> preferences to prevent collisions with boundary edges.",
+            "true일 경우, 경계 모서리와의 충돌을 방지하기 위해 측면을 재정의하고 설정을 정렬합니다.",
         },
         {
           name: "collisionBoundary",
@@ -191,7 +188,7 @@ const popoverAPI: Object = {
           typeSimple: "Boundary",
           defaultValue: "[]",
           description:
-            "The element used as the collision boundary. By default this is the viewport, though you can provide additional element(s) to be included in this check.",
+            "충돌 경계로 사용되는 요소입니다. 기본적으로 viewport이지만 이 체크에 포함될 추가 요소를 제공할 수 있습니다.",
         },
         {
           name: "collisionPadding",
@@ -199,14 +196,14 @@ const popoverAPI: Object = {
           typeSimple: "number | Padding",
           defaultValue: "0",
           description:
-            'The distance in pixels from the boundary edges where collision detection should occur. Accepts a number (same for all sides", or a partial padding object, for example: <Code>{`{ top: 20, left: 20 }`}</Code>.',
+            "충돌 감지가 발생해야 하는 경계 가장자리로부터의 픽셀 간격입니다. 숫자(모든 변에 대해 동일함) 또는 부분 패딩 개체를 받아들입니다. (예:{top: 20, left: 20}),",
         },
         {
           name: "arrowPadding",
           type: "number",
           defaultValue: "0",
           description:
-            "The padding between the arrow and the edges of the content. If your content has <Code>border-radius</Code>, this will prevent it from overflowing the corners.",
+            "콘텐츠의 화살표와 가장자리 사이에 있는 패딩입니다. 콘텐츠에 테두리-반지름이 있는 경우에는 모서리가 넘치지 않도록 방지합니다.",
         },
         {
           name: "sticky",
@@ -214,14 +211,13 @@ const popoverAPI: Object = {
           typeSimple: "enum",
           defaultValue: '"partial"',
           description:
-            'The sticky behavior on the align axis. <Code>"partial"</Code> will keep the content in the boundary as long as the trigger is at least partially in the boundary whilst <Code>"always"</Code> will keep the content in the boundary regardless.',
+            '정렬 축의 들러붙는 동작. "partial"은 트리거가 적어도 부분적으로 경계에 있는 한 내용을 경계에 유지하고, "always"는 관계없이 내용을 경계에 유지합니다.',
         },
         {
           name: "hideWhenDetached",
           type: "boolean",
           defaultValue: "false",
-          description:
-            "Whether to hide the content when the trigger becomes fully occluded.",
+          description: "트리거가 완전히 차단될 때 내용을 숨길지 여부입니다.",
         },
       ],
       dataAttribute: [
@@ -241,26 +237,23 @@ const popoverAPI: Object = {
       cssVariable: [
         {
           cssVariable: "--radix-popover-content-transform-origin",
-          description:
-            "The <Code>transform-origin</Code> computed from the content and arrow positions/offsets",
+          description: "내용 및 화살표 위치/오프셋에서 계산된 변환 원점입니다.",
         },
         {
           cssVariable: "--radix-popover-content-available-width",
-          description:
-            "The remaining width between the trigger and the boundary edge",
+          description: "트리거와 경계 모서리 사이의 나머지 너비입니다.",
         },
         {
           cssVariable: "--radix-popover-content-available-height",
-          description:
-            "The remaining height between the trigger and the boundary edge",
+          description: "트리거와 경계 모서리 사이의 나머지 높이입니다.",
         },
         {
           cssVariable: "--radix-popover-trigger-width",
-          description: "The width of the trigger",
+          description: "트리거의 너비입니다.",
         },
         {
           cssVariable: "--radix-popover-trigger-height",
-          description: "The height of the trigger",
+          description: "트리거의 높이입니다.",
         },
       ],
     },
@@ -273,21 +266,21 @@ const popoverAPI: Object = {
           type: "boolean",
           defaultValue: "false",
           description:
-            "Change the default rendered element for the one passed as a child, merging their props and behavior. <br /> <br /> Read our <a href='../guides/composition'>Composition</a> guide for more details.",
-          guide: "Composition",
+            "자식으로 전달된 기본 렌더링 요소를 변경하여 props와 동작을 병합합니다. 자세한 내용은 Composition 가이드를 참조하십시오.",
+          guide: "Composition 바로가기",
           url: "../guides/composition",
         },
         {
           name: "width",
           type: "number",
           defaultValue: 10,
-          description: "The width of the arrow in pixels.",
+          description: "화살표의 너비(픽셀)입니다.",
         },
         {
           name: "height",
           type: "number",
           defaultValue: 5,
-          description: "The height of the arrow in pixels.",
+          description: "화살표의 높이(픽셀)입니다.",
         },
       ],
     },
@@ -300,8 +293,8 @@ const popoverAPI: Object = {
           type: "boolean",
           defaultValue: "false",
           description:
-            "Change the default rendered element for the one passed as a child, merging their props and behavior. <br /> <br /> Read our <a href='../guides/composition'>Composition</a> guide for more details.",
-          guide: "Composition",
+            "자식으로 전달된 기본 렌더링 요소를 변경하여 props와 동작을 병합합니다. 자세한 내용은 Composition 가이드를 참조하십시오.",
+          guide: "Composition 바로가기",
           url: "../guides/composition",
         },
       ],
@@ -313,24 +306,23 @@ const popoverAPI: Object = {
       props: [
         {
           keys: ["Space"],
-          description: "Opens/closes the popover.",
+          description: "팝업을 열거나 닫습니다.",
         },
         {
           keys: ["Enter"],
-          description: "Opens/closes the popover.",
+          description: "팝업을 열거나 닫습니다.",
         },
         {
           keys: ["Tab"],
-          description: "Moves focus to the next focusable element",
+          description: "포커스를 다음 포커스 가능한 요소로 이동합니다.",
         },
         {
           keys: ["Shift + Tab"],
-          description: "Moves focus to the previous focusable element",
+          description: "포커스를 이전 포커스 가능한 요소로 이동합니다.",
         },
         {
           keys: ["Esc"],
-          description:
-            "Closes the popover and moves focus to <Code>Popover.Trigger</Code>.",
+          description: "팝오버를 닫고 포커스를 Popover.Trigger로 이동합니다.",
         },
       ],
     },

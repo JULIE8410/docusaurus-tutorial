@@ -11,7 +11,7 @@ const toastAPI: Object = {
           type: "number",
           defaultValue: 5000,
           description:
-            "The time in milliseconds that should elapse before automatically closing each toast.",
+            "각 토스트를 자동으로 닫기 전에 경과해야 하는 시간(밀리초)입니다.",
         },
         {
           name: "label",
@@ -19,22 +19,21 @@ const toastAPI: Object = {
           type: "string",
           defaultValue: '"Notification"',
           description:
-            "An author-localized label for each toast. Used to help screen reader users associate the interruption with a toast.",
+            "각 토스트에 대해 저자에 맞춤화된 라벨입니다. 화면 판독기 사용자가 중단을 토스트와 연관시키는 데 사용됩니다.",
         },
         {
           name: "swipeDirection",
           type: '"right" | "left" | "up" | "down"',
           typeSimple: "enum",
           defaultValue: '"right"',
-          description:
-            "The direction of the pointer swipe that should close the toast.",
+          description: "토스트를 닫아야 하는 포인터 스와이프의 방향입니다.",
         },
         {
           name: "swipeThreshold",
           type: "number",
           defaultValue: 50,
           description:
-            "The distance in pixels that the swipe gesture must travel before a close is triggered.",
+            "닫기가 트리거되기 전에 스와이프 제스처가 이동해야 하는 거리(픽셀)입니다.",
         },
       ],
     },
@@ -47,16 +46,15 @@ const toastAPI: Object = {
           type: "boolean",
           defaultValue: "false",
           description:
-            "Change the default rendered element for the one passed as a child, merging their props and behavior. <br /> <br /> Read our <a href='../guides/composition'>Composition</a> guide for more details.",
-          guide: "Composition",
+            "자식으로 전달된 기본 렌더링 요소를 변경하여 props와 동작을 병합합니다. 자세한 내용은 Composition 가이드를 참조하십시오.",
+          guide: "Composition 바로가기",
           url: "../guides/composition",
         },
         {
           name: "hotkey",
           type: "string[]",
           defaultValue: '["F8"]',
-          description:
-            'The keys to use as the keyboard shortcut that will move focus to the toast viewport. Use <Code>event.code</Code> value for each key from{" "} <Link href="https://keycode.info/" variant="blue" target="_blank"> keycode.info </Link> . For meta keys, use <Code>ctrlKey</Code>, <Code>shiftKey</Code>, <Code> altKey </Code> and/or <Code>metaKey</Code>.',
+          description: "",
           guide: "keycode.info",
           url: "https://keycode.info/",
         },
@@ -78,8 +76,8 @@ const toastAPI: Object = {
           type: "boolean",
           defaultValue: "false",
           description:
-            "Change the default rendered element for the one passed as a child, merging their props and behavior. <br /> <br /> Read our <a href='../guides/composition'>Composition</a> guide for more details.",
-          guide: "Composition",
+            "자식으로 전달된 기본 렌더링 요소를 변경하여 props와 동작을 병합합니다. 자세한 내용은 Composition 가이드를 참조하십시오.",
+          guide: "Composition 바로가기",
           url: "../guides/composition",
         },
         {
@@ -88,7 +86,7 @@ const toastAPI: Object = {
           typeSimple: "enum",
           defaultValue: '"foreground"',
           description:
-            'Control the{" "} <Link href="/primitives/docs/components/toast#sensitivity" variant="blue"> sensitivity </Link>{" "} of the toast for accessibility purposes. For toasts that are the result of a user action, choose <Code>foreground</Code>. Toasts generated from background tasks should use <Code>background</Code>.',
+            "접근성을 위해 토스트의 감도를 조절합니다. 사용자 작업의 결과인 토스트는 전경(foreground)을 선택합니다. 배경 작업에서 생성된 토스트는 배경을 사용해야 합니다.",
           guide: "sensitivity",
           url: "/primitives/docs/components/toast#sensitivity",
         },
@@ -96,75 +94,74 @@ const toastAPI: Object = {
           name: "duration",
           type: "number",
           description:
-            "The time in milliseconds that should elapse before automatically closing the toast. This will override the value supplied to the provider.",
+            "자동으로 토스트를 닫기 전에 경과해야 하는 시간(밀리초)입니다. 그러면 공급자에게 제공된 값이 재정의됩니다.",
         },
         {
           name: "defaultOpen",
           type: "boolean",
           defaultValue: "true",
           description:
-            "The open state of the dialog when it is initially rendered. Use when you do not need to control its open state.",
+            "대화상자가 처음 렌더링될 때 열려 있는 상태입니다. 열려 있는 상태를 제어할 필요가 없을 때 사용합니다.",
         },
         {
           name: "open",
           type: "boolean",
           description:
-            "The controlled open state of the dialog. Must be used in conjunction with <Code>onOpenChange</Code>.",
+            "대화상자의 제어된 열린 상태입니다. onOpenChange와 함께 사용해야 합니다.",
         },
         {
           name: "onOpenChange",
           type: "(open: boolean) => void",
           typeSimple: "function",
           description:
-            "Event handler called when the open state of the dialog changes.",
+            "대화 상자의 열린 상태가 변경될 때 이벤트 핸들러가 호출됩니다.",
         },
         {
           name: "onEscapeKeyDown",
           type: "(event: KeyboardEvent) => void",
           typeSimple: "function",
           description:
-            "Event handler called when the escape key is down. It can be prevented by calling <Code>event.preventDefault</Code>.",
+            "escape key가 눌러졌을 때 이벤트 핸들러가 호출됩니다. 이는 event.preventDefault를 호출하여 방지할 수 있습니다.",
         },
         {
           name: "onPause",
           type: "() => void",
           typeSimple: "function",
-          description:
-            "Event handler called when the dismiss timer is paused. This occurs when the pointer is moved over the viewport, the viewport is focused or when the window is blurred.",
+          description: "",
         },
         {
           name: "onResume",
           type: "() => void",
           typeSimple: "function",
           description:
-            "Event handler called when the dismiss timer is resumed. This occurs when the pointer is moved away from the viewport, the viewport is blurred or when the window is focused.",
+            "해제 타이머가 일시 중지되면 이벤트 핸들러가 호출됩니다. 이는 포인터가 viewport 위로 이동하거나 viewport가 초점이 맞춰지거나 창이 흐려질 때 발생합니다.",
         },
         {
           name: "onSwipeStart",
           type: "(event: SwipeEvent) => void",
           typeSimple: "function",
           description:
-            "Event handler called when starting a swipe interaction. It can be prevented by calling <Code>event.preventDefault</Code>.",
+            "스와이프 상호 작용을 시작할 때 이벤트 핸들러가 호출됩니다. 이는 event.preventDefault를 호출하여 방지할 수 있습니다.",
         },
         {
           name: "onSwipeMove",
           type: "(event: SwipeEvent) => void",
           typeSimple: "function",
           description:
-            "Event handler called during a swipe interaction. It can be prevented by calling <Code>event.preventDefault</Code>.",
+            "이벤트 핸들러가 스와이프 상호 작용 중에 호출됩니다. 이는 event.preventDefault를 호출하여 방지할 수 있습니다.",
         },
         {
           name: "onSwipeEnd",
           type: "(event: SwipeEvent) => void",
           typeSimple: "function",
           description:
-            "Event handler called at the end of a swipe interaction. It can be prevented by calling <Code>event.preventDefault</Code>.",
+            "이벤트 핸들러가 스와이프 상호 작용의 마지막에 호출됩니다. 이는 event.preventDefault를 호출하여 방지할 수 있습니다.",
         },
         {
           name: "forceMount",
           type: "boolean",
           description:
-            "Used to force mounting when more control is needed. Useful when controlling animation with React animation libraries.",
+            "더 많은 제어가 필요할 때 강제로 마운트시키는 데 사용됩니다. 리액트 애니메이션 라이브러리로 애니메이션을 제어할 때 유용합니다.",
         },
       ],
       dataAttribute: [
@@ -184,23 +181,19 @@ const toastAPI: Object = {
       cssVariable: [
         {
           cssVariable: "--radix-toast-swipe-move-x",
-          description:
-            "The offset position of the toast when horizontally swiping",
+          description: "수평으로 스와이프할 때 토스트의 오프셋 위치입니다.",
         },
         {
           cssVariable: "--radix-toast-swipe-move-y",
-          description:
-            "The offset position of the toast when vertically swiping",
+          description: "수직으로 스와이프할 때 토스트의 오프셋 위치입니다.",
         },
         {
           cssVariable: "--radix-toast-swipe-end-x",
-          description:
-            "The offset end position of the toast after horizontally swiping",
+          description: "수평으로 스와이프한 후 토스트의 오프셋 끝 위치입니다.",
         },
         {
           cssVariable: "--radix-toast-swipe-end-y",
-          description:
-            "The offset end position of the toast after vertically swiping",
+          description: "수직으로 스와이프한 후 토스트의 오프셋 끝 위치입니다.",
         },
       ],
     },
@@ -213,8 +206,8 @@ const toastAPI: Object = {
           type: "boolean",
           defaultValue: "false",
           description:
-            "Change the default rendered element for the one passed as a child, merging their props and behavior. <br /> <br /> Read our <a href='../guides/composition'>Composition</a> guide for more details.",
-          guide: "Composition",
+            "자식으로 전달된 기본 렌더링 요소를 변경하여 props와 동작을 병합합니다. 자세한 내용은 Composition 가이드를 참조하십시오.",
+          guide: "Composition 바로가기",
           url: "../guides/composition",
         },
       ],
@@ -228,8 +221,8 @@ const toastAPI: Object = {
           type: "boolean",
           defaultValue: "false",
           description:
-            "Change the default rendered element for the one passed as a child, merging their props and behavior. <br /> <br /> Read our <a href='../guides/composition'>Composition</a> guide for more details.",
-          guide: "Composition",
+            "자식으로 전달된 기본 렌더링 요소를 변경하여 props와 동작을 병합합니다. 자세한 내용은 Composition 가이드를 참조하십시오.",
+          guide: "Composition 바로가기",
           url: "../guides/composition",
         },
       ],
@@ -243,8 +236,8 @@ const toastAPI: Object = {
           type: "boolean",
           defaultValue: "false",
           description:
-            "Change the default rendered element for the one passed as a child, merging their props and behavior. <br /> <br /> Read our <a href='../guides/composition'>Composition</a> guide for more details.",
-          guide: "Composition",
+            "자식으로 전달된 기본 렌더링 요소를 변경하여 props와 동작을 병합합니다. 자세한 내용은 Composition 가이드를 참조하십시오.",
+          guide: "Composition 바로가기",
           url: "../guides/composition",
         },
         {
@@ -252,8 +245,8 @@ const toastAPI: Object = {
           required: true,
           type: "string",
           description:
-            'Describe an{" "} <Link variant="subtle" href="./toast#alternative-action"> alternative way to achieve the action </Link>{" "} for screen reader users who cannot access the toast easily.',
-          guide: "alternative way to achieve the action",
+            "토스트에 쉽게 접근할 수 없는 스크린 리더 사용자를 위해 조치를 취할 수 있는 대체 방법을 설명합니다.",
+          guide: "액션을 달성하기 위한 대안적인 방법",
           url: "./toast#alternative-action",
         },
       ],
@@ -267,8 +260,8 @@ const toastAPI: Object = {
           type: "boolean",
           defaultValue: "false",
           description:
-            "Change the default rendered element for the one passed as a child, merging their props and behavior. <br /> <br /> Read our <a href='../guides/composition'>Composition</a> guide for more details.",
-          guide: "Composition",
+            "자식으로 전달된 기본 렌더링 요소를 변경하여 props와 동작을 병합합니다. 자세한 내용은 Composition 가이드를 참조하십시오.",
+          guide: "Composition 바로가기",
           url: "../guides/composition",
         },
       ],
@@ -280,30 +273,29 @@ const toastAPI: Object = {
       props: [
         {
           keys: ["F8"],
-          description: "Focuses toasts viewport.",
+          description: "Viewport에 초점을 맞춥니다.",
         },
         {
           keys: ["Tab"],
-          description: "Moves focus to the next focusable element.",
+          description: "포커스를 다음 포커스 가능 요소로 이동합니다.",
         },
         {
           keys: ["Shift + Tab"],
-          description: "Moves focus to the previous focusable element.",
+          description: "포커스를 이전 포커스 가능 요소로 이동합니다.",
         },
         {
           keys: ["Space"],
           description:
-            'When focus is on a <Code>Toast.Action</Code> or{" "} <Code>Toast.Close</Code>, closes the toast.',
+            "Toast.Action 또는 Toast.Close에 초점이 맞추어져 있으면 토스트를 닫습니다.",
         },
         {
           keys: ["Enter"],
           description:
-            'When focus is on a <Code>Toast.Action</Code> or{" "} <Code>Toast.Close</Code>, closes the toast.',
+            "Toast.Action 또는 Toast.Close에 초점이 맞추어져 있으면 토스트를 닫습니다.",
         },
         {
           keys: ["Esc"],
-          description:
-            "When focus is on a <Code>Toast</Code>, closes the toast.",
+          description: "토스트에 초점이 맞춰지면, 토스트를 닫습니다.",
         },
       ],
     },

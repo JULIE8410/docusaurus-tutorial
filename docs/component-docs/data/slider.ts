@@ -11,8 +11,8 @@ const sliderAPI: Object = {
           type: "boolean",
           defaultValue: "false",
           description:
-            "Change the default rendered element for the one passed as a child, merging their props and behavior. <br /> <br /> Read our <a href='../guides/composition'>Composition</a> guide for more details.",
-          guide: "Composition",
+            "자식으로 전달된 기본 렌더링 요소를 변경하여 props와 동작을 병합합니다. 자세한 내용은 Composition 가이드를 참조하십시오.",
+          guide: "Composition 바로가기",
           url: "../guides/composition",
         },
         {
@@ -20,21 +20,21 @@ const sliderAPI: Object = {
           required: false,
           type: "number[]",
           description:
-            "The value of the slider when initially rendered. Use when you do not need to control the state of the slider.",
+            "처음 렌더링할 때 슬라이더의 값입니다. 슬라이더의 상태를 제어할 필요가 없을 때 사용합니다.",
         },
         {
           name: "value",
           required: false,
           type: "number[]",
           description:
-            'The controlled value of the slider. Must be used in conjunction with{" "} <Code>onValueChange</Code>.',
+            "슬라이더의 제어된 값입니다. onValueChange와 함께 사용해야 합니다.",
         },
         {
           name: "onValueChange",
           required: false,
           type: "onValueChange?(value: number[]): void",
           typeSimple: "function",
-          description: "Event handler called when the value changes.",
+          description: "값이 변경될 때 이벤트 처리기가 호출됩니다.",
         },
         {
           name: "onValueCommit",
@@ -42,14 +42,14 @@ const sliderAPI: Object = {
           type: "onValueCommit?(value: number[]): void",
           typeSimple: "function",
           description:
-            "Event handler called when the value changes at the end of an interaction. Useful when you only need to capture a final value e.g. to update a backend service.",
+            "이벤트 핸들러는 상호 작용이 끝날 때 값이 변경될 때 호출됩니다. 예를 들면, 백엔드 서비스를 업데이트하기 위해 최종 값만 캡처해야 할 때 유용합니다.",
         },
         {
           name: "name",
           required: false,
           type: "string",
           description:
-            "The name of the slider. Submitted with its owning form as part of a name/value pair.",
+            "슬라이더의 이름. 이름/값 쌍의 일부로 소유 양식과 함께 제출됩니다.",
         },
         {
           name: "disabled",
@@ -57,7 +57,7 @@ const sliderAPI: Object = {
           type: "boolean",
           defaultValue: "false",
           description:
-            "When <Code>true</Code>, prevents the user from interacting with the slider.",
+            "true일 경우 사용자가 슬라이더와 상호 작용하지 못하도록 합니다.",
         },
         {
           name: "orientation",
@@ -65,7 +65,7 @@ const sliderAPI: Object = {
           type: '"horizontal" | "vertical"',
           typeSimple: "enum",
           defaultValue: '"horizontal"',
-          description: "The orientation of the slider.",
+          description: "Slider의 방향",
         },
         {
           name: "dir",
@@ -73,49 +73,48 @@ const sliderAPI: Object = {
           type: '"ltr" | "rtl"',
           typeSimple: "enum",
           description:
-            "The reading direction of the slider. If omitted, inherits globally from <Code>DirectionProvider</Code> or assumes LTR (left-to-right) reading mode.",
+            "슬라이더의 판독 방향. 생략된 경우 DirectionProvider에서 전역적으로 상속되거나 LTR(좌-우) 판독 모드로 가정합니다.",
         },
         {
           name: "inverted",
           required: false,
           type: "boolean",
           defaultValue: "false",
-          description: "Whether the slider is visually inverted.",
+          description: "슬라이더가 시각적으로 반전되었는지 여부",
         },
         {
           name: "min",
           required: false,
           type: "number",
           defaultValue: "0",
-          description: "The minimum value for the range.",
+          description: "범위의 최소값입니다.",
         },
         {
           name: "max",
           required: false,
           type: "number",
           defaultValue: "100",
-          description: "The maximum value for the range.",
+          description: "범위의 최대값입니다.",
         },
         {
           name: "step",
           required: false,
           type: "number",
           defaultValue: "1",
-          description: "The stepping interval.",
+          description: "한 스텝 간 간격입니다.",
         },
         {
           name: "minStepsBetweenThumbs",
           required: false,
           type: "number",
           defaultValue: "0",
-          description:
-            "The minimum permitted <Code>step</Code>s between multiple thumbs.",
+          description: "여러 thumb 사이에 허용되는 최소 단계입니다.",
         },
       ],
       dataAttribute: [
         {
           attribute: "[data-disabled]",
-          values: "Present when disabled",
+          values: "비활성화된 경우 표시됩니다.",
         },
         {
           attribute: "[data-orientation]",
@@ -132,15 +131,15 @@ const sliderAPI: Object = {
           type: "boolean",
           defaultValue: "false",
           description:
-            "Change the default rendered element for the one passed as a child, merging their props and behavior. <br /> <br /> Read our <a href='../guides/composition'>Composition</a> guide for more details.",
-          guide: "Composition",
+            "자식으로 전달된 기본 렌더링 요소를 변경하여 props와 동작을 병합합니다. 자세한 내용은 Composition 가이드를 참조하십시오.",
+          guide: "Composition 바로가기",
           url: "../guides/composition",
         },
       ],
       dataAttribute: [
         {
           attribute: "[data-disabled]",
-          values: "Present when disabled",
+          values: "비활성화된 경우 표시됩니다.",
         },
         {
           attribute: "[data-orientation]",
@@ -157,15 +156,15 @@ const sliderAPI: Object = {
           type: "boolean",
           defaultValue: "false",
           description:
-            "Change the default rendered element for the one passed as a child, merging their props and behavior. <br /> <br /> Read our <a href='../guides/composition'>Composition</a> guide for more details.",
-          guide: "Composition",
+            "자식으로 전달된 기본 렌더링 요소를 변경하여 props와 동작을 병합합니다. 자세한 내용은 Composition 가이드를 참조하십시오.",
+          guide: "Composition 바로가기",
           url: "../guides/composition",
         },
       ],
       dataAttribute: [
         {
           attribute: "[data-disabled]",
-          values: "Present when disabled",
+          values: "비활성화된 경우 표시됩니다.",
         },
         {
           attribute: "[data-orientation]",
@@ -182,15 +181,15 @@ const sliderAPI: Object = {
           type: "boolean",
           defaultValue: "false",
           description:
-            "Change the default rendered element for the one passed as a child, merging their props and behavior. <br /> <br /> Read our <a href='../guides/composition'>Composition</a> guide for more details.",
-          guide: "Composition",
+            "자식으로 전달된 기본 렌더링 요소를 변경하여 props와 동작을 병합합니다. 자세한 내용은 Composition 가이드를 참조하십시오.",
+          guide: "Composition 바로가기",
           url: "../guides/composition",
         },
       ],
       dataAttribute: [
         {
           attribute: "[data-disabled]",
-          values: "Present when disabled",
+          values: "비활성화된 경우 표시됩니다.",
         },
         {
           attribute: "[data-orientation]",
@@ -205,45 +204,43 @@ const sliderAPI: Object = {
       props: [
         {
           keys: ["ArrowRight"],
-          description:
-            'Increments/decrements by the <Code>step</Code> value depending on{" "} <Code>orientation</Code>.',
+          description: "방향에 따라 step value별로 증가/감소합니다.",
         },
         {
           keys: ["ArrowLeft"],
-          description:
-            'Increments/decrements by the <Code>step</Code> value depending on{" "} <Code>orientation</Code>.',
+          description: "방향에 따라 step value별로 증가/감소합니다.",
         },
         {
           keys: ["ArrowUp"],
-          description: "Increases the value by the <Code>step</Code> amount.",
+          description: "step value 만큼 값을 증가시킵니다.",
         },
         {
           keys: ["ArrowDown"],
-          description: "Decreases the value by the <Code>step</Code> amount.",
+          description: "step value 만큼 값을 감소시킵니다.",
         },
         {
           keys: ["PageUp"],
-          description: "Increases the value by a larger <Code>step</Code>.",
+          description: "값을 큰 단계만큼 증가시킵니다.",
         },
         {
           keys: ["PageDown"],
-          description: "Decreases the value by a larger <Code>step</Code>.",
+          description: "값을 큰 단계만큼 감소시킵니다.",
         },
         {
           keys: ["Shift + ArrowUp"],
-          description: "Increases the value by a larger <Code>step</Code>.",
+          description: "값을 큰 단계만큼 증가시킵니다.",
         },
         {
           keys: ["Shift + ArrowDown"],
-          description: "Decreases the value by a larger <Code>step</Code>.",
+          description: "값을 큰 단계만큼 감소시킵니다.",
         },
         {
           keys: ["Home"],
-          description: "Sets the value to its minimum.",
+          description: "값을 최소값으로 설정합니다.",
         },
         {
           keys: ["End"],
-          description: "Sets the value to its maximum.",
+          description: "값을 최대값으로 설정합니다.",
         },
       ],
     },
