@@ -335,9 +335,9 @@ Dialog를 열 때 알릴 접근 가능한 제목입니다.
 
 ## <Highlight color='#1C5AEC'>예</Highlight>
 
-### Close after asynchronous form submission
+#### 비동기 양식 제출 후 닫기
 
-Use the controlled props to programmatically close the Dialog after an async operation has completed.
+비동기 작업이 완료된 후 제어된 도구를 사용하여 Dialog를 프로그래밍 방식으로 닫습니다.
 
 ```jsx
 import React from "react";
@@ -370,9 +370,9 @@ export default () => {
 };
 ```
 
-### Scrollable overlay
+#### 스크롤 가능 오버레이
 
-Move the content inside the overlay to render a dialog with overflow.
+오버레이 안에서 내용을 이동하여 오버플로가 있는 대화상자를 렌더링합니다.
 
 ```jsx
 // index.jsx
@@ -415,9 +415,9 @@ export default () => {
 }
 ```
 
-### Custom portal container
+#### 사용자 지정 포털 컨테이너
 
-Customise the element that your dialog portals into.
+대화상자가 포탈로 이동하는 요소를 사용자 정의합니다.
 
 ```jsx
 import React from "react";
@@ -451,11 +451,13 @@ export default () => {
 
 ### <Highlight color='#1C5AEC'>사용자 정의 API</Highlight>
 
-#### Abstract the overlay and the close button
+원시적인 부분을 자신의 구성요소로 추상화하여 자신만의 API를 만듭니다.
 
-This example abstracts the `Dialog.Overlay` and `Dialog.Close` parts.
+#### 오버레이 및 닫기 버튼 추상화
 
-#### Usage
+이 예제에서는 `Dialog.Overlay` 및 `Dialog.Close` 부분을 추상화합니다.
+
+#### 사용
 
 ```jsx
 import { Dialog, DialogTrigger, DialogContent } from "./your-dialog";
@@ -468,7 +470,7 @@ export default () => (
 );
 ```
 
-#### Implementation
+#### 구현
 
 ```jsx
 // your-dialog.jsx

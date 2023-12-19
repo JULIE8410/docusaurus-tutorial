@@ -282,9 +282,9 @@ Form의 모든 부분을 포함합니다.
 
 ## <Highlight color='#1C5AEC'>예</Highlight>
 
-### Composing with your own components
+#### 자신만의 구성요소로 구성
 
-Using `asChild` you can compose the `Form` primitive parts with your own components.
+`asChild`를 사용하면 `Form` Primitive 부분을 자신의 구성요소로 구성할 수 있습니다.
 
 ```jsx
 <Form.Field name="name">
@@ -311,29 +311,28 @@ It can also be used to compose other types of controls, such as a `select`:
 Note: At the moment, it is not possible to compose `Form` with Radix's other form primitives such as `Checkbox`, `Select`, etc.
 We are working on a solution for this.
 
-### Providing your own validation messages
+#### 사용자 고유의 검증 메시지 제공
 
-When no `children` are provided, `Form.Message` will render a default error message for the given `match`.
+`children`이 없는 경우 `Form.Message`는 지정된 `match`에 대한 기본 오류 메시지를 렌더링합니다.
 
 ```jsx
 // will yield "This value is missing"
 <Form.Message match="missingValue" />
 ```
 
-You can provide a more meaningful message by passing your own `children`. This is also useful for internationalization.
+자신의 고유 `children`을 물려줌으로써 보다 의미 있는 메시지를 전달할 수 있으며, 이는 국제화에도 유용합니다.
 
 ```jsx
 // will yield "Please provide a name"
 <Form.Message match="missingValue">Please provide a name</Form.Message>
 ```
 
-### Custom validation
+#### 사용자 정의 유효성 검사
 
-On top of all the built-in client-side validation matches described above
-you can also provide your own custom validation whilst still making use of the platform's validation abilities.
-It uses the `customError` type present in the `constraint validition API`.
-
-You can pass your own validation function into the `match` prop on `Form.Message`. Here's an example:
+위에서 설명한 기본 제공 클라이언트 측 검증 일치 외에도 플랫폼의 검증 능력을 활용하여 자체 맞춤형 검증을 제공할 수 있으며 c
+`onstraint validition API`에 존재하는 `customError` 유형을 사용합니다.
+`Form.Message`에서 자신의 검증 기능을 `match` prop에 전달할 수 있습니다.
+다음은 예입니다:
 
 ```jsx
 <Form.Field name="name">
@@ -345,14 +344,13 @@ You can pass your own validation function into the `match` prop on `Form.Message
 </Form.Field>
 ```
 
-`match` will be called with the current value of the control as first argument and the entire `FormData` as second argument.
-`match` can also be an `async` function (or return a promise) to perform async validation.
+`match`는 첫 번째 인수로 컨트롤의 현재 값을 호출하고 두 번째 인수로 전체 `FormData`를 호출합니다.
+`match`는 비동기 유효성 검사를 수행하기 위한 비동기 함수(또는 약속을 반환)일 수도 있습니다
 
-#### Styling based on validity
+#### 유효성에 따른 스타일링
 
-We add `data-valid` and `data-invalid` attributes to the relevant parts.
-Use it to style your components accordingly.
-Here is an example styling the `Label` part.
+관련 부분에 `data-valid` 속성과 `data-valid` 속성을 추가합니다. 이를 사용하여 당신의 컴포넌트에 맞게 스타일링 할 수 있습니다.
+다음은 `Label` 영역을 스타일링 하는 예입니다
 
 ```jsx
 //index.jsx
@@ -379,10 +377,10 @@ export default () => (
 }
 ```
 
-### Accessing the validity state for more control
+#### 더 많은 제어를 위해 유효성 상태에 액세스하는 중
 
-You may need to access the raw validity state of a field in order to display your own icons, or interface with a component library via it's defined props.
-You can do this by using the `Form.ValidityState` part:
+자신의 아이콘을 표시하거나 정의된 도구를 통해 구성요소 라이브러리와 인터페이스하려면 필드의 원시 유효성 상태에 액세스해야 할 수 있습니다.
+`Form.ValidityState` 파트를 사용하여 이 작업을 수행할 수 있습니다:
 
 ```jsx
 <Form.Field name="name">
@@ -400,16 +398,13 @@ You can do this by using the `Form.ValidityState` part:
 </Form.Field>
 ```
 
-### Server-side validation
+#### 서버측 유효성 검사
 
-The component also supports server-side validation using the same `Form.Message` component.
-You can re-use the same messages you defined for client-side errors by passing a `forceMatch` prop
-which will force the message to show regardless of the client-side matching logic.
-
-If the message doesn't exist on the client-side, you can render a `Form.Message` without a `match` too.
-The field is marked as invalid by passing a `serverInvalid` boolean prop to the `Form.Field` part.
-
-Here's an example with server-side error handling:
+구성 요소는 동일한 `Form.Message` 구성 요소를 사용하여 서버측 유효성 검사도 지원합니다.
+클라이언트측 일치 로직에 관계없이 메시지가 표시되도록 강제하는 `forceMatch` prop을 전달하여 클라이언트측 오류에 대해 정의한 동일한 메시지를 다시 사용할 수 있습니다.
+클라이언트 측에 메시지가 없는 경우 `match`가 없이도 `Form.Message`를 렌더링할 수 있습니다.
+이 필드는 `Form.Field` 부분에 `server Invalid` boolean prop를 전달하여 잘못된 것으로 표시됩니다.
+서버측 오류 처리의 예는 다음과 같습니다:
 
 ```jsx
 import * as React from "react";
@@ -474,11 +469,10 @@ function Page() {
 }
 ```
 
-You should clear the server errors using the `onClearServerErrors` callback prop on the `Form.Root` part.
-It will clear the server errors before the form is re-submitted, and when the form is reset.
-
-In addition, this provides control over when to reset single server errors.
-For example you could reset the email server error as soon as the user edits it:
+`Form.Root` 부분의 `onClearServerErrors` callback prop을 사용하여 서버 오류를 지워야 합니다.
+양식이 다시 제출되기 전에, 양식이 재설정되면 서버 오류를 지웁니다.
+또한, 단일 서버 오류를 재설정할 수 있는 컨트롤을 제공합니다.
+예를 들어 사용자가 전자 메일 서버 오류를 편집하는 즉시 재설정할 수 있습니다:
 
 ```jsx
 <Form.Field name="email" serverInvalid={serverErrors.email}>

@@ -428,9 +428,9 @@ Submenu가 열렸을 때 나타나는 구성 요소입니다. `ContextMenu.Sub`�
 
 ## <Highlight color='#1C5AEC'>예</Highlight>
 
-### With submenus
+#### Submenu 포함
 
-You can create submenus by using `ContextMenu.Sub` in combination with its parts.
+`ContextMenu.Sub`를 해당 부분과 함께 사용하여 하위 메뉴를 만들 수 있습니다.
 
 ```jsx
 <ContextMenu.Root>
@@ -457,9 +457,9 @@ You can create submenus by using `ContextMenu.Sub` in combination with its parts
 </ContextMenu.Root>
 ```
 
-### With disabled items
+#### 비활성화된 항목 포함
 
-You can add special styles to disabled items via the `data-disabled` attribute.
+`data-disabled` 속성을 통해 비활성화된 항목에 특수 스타일을 추가할 수 있습니다.
 
 ```jsx
 // index.jsx
@@ -488,9 +488,9 @@ export default () => (
 }
 ```
 
-### With separators
+#### separator 포함
 
-Use the Separator part to add a separator between items.
+항목 사이에 구분자를 추가하려면 구분자 부분을 사용합니다.
 
 ```jsx
 <ContextMenu.Root>
@@ -507,9 +507,9 @@ Use the Separator part to add a separator between items.
 </ContextMenu.Root>
 ```
 
-### With labels
+#### label 포함
 
-Use the Label part to help label a section.
+Label 부분을 사용하여 단면에 레이블을 지정할 수 있습니다.
 
 ```jsx
 <ContextMenu.Root>
@@ -525,9 +525,9 @@ Use the Label part to help label a section.
 </ContextMenu.Root>
 ```
 
-### With checkbox items
+#### checkbox item 포함
 
-Use the CheckboxItem part to add an item that can be checked.
+CheckboxItem 부분을 사용하여 체크할 수 있는 항목을 추가합니다.
 
 ```jsx
 import React from "react";
@@ -561,9 +561,9 @@ export default () => {
 };
 ```
 
-### With radio items
+#### radio item 포함
 
-Use the `RadioGroup` and `RadioItem` parts to add an item that can be checked amongst others.
+`RadioGroup` 및 `RadioItem`을 사용하여 다른 항목에서 확인할 수 있는 항목을 추가합니다.
 
 ```jsx
 import React from "react";
@@ -605,9 +605,9 @@ export default () => {
 };
 ```
 
-### With complex items
+#### 복잡한 항목 포함
 
-You can add extra decorative elements in the Item parts, such as images.
+Image와 같은 추가 장식 요소를 Item 부분에 추가할 수 있습니다.
 
 ```jsx
 import * as ContextMenu from "@radix-ui/react-context-menu";
@@ -631,10 +631,11 @@ export default () => (
 );
 ```
 
-### Constrain the content/sub-content size
+#### 내용/하위 내용 사이즈 제한
 
-You may want to constrain the width of the content (or sub-content) so that it matches the trigger (or sub-trigger) width. You may also want to constrain its height to not exceed the viewport.
-We expose several CSS custom properties such as `--radix-context-menu-trigger-width` and `--radix-context-menu-content-available-height` to support this. Use them to constrain the content dimensions.
+Content (또는 sub-content)의 너비가 Trigger (또는 sub-trigger)의 너비와 일치하도록 제한할 수 있습니다.
+Viewport를 초과하지 않도록 높이를 제한할 수도 있습니다.
+이를 지원하기 위해 `--radix-context-menu-trigger-width` 및 `--radix-context-menu-content-available-height`와 같은 여러 CSS 사용자 지정 속성을 노출합니다. 이를 사용하여 콘텐츠 차원을 제한합니다.
 
 ```jsx
 // index.jsx
@@ -661,10 +662,10 @@ export default () => (
 }
 ```
 
-### Origin-aware animations
+#### 원본 인식 애니메이션
 
-We expose a CSS custom property `--radix-context-menu-content-transform-origin`.
-Use it to animate the content from its computed origin based on `side`, `sideOffset`, `align`, `alignOffset` and any collisions.
+CSS 사용자 지정 속성 `--radix-context-menu-content-transform-origin`을 노출합니다.
+이를 사용하여 `side`, `sideOffset`, `align`, `alignOffset` 및 충돌에 따라 계산된 원본에서 컨텐츠를 애니메이션화합니다.
 
 ```jsx
 // index.jsx
@@ -702,9 +703,9 @@ export default () => (
 }
 ```
 
-### Collision-aware animations
+#### 충돌 인식 애니메이션
 
-We expose `data-side` and `data-align` attributes. Their values will change at runtime to reflect collisions. Use them to create collision and direction-aware animations.
+`data-side`와 `data-align` 속성을 사용합니다. 이 값은 충돌을 반영하기 위해 런타임에 변경외며, 충돌 및 방향 인식 애니메이션을 만들 때 사용합니다.
 
 ```jsx
 // index.jsx

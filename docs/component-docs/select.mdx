@@ -396,11 +396,10 @@ Select 내에서 항목을 시각적으로 구분하는 데 사용됩니다.
 
 ## <Highlight color='#1C5AEC'>예</Highlight>
 
-### Change the positioning mode
+#### 포지셔닝 모드 변경
 
-By default, `Select` will behave similarly to a native MacOS menu by positioning `Select.Content` relative to the active item.
-If you would prefer an alternative positioning approach similar to `Popover` or `DropdownMenu`
-then you can set `position` to `popper` and make use of additional alignment options such as `side`, `sideOffset` and more.
+기본적으로 `Select`는 활성 항목에 대해 `Select.Content`를 지정하여 기본 MacOS 메뉴와 유사하게 동작합니다.
+`Popover` 또는 `DropdownMenu`와 유사한 대체 위치 지정 방법을 선호하는 경우 `position`를 `popper`로 설정하고 `side`, `sideOffset` 등의 추가 정렬 옵션을 사용할 수 있습니다.
 
 ```jsx
 // index.jsx
@@ -418,14 +417,10 @@ export default () => (
 );
 ```
 
-### Constrain the content size
+#### 콘텐츠 크기 제한
 
-When using `position="popper"` on `Select.Content`,
-you may want to constrain the width of the content so that it matches the trigger width.
-You may also want to constrain its height to not exceed the viewport.
-
-We expose several CSS custom properties such as `--radix-select-trigger-width` and `--radix-select-content-available-height` to support this.
-Use them to constrain the content dimensions.
+`Select.Content`에서 `position="popper"`를 사용할 때, 트리거 너비와 일치하도록 콘텐츠의 너비를 제한하거나, 뷰포트를 초과하지 않도록 높이를 제한할 수도 있습니다.
+이를 지원하기 위해 `--radix-select-trigger-width` 및 `--radix-select-content-available-height`와 같은 여러 CSS 사용자 지정 속성을 사용합니다. 이를 사용하여 콘텐츠 차원을 제한합니다.
 
 ```jsx
 // index.jsx
@@ -456,9 +451,9 @@ export default () => (
 }
 ```
 
-### With disabled items
+#### 비활성화된 항목 포함
 
-You can add special styles to disabled items via the `data-disabled` attribute.
+`data-disabled` 속성을 통해 비활성화된 항목에 특수 스타일을 추가할 수 있습니다.
 
 ```jsx
 // index.jsx
@@ -490,10 +485,9 @@ export default () => (
 }
 ```
 
-### With a placeholder
+#### Placeholder 포함
 
-You can use the `placeholder` prop on `Value` for when the select has no value.
-There's also a `data-placeholder` attribute on `Trigger` to help with styling.
+선택 항목에 값이 없을 때 `Value`에 `placeholder`를 사용할 수 있습니다. 또한 `Trigger`에는 스타일링에 도움이 되는 `data-placeholder` 속성이 있습니다.
 
 ```jsx
 // index.jsx
@@ -520,9 +514,9 @@ export default () => (
 }
 ```
 
-### With separators
+#### separator 포함
 
-Use the `Separator` part to add a separator between items.
+항목 사이에 `Separator`를 추가하여 분리합니다.
 
 ```jsx
 <Select.Root>
@@ -542,9 +536,9 @@ Use the `Separator` part to add a separator between items.
 </Select.Root>
 ```
 
-### With grouped items
+#### 그룹화된 항목 포함
 
-Use the `Group` and `Label` parts to group items in a section.
+`Group` 및 `Label`을 사용하여 섹션의 항목을 그룹화합니다.
 
 ```jsx
 <Select.Root>
@@ -564,9 +558,9 @@ Use the `Group` and `Label` parts to group items in a section.
 </Select.Root>
 ```
 
-### With complex items
+#### 복잡한 항목 포함
 
-You can use custom content in your items.
+Item에 사용자 지정 콘텐츠를 사용할 수 있습니다.
 
 ```jsx
 import * as Select from "@radix-ui/react-select";
@@ -593,14 +587,12 @@ export default () => (
 );
 ```
 
-### Controlling the value displayed in the trigger
+#### 트리거에 표시되는 값 제어
 
-By default the trigger will automatically display the selected item `ItemText`'s content.
-You can control what appears by chosing to put things inside/outside the `ItemText` part.
-
-If you need more flexibility, you can control the component using `value/onValueChange` props
-and passing `children` to `SelectValue`.
-Remember to make sure what you put in there is accessible.
+기본적으로 트리거는 선택한 항목의 `ItemText` 내용을 자동으로 표시합니다.
+`ItemText` 부분 안에/밖에 항목을 넣도록 선택하여 표시되는 내용을 제어할 수 있습니다.
+더 많은 유연성이 필요한 경우 `value/onValueChange` prop을 사용하여 구성 요소를 제어하고 `children`를 `SelectValue`로 전달할 수 있습니다.
+입력한 항목에 액세스할 수 있는지 확인해야 합니다.
 
 ```jsx
 const countries = { france: "🇫🇷", "united-kingdom": "🇬🇧", spain: "🇪🇸" };
@@ -636,10 +628,10 @@ export default () => {
 };
 ```
 
-### With custom scrollbar
+#### 사용자 지정 scrollbar 포함
 
-The native scrollbar is hidden by default as we recommend using the `ScrollUpButton` and `ScrollDownButton` parts for the best UX.
-If you do not want to use these parts, compose your select with our `Scroll Area` primitive.
+최상의 UX를 위해 `ScrollUpButton`과 `ScrollDownButton` 부분을 사용하는 것을 권장하는 것처럼 기본 스크롤 바는 기본적으로 숨겨져 있습니다.
+만약 이러한 부분을 사용하고 싶지 않다면 `Scroll Area` primitive로 선택을 구성하십시오.
 
 ```jsx
 // index.jsx
@@ -737,11 +729,11 @@ export default () => (
 
 원시적인 부분을 사용자 고유의 컴포넌트로 추상화하여 사용자 정의 API를 만듭니다.
 
-#### Abstract down to Select and SelectItem
+#### Select 및 SelectItem 추상화
 
-This example abstracts most of the parts.
+이 예제에서는 대부분의 부분을 추상화합니다.
 
-#### Usage
+#### 사용
 
 ```jsx
 import { Select, SelectItem } from "./your-select";
@@ -755,7 +747,7 @@ export default () => (
 );
 ```
 
-#### Implementation
+#### 구현
 
 ```jsx
 // your-select.jsx

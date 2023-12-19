@@ -352,7 +352,8 @@ const contextMenuAPI: Object = {
           name: "onSelect",
           type: "(event: Event) => void",
           typeSimple: "function",
-          description: "",
+          description:
+            "사용자가 (마우스 또는 키보드를 통해) 항목을 선택할 때 이벤트 핸들러가 호출됩니다. 이 처리기에서 event.preventDefault를 호출하면 해당 항목을 선택할 때 컨텍스트 메뉴가 닫히지 않습니다.",
         },
         {
           name: "textValue",
@@ -431,7 +432,8 @@ const contextMenuAPI: Object = {
           name: "onSelect",
           type: "(event: Event) => void",
           typeSimple: "function",
-          description: "",
+          description:
+            "사용자가 (마우스 또는 키보드를 통해) 항목을 선택할 때 이벤트 핸들러가 호출됩니다. 이 처리기에서 event.preventDefault를 호출하면 해당 항목을 선택할 때 컨텍스트 메뉴가 닫히지 않습니다.",
         },
         {
           name: "textValue",
@@ -627,7 +629,7 @@ const contextMenuAPI: Object = {
           name: "alignOffset",
           type: "number",
           defaultValue: "0",
-          description: '"시작" 또는 "끝" 정렬 옵션의 픽셀 단위 오프셋입니다.',
+          description: '"start" 또는 "end" 정렬 옵션의 픽셀 단위 오프셋입니다.',
         },
         {
           name: "avoidCollisions",

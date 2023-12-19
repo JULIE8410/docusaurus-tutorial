@@ -339,9 +339,9 @@ Toast 기간이 경과하기 전에 toast를 취소할 수 있는 버튼입니�
 
 ## <Highlight color='#1C5AEC'>예</Highlight>
 
-#### Custom hotkey
+#### 사용자 지정 단축키
 
-Override the default hotkey using the `event.code` value for each key from keycode.info.
+keycode.info 의 각 키에 대해 `event.code` 값을 사용하여 기본 단축키를 재정의합니다.
 
 ```jsx
 <Toast.Provider>
@@ -350,9 +350,9 @@ Override the default hotkey using the `event.code` value for each key from keyco
 </Toast.Provider>
 ```
 
-#### Custom duration
+#### 사용자 정의 기간
 
-Customise the duration of a toast to override the provider value.
+Toast 기간을 사용자가 지정하여 값을 재정의 합니다.
 
 ```jsx
 <Toast.Root duration={3000}>
@@ -360,10 +360,10 @@ Customise the duration of a toast to override the provider value.
 </Toast.Root>
 ```
 
-#### Duplicate toasts
+#### 중복 toast
 
-When a toast must appear every time a user clicks a button, use state to render multiple instances of the same toast (see below). Alternatively,
-you can abstract the parts to create your own `imperative API`.
+사용자가 버튼을 클릭할 때마다 토스트가 나타나야 할 경우 state를 사용하여 동일한 toast의 여러 인스턴스를 렌더링합니다(아래 참조).
+또는 부분을 추상화하여 사용자 고유의 `imperative API`를 만들 수도 있습니다.
 
 ```jsx
 export default () => {
@@ -386,10 +386,10 @@ export default () => {
 };
 ```
 
-#### Animating swipe gesture
+#### Swipe gesture 애니메이션화
 
-Combine `--radix-toast-swipe-move-[x|y]` and `--radix-toast-swipe-end-[x|y]` CSS variables with `data-swipe="[start|move|cancel|end]"` attributes to animate a swipe to close gesture.
-Here's an example:
+`--radix-toast-swipe-move-[x|y]` 및 `--radix-toast-swipe-cancel-end-[x|y]` CSS 변수를 `data-swipe="[start|move|end]"` 속성과 결합하여 스와이프를 종료 제스처로 애니메이션화합니다.
+다음은 예입니다:
 
 ```jsx
 // index.jsx
@@ -504,11 +504,11 @@ Type prop을 사용하여 화면 판독기의 toast 감도를 조절합니다.
 
 ## <Highlight color='#1C5AEC'>사용자 정의 API</Highlight>
 
-#### Abstract parts
+#### 추상화
 
-Create your own API by abstracting the primitive parts into your own component.
+원시적인 부분을 사용자의 구성요소로 추상화하여 사용자 고유의 API를 만듭니다.
 
-#### Usage
+#### 사용
 
 ```jsx
 import { Toast } from "./your-toast";
@@ -520,7 +520,7 @@ export default () => (
 );
 ```
 
-#### Implementation
+#### 구현
 
 ```jsx
 // your-toast.jsx

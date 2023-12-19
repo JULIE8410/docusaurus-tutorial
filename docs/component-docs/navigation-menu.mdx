@@ -624,9 +624,9 @@ Navigation menu의 모든 부분을 포함합니다.
 
 ## <Highlight color='#1C5AEC'>예</Highlight>
 
-### Vertical
+#### 수직
 
-You can create a vertical menu by using the orientation prop.
+Orientation prop을 사용하여 수직 메뉴를 만들 수 있습니다.
 
 ```jsx
 <NavigationMenu.Root orientation="vertical">
@@ -643,11 +643,10 @@ You can create a vertical menu by using the orientation prop.
 </NavigationMenu.Root>
 ```
 
-### Flexible layouts
+#### 유연한 레이아웃
 
-Use the `Viewport` part when you need extra control over where `Content` is rendered.
-This can be helpful when your design requires an adjusted DOM structure or if you need flexibility to achieve `advanced animation`.
-Tab focus will be maintained automatically.
+`Content`가 렌더링되는 위치에 대한 추가 제어가 필요할 때 `viewport`를 사용합니다.
+이는 설계에 조정된 DOM 구조가 필요하거나 `advanced animation`을 구현하기 위해 유연성이 필요할 때 유용합니다. 탭 포커스는 자동으로 유지됩니다.
 
 ```jsx
 <NavigationMenu.Root>
@@ -667,9 +666,10 @@ Tab focus will be maintained automatically.
 </NavigationMenu.Root>
 ```
 
-### With indicator
+#### indicator 포함
 
-You can use the optional `Indicator` part to highlight the currently active `Trigger`, this is useful when you want to provide an animated visual cue such as an arrow or highlight to accompany the `Viewport`.
+선택적 `Indicator` 부분을 사용하여 현재 활성 `Trigger`를 강조 표시할 수 있습니다.
+이는 `Viewport`와 함께 제공할 화살표 또는 강조 표시와 같은 애니메이션 시각적 큐를 제공하려는 경우에 유용합니다.
 
 ```jsx
 // index.jsx
@@ -707,10 +707,10 @@ export default () => (
 }
 ```
 
-### With submenus
+#### submenu 포함
 
-Create a submenu by nesting your `NavigationMenu` and using the `Sub` part in place of its `Root`.
-Submenus work differently to `Root` navigation menus and are similar to `Tabs` in that one item should always be active, so be sure to assign and set a `defaultValue`.
+`NavigationMenu`를 중첩하고 `Root` 대신 `Sub` 부분을 사용하여 하위 메뉴를 만듭니다.
+Submenu는 `Root` navigation menu와 다르게 작동하며 한 항목이 항상 활성화되어야 한다는 점에서 `Tab` 과 유사하므로 기본값을 할당하고 설정해야 합니다.
 
 ```jsx
 <NavigationMenu.Root>
@@ -744,11 +744,10 @@ Submenus work differently to `Root` navigation menus and are similar to `Tabs` i
 </NavigationMenu.Root>
 ```
 
-### With client side routing
+#### 클라이언트 측 라우팅 사용
 
-If you need to use the `Link` component provided by your routing package then we recommend composing with `NavigationMenu.Link` via a custom component.
-This will ensure accessibility and consistent keyboard control is maintained.
-Here's an example using Next.js:
+라우팅 패키지에서 제공하는 `Link` 구성 요소를 사용해야 하는 경우 사용자 컴포넌트 구성을 통해 `NavigationMenu.Link`로 구성하는 것이 좋습니다.
+이렇게 하면 접근성과 일관된 키보드 제어가 유지됩니다. 다음은 Next.js를 사용하는 예입니다:
 
 ```jsx
 // index.jsx
@@ -796,11 +795,12 @@ export default () => (
 }
 ```
 
-### Advanced animation
+#### 고급 애니메이션
 
-We expose `--radix-navigation-menu-viewport-[width|height]` and `data-motion['from-start'|'to-start'|'from-end'|'to-end']` attributes to allow you to animate `Viewport` size and `Content` position based on the enter/exit direction.
-
-Combining these with `position: absolute`; allows you to create smooth overlapping animation effects when moving between items.
+Advanced animation
+`--radix-navigation-menu-viewport-[width|height]` 및 `data-motion['from-start'|'to-start'|'from-end'|'to-end'|'to-end']` 속성을 사용하여
+진입/퇴출 방향을 기준으로 `viewport` 크기와 컨텐츠 위치를 애니메이션화할 수 있습니다.
+`position: absolute;` 과 결합하면 항목 간 이동 시 중복되는 애니메이션 효과를 매끄럽게 만들 수 있습니다.
 
 ```jsx
 // index.jsx
