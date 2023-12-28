@@ -9,10 +9,13 @@ import DataAttributeTable from "./component/DataAttributeTable.js";
 import CssVariableTable from "./component/CssVariableTable.js";
 import KeyboardInteractionTable from "./component/KeyboardInteractionTable.js";
 import toastAPI from "./data/toast.ts";
+import ToastDemo from "../component-docs/component/ToastDemo.jsx";
 
 # Toast
 
 일시적으로 표시되는 간결한 메시지입니다.
+
+<ToastDemo />
 
 <Tabs>
 <TabItem value="js" label="index.js">
@@ -542,11 +545,11 @@ export const Toast = ({ title, content, children, ...props }) => {
 };
 ```
 
-#### Imperative API
+#### 필수적 API
 
-Create your own imperative API to allow `toast duplication` if preferred.
+원하는 경우 `toast duplication` 를 허용하기 위해 자신만의 필수 API를 만듭니다.
 
-#### Usage
+#### 사용
 
 ```jsx
 import { Toast } from "./your-toast";
@@ -565,7 +568,7 @@ export default () => {
 };
 ```
 
-#### Implementation
+#### 구현
 
 ```jsx
 // your-toast.jsx
